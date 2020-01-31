@@ -2,6 +2,7 @@ package com.example.zjq.news;
 
 import android.animation.AnimatorSet;
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.animation.AlphaAnimation;
@@ -11,8 +12,12 @@ import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.widget.RelativeLayout;
 
+import com.example.zjq.news.activity.GuideActivity;
+import com.example.zjq.news.utils.CacheUtils;
+
 public class SplashActivity extends Activity {
 
+    public static final String START_MAIN = "start_main";
     private RelativeLayout rl_splash;
 
     @Override
@@ -71,6 +76,16 @@ public class SplashActivity extends Activity {
             public void onAnimationEnd(Animation animation) {
 
                 //动画播放结束的时候
+
+                //是否进入引导页
+                boolean isStartMain= CacheUtils.getBoolean(SplashActivity.this,START_MAIN);//ctrl+alt+c
+
+                if (isStartMain){
+
+                }else {
+                    Intent intent=new Intent( SplashActivity.this, GuideActivity.class);
+                    startActivity( intent );
+                }
             }
 
             @Override

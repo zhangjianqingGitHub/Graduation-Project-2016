@@ -1,9 +1,11 @@
 package com.example.zjq.news.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
@@ -12,7 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.example.zjq.news.R;
+import com.example.zjq.news.SplashActivity;
 import com.example.zjq.news.adapter.MyPagerAdapter;
+import com.example.zjq.news.utils.CacheUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,11 +84,39 @@ public class GuideActivity extends Activity {
         MyPagerAdapter pagerAdapter = new MyPagerAdapter( imageViews );
         viewPager.setAdapter( pagerAdapter );
 
+        listener();
+
+
+    }
+
+    private void listener() {
+
         //根据View的生命周期，当视图执行到onLayout或者onDraw的时候，视图的高和宽，边距都有了
         iv_red_point.getViewTreeObserver().addOnGlobalLayoutListener( new MyOnGlobalLayoutListener() );
 
         //得到屏幕滑动的百分比
         viewPager.addOnPageChangeListener( new MyOnPageChangeListener() );
+
+        //
+        btn_start_main.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //记录
+                CacheUtils.setBoolean(GuideActivity.this, SplashActivity.START_MAIN,true );
+
+                //跳转到主页面
+
+                Intent intent=new Intent( GuideActivity.this,MainActivity.class);
+                startActivity( intent );
+
+                //关闭引导页
+                finish();
+
+
+            }
+        } );
+
     }
 
     class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
@@ -120,6 +152,12 @@ public class GuideActivity extends Activity {
         @Override
         public void onPageSelected(int i) {
 
+            if (i == imageViews.size() - 1) {
+                btn_start_main.setVisibility( View.VISIBLE );
+            } else {
+                btn_start_main.setVisibility( View.GONE );
+            }
+
         }
 
         /**
@@ -144,7 +182,7 @@ public class GuideActivity extends Activity {
 
             //执行不止一次，只需要执行一次，后移除这个监听
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                iv_red_point.getViewTreeObserver().removeOnGlobalLayoutListener( this );
+                iv_red_point.getViewTreeObserver().removeOnGlobalLayoutListener( MyOnGlobalLayoutListener.this );
             }
 
             leftMax = ll_point_group.getChildAt( 1 ).getLeft() - ll_point_group.getChildAt( 0 ).getLeft();

@@ -1,9 +1,7 @@
 package com.example.zjq.news;
 
-import android.animation.AnimatorSet;
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -13,6 +11,7 @@ import android.view.animation.ScaleAnimation;
 import android.widget.RelativeLayout;
 
 import com.example.zjq.news.activity.GuideActivity;
+import com.example.zjq.news.activity.MainActivity;
 import com.example.zjq.news.utils.CacheUtils;
 
 public class SplashActivity extends Activity {
@@ -23,7 +22,7 @@ public class SplashActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_main );
+        setContentView( R.layout.activity_splash );
 
         initView();
     }
@@ -78,14 +77,22 @@ public class SplashActivity extends Activity {
                 //动画播放结束的时候
 
                 //是否进入引导页
-                boolean isStartMain= CacheUtils.getBoolean(SplashActivity.this,START_MAIN);//ctrl+alt+c
+                boolean isStartMain = CacheUtils.getBoolean( SplashActivity.this, START_MAIN );//ctrl+alt+c
 
-                if (isStartMain){
+                Intent intent;
 
-                }else {
-                    Intent intent=new Intent( SplashActivity.this, GuideActivity.class);
-                    startActivity( intent );
+                if (isStartMain) {
+
+                    //跳转到主页面
+
+                    intent = new Intent( SplashActivity.this, MainActivity.class );
+
+                } else {
+                    intent = new Intent( SplashActivity.this, GuideActivity.class );
                 }
+
+                startActivity( intent );
+
             }
 
             @Override
@@ -95,7 +102,6 @@ public class SplashActivity extends Activity {
 
             }
         } );
-
 
 
     }

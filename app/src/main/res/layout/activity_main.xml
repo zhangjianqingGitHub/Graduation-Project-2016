@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/rl_splash"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash_bg_newyear"
-    tools:context=".SplashActivity">
+    tools:context=".activity.MainActivity">
 
-
-    <ImageView
-        android:layout_centerInParent="true"
-        android:src="@drawable/splash_sheep_newyear"
+<!--    <TextView
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="我是主页面"
+        android:textColor="@drawable/point_red"
+        android:textSize="25sp" />-->
 
+    <TextView
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="我是主页面"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="25sp"/>
 
-</RelativeLayout>
+</FrameLayout>

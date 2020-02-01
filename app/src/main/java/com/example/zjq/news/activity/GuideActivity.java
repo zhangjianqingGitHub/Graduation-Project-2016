@@ -17,6 +17,7 @@ import com.example.zjq.news.R;
 import com.example.zjq.news.SplashActivity;
 import com.example.zjq.news.adapter.MyPagerAdapter;
 import com.example.zjq.news.utils.CacheUtils;
+import com.example.zjq.news.utils.DensityUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,13 +67,18 @@ public class GuideActivity extends Activity {
             ImageView point = new ImageView( this );
             point.setBackgroundResource( R.drawable.point_normal );
 
-            // 10 10 单位是像素，到时候需要适配
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams( 30, 30 );
+            // 10 10 单位是像素，到时候需要适配，
+
+            //把单位当成dp转成对应的像素
+
+            int x=DensityUtil.dip2px( GuideActivity.this,10 );
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams( x, x );
 
             if (i != 0) {
                 //不包括第0个，距离左边有十个像素
 
-                params.leftMargin = 10;
+                params.leftMargin = x;
             }
 
             point.setLayoutParams( params );

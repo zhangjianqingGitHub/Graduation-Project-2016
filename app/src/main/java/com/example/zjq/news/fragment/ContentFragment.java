@@ -15,6 +15,7 @@ public class ContentFragment extends BaseFragment {
     public View initView() {
 
 
+
         textView = new TextView( mContext );
         textView.setGravity( Gravity.CENTER );
         return textView;

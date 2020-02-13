@@ -54,6 +54,7 @@ public class MyPagerAdapter extends PagerAdapter {
         ImageView imageView = list.get( position );
 
         //添加到容器中
+
         container.addView( imageView );
 
         return imageView;

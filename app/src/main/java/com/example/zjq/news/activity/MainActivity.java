@@ -20,6 +20,14 @@ public class MainActivity extends SlidingFragmentActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
 
+        //设置侧滑菜单
+        initSlidingMenu();
+
+        //初始化Fragment
+        initFragment();
+    }
+
+    private void initSlidingMenu() {
         //设置主页面
         setContentView( R.layout.activity_main );
 
@@ -41,10 +49,6 @@ public class MainActivity extends SlidingFragmentActivity {
 
         //设置淡入淡出
         slidingMenu.setFadeEnabled( true );
-
-
-        //初始化Fragment
-        initFragment();
     }
 
     private void initFragment() {

@@ -17,6 +17,7 @@ public class HomePager extends BasePager {
     public void initData() {
         super.initData();
 
+
         //设置标题
         tv_title.setText("主页面");
         //联网请求得到数据，创建视图

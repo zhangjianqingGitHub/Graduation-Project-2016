@@ -8,6 +8,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.zjq.news.R;
+import com.example.zjq.news.activity.MainActivity;
 import com.example.zjq.news.adapter.ContentFramentAdapter;
 import com.example.zjq.news.base.BaseFragment;
 import com.example.zjq.news.base.BasePager;
@@ -17,6 +18,7 @@ import com.example.zjq.news.pager.NewsCenterPager;
 import com.example.zjq.news.pager.SettingPager;
 import com.example.zjq.news.pager.SmartServicePager;
 import com.example.zjq.news.view.NoScrollViewPager;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -62,7 +64,35 @@ public class ContentFragment extends BaseFragment {
 
         //设置viewPager适配器
         viewPager.setAdapter(new ContentFramentAdapter(mContext, pagers));
+        //第一次进来初始化主页面
+        pagers.get(0).initData();
 
+        //一进来第一个页面不可以滑动
+        isEnableSlidingMenu(false);
+
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+            }
+
+            /**
+             * 当某个页面被选中
+             * @param
+             */
+            @Override
+            public void onPageSelected(int position) {
+
+                //去除viewpager预加载
+                pagers.get(position).initData();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
 
         //设置RadioGroup的选中状态改变的监听
         rg_main.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -71,28 +101,53 @@ public class ContentFragment extends BaseFragment {
                 switch (id) {
                     case R.id.rb_home:
 
-                        viewPager.setCurrentItem(0,false);//加上false 没有动画
+                        viewPager.setCurrentItem(0, false);//加上false 没有动画
 
+                        isEnableSlidingMenu(false);
                         break;
                     case R.id.rb_newscenter:
-                        viewPager.setCurrentItem(1,false);
+                        viewPager.setCurrentItem(1, false);
+
+                        isEnableSlidingMenu(true);
 
                         break;
                     case R.id.rb_smartservice:
-                        viewPager.setCurrentItem(2,false);
+                        viewPager.setCurrentItem(2, false);
+
+                        isEnableSlidingMenu(false);
 
                         break;
                     case R.id.rb_govaffair:
-                        viewPager.setCurrentItem(3,false);
+                        viewPager.setCurrentItem(3, false);
+
+                        isEnableSlidingMenu(false);
 
                         break;
                     case R.id.rb_setting:
-                        viewPager.setCurrentItem(4,false);
+                        viewPager.setCurrentItem(4, false);
+
+                        isEnableSlidingMenu(false);
 
                         break;
                 }
             }
         });
 
+    }
+
+    private void isEnableSlidingMenu(boolean b) {
+
+        MainActivity mainActivity = (MainActivity) mContext;
+
+        int mode;
+
+        if (b) {
+            mode = SlidingMenu.TOUCHMODE_FULLSCREEN;
+        } else {
+            mode = SlidingMenu.TOUCHMODE_NONE;
+
+        }
+
+        mainActivity.getSlidingMenu().setTouchModeAbove(mode);
     }
 }

@@ -7,6 +7,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.zjq.news.R;
+import com.example.zjq.news.activity.MainActivity;
 
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -43,6 +44,16 @@ public class BasePager {
         View view = View.inflate(context, R.layout.base_pager, null);
 
         x.view().inject(this, view);
+
+        ib_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //把左侧菜单关闭
+
+                MainActivity mainActivity= (MainActivity) context;
+                mainActivity.getSlidingMenu().toggle();//开就关，关就开
+            }
+        });
 
         return view;
     }

@@ -67,4 +67,8 @@ public class MainActivity extends SlidingFragmentActivity {
 
 
     }
+
+    public LeftMenuFragment getLeftMenuFragment(){
+        return (LeftMenuFragment) getSupportFragmentManager().findFragmentByTag(LEFT_MENU_TAG);
+    }
 }

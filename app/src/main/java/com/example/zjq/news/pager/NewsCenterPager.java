@@ -4,10 +4,13 @@ import android.content.Context;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.TextView;
 
+import com.example.zjq.news.activity.MainActivity;
 import com.example.zjq.news.base.BasePager;
 import com.example.zjq.news.bean.NewsCenterPagerBean;
+import com.example.zjq.news.fragment.LeftMenuFragment;
 import com.example.zjq.news.utils.Constants;
 import com.google.gson.Gson;
 
@@ -15,6 +18,7 @@ import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NewsCenterPager extends BasePager {
@@ -29,6 +33,7 @@ public class NewsCenterPager extends BasePager {
     public void initData() {
         super.initData();
 
+        ib_menu.setVisibility(View.VISIBLE);
         //设置标题
         tv_title.setText("新闻中心");
         //联网请求得到数据，创建视图
@@ -67,7 +72,7 @@ public class NewsCenterPager extends BasePager {
 
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
-                Log.e("zjq", ex.getMessage());
+                Log.e("zjq-onError", ex.getMessage());
 
 
             }
@@ -93,6 +98,7 @@ public class NewsCenterPager extends BasePager {
 
     //解析json数据
     private void processData(String result) {
+        list=new ArrayList<>();
 
         NewsCenterPagerBean bean = new Gson().fromJson(result, NewsCenterPagerBean.class);
 
@@ -101,6 +107,13 @@ public class NewsCenterPager extends BasePager {
         if (code == 1) {
             list.addAll(bean.getResult().getData());
         }
+
+
+        String[] strs = {"基神","B神","翔神","曹神","J神"};
+
+        MainActivity mainActivity= (MainActivity) context;
+        LeftMenuFragment leftMenuFragment=mainActivity.getLeftMenuFragment();
+        leftMenuFragment.setData(strs);
 
     }
 }

@@ -15,6 +15,7 @@ import com.example.zjq.news.R;
 import com.example.zjq.news.activity.MainActivity;
 import com.example.zjq.news.base.BaseFragment;
 import com.example.zjq.news.base.BasePager;
+import com.example.zjq.news.pager.NewsCenterPager;
 import com.example.zjq.news.utils.DensityUtil;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class LeftMenuFragment extends BaseFragment {
 
     private ListView listView;
     private String[] data;
-    private int prePosition;
+    private int prePosition=0;
     private LeftmenuFragmentAdapter Left_adapter;
 
     @Override
@@ -45,19 +46,27 @@ public class LeftMenuFragment extends BaseFragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 //记录点击得位置，变成红色
 
-                prePosition=position;
+                prePosition = position;
                 Left_adapter.notifyDataSetChanged();
+                MainActivity mainActivity = (MainActivity) mContext;
 
-                //把左侧菜单关闭
-
-                MainActivity mainActivity= (MainActivity) mContext;
                 mainActivity.getSlidingMenu().toggle();//开就关，关就开
 
                 //切换到对应得详情页面
+                swichPager(position);
             }
         });
 
         return listView;
+    }
+
+    //根据位置切换不同详情页面
+    private void swichPager(int position) {
+        //把左侧菜单关闭
+        MainActivity mainActivity = (MainActivity) mContext;
+        ContentFragment contentFragment = mainActivity.getContentFragment();
+        NewsCenterPager newsCenterPager = contentFragment.getNewsCenterPager();
+        newsCenterPager.swichPager(position);
     }
 
     @Override
@@ -72,7 +81,7 @@ public class LeftMenuFragment extends BaseFragment {
     //接受数据
     public void setData(String[] data) {
 
-        this.data=data;
+        this.data = data;
 
 
         //数据    ArrayAdapter<String> adapter = new ArrayAdapter<String>
@@ -80,13 +89,15 @@ public class LeftMenuFragment extends BaseFragment {
 //        ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(mContext,android.R.layout.simple_expandable_list_item_1,data);
 
         //设置适配器
-         Left_adapter= new LeftmenuFragmentAdapter();
+        Left_adapter = new LeftmenuFragmentAdapter();
         listView.setAdapter(Left_adapter);
+
+        swichPager(prePosition);
 
 
     }
 
-    class LeftmenuFragmentAdapter extends BaseAdapter{
+    class LeftmenuFragmentAdapter extends BaseAdapter {
 
         @Override
         public int getCount() {
@@ -107,7 +118,7 @@ public class LeftMenuFragment extends BaseFragment {
         @Override
         public View getView(int position, View view, ViewGroup viewGroup) {
 
-            TextView textView= (TextView) View.inflate(mContext, R.layout.item_leftmenu,null);
+            TextView textView = (TextView) View.inflate(mContext, R.layout.item_leftmenu, null);
             textView.setText(data[position]);
 
 //            if (position==prePosition){
@@ -116,7 +127,7 @@ public class LeftMenuFragment extends BaseFragment {
 //                textView.setEnabled(false);
 //            }
 
-            textView.setEnabled(position==prePosition);
+            textView.setEnabled(position == prePosition);
 
             return textView;
         }

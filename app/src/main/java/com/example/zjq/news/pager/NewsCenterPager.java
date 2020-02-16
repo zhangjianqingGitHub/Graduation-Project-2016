@@ -5,12 +5,18 @@ import android.graphics.Color;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.zjq.news.activity.MainActivity;
 import com.example.zjq.news.base.BasePager;
+import com.example.zjq.news.base.MenuDetailBasePager;
 import com.example.zjq.news.bean.NewsCenterPagerBean;
 import com.example.zjq.news.fragment.LeftMenuFragment;
+import com.example.zjq.news.menudetailpager.InteracMenuDetailPager;
+import com.example.zjq.news.menudetailpager.NewsMenuDetailPager;
+import com.example.zjq.news.menudetailpager.PhotosMenuDetailPager;
+import com.example.zjq.news.menudetailpager.TopicMenuDetailPager;
 import com.example.zjq.news.utils.Constants;
 import com.google.gson.Gson;
 
@@ -25,9 +31,14 @@ public class NewsCenterPager extends BasePager {
 
     private List<NewsCenterPagerBean.ResultBean.DataBean> list;
 
+    //详情页面的集合
+    private List<MenuDetailBasePager> detailBasePagers;
+    private String[] strs = {};
+
     public NewsCenterPager(Context context) {
         super(context);
     }
+
 
     @Override
     public void initData() {
@@ -98,7 +109,7 @@ public class NewsCenterPager extends BasePager {
 
     //解析json数据
     private void processData(String result) {
-        list=new ArrayList<>();
+        list = new ArrayList<>();
 
         NewsCenterPagerBean bean = new Gson().fromJson(result, NewsCenterPagerBean.class);
 
@@ -109,11 +120,42 @@ public class NewsCenterPager extends BasePager {
         }
 
 
-        String[] strs = {"基神","B神","翔神","曹神","J神"};
+        strs = new String[]{"基神", "B神", "翔神", "曹神"};
 
-        MainActivity mainActivity= (MainActivity) context;
-        LeftMenuFragment leftMenuFragment=mainActivity.getLeftMenuFragment();
+        MainActivity mainActivity = (MainActivity) context;
+        LeftMenuFragment leftMenuFragment = mainActivity.getLeftMenuFragment();
+
+        //添加详情页面
+        detailBasePagers = new ArrayList<>();
+        detailBasePagers.add(new NewsMenuDetailPager(context));
+        detailBasePagers.add(new TopicMenuDetailPager(context));
+        detailBasePagers.add(new PhotosMenuDetailPager(context));
+        detailBasePagers.add(new InteracMenuDetailPager(context));
+
         leftMenuFragment.setData(strs);
 
+
+
+
     }
+
+    //根据位置切换详情页面
+    public void swichPager(int position) {
+
+        //1 标题
+        tv_title.setText(strs[position]);
+
+        //移除之前内容
+        fl_content.removeAllViews();
+
+        //添加新内容
+        MenuDetailBasePager detailBasePager=detailBasePagers.get(position);
+        View rootView=detailBasePager.rootview;
+        detailBasePager.initData();
+        fl_content.addView(rootView);
+
+
+
+    }
+
 }

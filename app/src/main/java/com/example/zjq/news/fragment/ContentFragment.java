@@ -150,4 +150,11 @@ public class ContentFragment extends BaseFragment {
 
         mainActivity.getSlidingMenu().setTouchModeAbove(mode);
     }
+
+    //得到新闻中心
+    public NewsCenterPager getNewsCenterPager() {
+
+        return (NewsCenterPager) pagers.get(1);
+    }
+
 }

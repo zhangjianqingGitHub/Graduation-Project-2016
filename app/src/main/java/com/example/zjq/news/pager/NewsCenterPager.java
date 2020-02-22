@@ -120,21 +120,19 @@ public class NewsCenterPager extends BasePager {
         }
 
 
-        strs = new String[]{"基神", "B神", "翔神", "曹神"};
+        strs = new String[]{"基神22", "B神", "翔神", "曹神", "基神", "B神", "翔神", "曹神"};
 
         MainActivity mainActivity = (MainActivity) context;
         LeftMenuFragment leftMenuFragment = mainActivity.getLeftMenuFragment();
 
         //添加详情页面
         detailBasePagers = new ArrayList<>();
-        detailBasePagers.add(new NewsMenuDetailPager(context,strs));
+        detailBasePagers.add(new NewsMenuDetailPager(context, strs));
         detailBasePagers.add(new TopicMenuDetailPager(context));
         detailBasePagers.add(new PhotosMenuDetailPager(context));
         detailBasePagers.add(new InteracMenuDetailPager(context));
 
         leftMenuFragment.setData(strs);
-
-
 
 
     }
@@ -149,11 +147,10 @@ public class NewsCenterPager extends BasePager {
         fl_content.removeAllViews();
 
         //添加新内容
-        MenuDetailBasePager detailBasePager=detailBasePagers.get(position);
-        View rootView=detailBasePager.rootview;
+        MenuDetailBasePager detailBasePager = detailBasePagers.get(position);
+        View rootView = detailBasePager.rootview;
         detailBasePager.initData();
         fl_content.addView(rootView);
-
 
 
     }

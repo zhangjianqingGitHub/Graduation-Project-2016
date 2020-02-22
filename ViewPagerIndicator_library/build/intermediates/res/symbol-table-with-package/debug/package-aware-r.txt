@@ -121,6 +121,7 @@ dimen subtitle_corner_radius
 dimen subtitle_outline_width
 dimen subtitle_shadow_offset
 dimen subtitle_shadow_radius
+drawable news_tab_item_bg_select
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -140,6 +141,7 @@ drawable vpi__tab_selected_pressed_holo
 drawable vpi__tab_unselected_focused_holo
 drawable vpi__tab_unselected_holo
 drawable vpi__tab_unselected_pressed_holo
+drawable vpi_tab_textcolor_indicator
 id action0
 id action_container
 id action_divider

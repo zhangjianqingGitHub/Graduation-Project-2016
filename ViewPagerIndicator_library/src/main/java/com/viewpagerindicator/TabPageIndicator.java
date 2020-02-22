@@ -21,6 +21,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
@@ -116,6 +117,8 @@ public class TabPageIndicator extends HorizontalScrollView implements PageIndica
             setCurrentItem(mSelectedTabIndex);
         }
     }
+
+
 
     private void animateToTab(final int position) {
         final View tabView = mTabLayout.getChildAt(position);
@@ -279,5 +282,17 @@ public class TabPageIndicator extends HorizontalScrollView implements PageIndica
         public int getIndex() {
             return mIndex;
         }
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+
+        //要求父层视图不拦截事件
+
+        //true 禁用拦截，禁用父层视图
+        //
+        getParent().requestDisallowInterceptTouchEvent(true);
+
+        return super.dispatchKeyEvent(event);
     }
 }

@@ -9,11 +9,14 @@ import android.support.v4.view.ViewPager;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.zjq.news.R;
+import com.example.zjq.news.activity.MainActivity;
 import com.example.zjq.news.base.MenuDetailBasePager;
 import com.example.zjq.news.menudetailpager.tabdetailpager.TabDetailPager;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.viewpagerindicator.TabPageIndicator;
 
 import org.xutils.view.annotation.ViewInject;
@@ -35,6 +38,9 @@ public class NewsMenuDetailPager extends MenuDetailBasePager {
 
     private String[] strings;
 
+    @ViewInject(R.id.tab_next)
+    private ImageButton ib_tab_next;
+
     //页签页面的集合
     private ArrayList<TabDetailPager> tabDetailPagers;
 
@@ -51,6 +57,13 @@ public class NewsMenuDetailPager extends MenuDetailBasePager {
         View view = View.inflate(context, R.layout.newsmenu_detail_pager, null);
 
         x.view().inject(this, view);
+
+        ib_tab_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
+            }
+        });
         return view;
     }
 
@@ -69,6 +82,52 @@ public class NewsMenuDetailPager extends MenuDetailBasePager {
         //viewpager和tabpageIndicator关联
         tabPageIndicator.setViewPager(viewPager);
 
+        //以后监听页面的变化，TabpageIndicator监听页面的变化
+        tabPageIndicator.setOnPageChangeListener(new MyOnPageChangeListener());
+
+    }
+
+    class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
+
+        @Override
+        public void onPageScrolled(int i, float v, int i1) {
+
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+
+            if (position == 0) {
+                //SlidingMenu可以全屏滑动
+                isEnableSlidingMenu(true);
+            } else {
+                isEnableSlidingMenu(false);
+
+            }
+
+
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int i) {
+
+        }
+    }
+
+    private void isEnableSlidingMenu(boolean b) {
+
+        MainActivity mainActivity = (MainActivity) context;
+
+        int mode;
+
+        if (b) {
+            mode = SlidingMenu.TOUCHMODE_FULLSCREEN;
+        } else {
+            mode = SlidingMenu.TOUCHMODE_NONE;
+
+        }
+
+        mainActivity.getSlidingMenu().setTouchModeAbove(mode);
     }
 
     class MynewMenuDetailPagerAdapter extends PagerAdapter {
@@ -77,7 +136,7 @@ public class NewsMenuDetailPager extends MenuDetailBasePager {
         @Nullable
         @Override
         public CharSequence getPageTitle(int position) {
-            return strings[position ];
+            return strings[position];
         }
 
         @NonNull

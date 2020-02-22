@@ -3,6 +3,7 @@ package com.example.zjq.news.activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.Window;
 
 import com.example.zjq.news.R;
 import com.example.zjq.news.fragment.ContentFragment;
@@ -18,7 +19,10 @@ public class MainActivity extends SlidingFragmentActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState );
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        super.onCreate(savedInstanceState);
 
         //设置侧滑菜单
         initSlidingMenu();
@@ -29,38 +33,38 @@ public class MainActivity extends SlidingFragmentActivity {
 
     private void initSlidingMenu() {
         //设置主页面
-        setContentView( R.layout.activity_main );
+        setContentView(R.layout.activity_main);
 
         //设置左侧菜单
-        setBehindContentView( R.layout.activity_left_menu );
+        setBehindContentView(R.layout.activity_left_menu);
 
         //设置右侧菜单
-        SlidingMenu slidingMenu=getSlidingMenu();
+        SlidingMenu slidingMenu = getSlidingMenu();
 //        slidingMenu.setSecondaryMenu( R.layout.activity_left_menu );
 
         //设置模式
-        slidingMenu.setMode( SlidingMenu.LEFT );
+        slidingMenu.setMode(SlidingMenu.LEFT);
 
         //设置滑动模式,(全屏)
-        slidingMenu.setTouchModeAbove( SlidingMenu.TOUCHMODE_FULLSCREEN );
+        slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
 
         //设置主页占据的宽度
-        slidingMenu.setBehindOffset( DensityUtil.dip2px( MainActivity.this,200 ) );
+        slidingMenu.setBehindOffset(DensityUtil.dip2px(MainActivity.this, 200));
 
         //设置淡入淡出
-        slidingMenu.setFadeEnabled( true );
+        slidingMenu.setFadeEnabled(true);
     }
 
     private void initFragment() {
 
         //得到FragmentManger
 
-        FragmentManager fm=getSupportFragmentManager();
+        FragmentManager fm = getSupportFragmentManager();
         //开启事务
-        FragmentTransaction ft=fm.beginTransaction();
+        FragmentTransaction ft = fm.beginTransaction();
         //替换
-        ft.replace( R.id.fl_main_content,new ContentFragment(), MAIN_CONTENT_TAG );//主页
-        ft.replace( R.id.fl_lefu_menu,new LeftMenuFragment(), LEFT_MENU_TAG );//左侧菜单
+        ft.replace(R.id.fl_main_content, new ContentFragment(), MAIN_CONTENT_TAG);//主页
+        ft.replace(R.id.fl_lefu_menu, new LeftMenuFragment(), LEFT_MENU_TAG);//左侧菜单
 
         //提交
         ft.commit();
@@ -68,14 +72,14 @@ public class MainActivity extends SlidingFragmentActivity {
 
     }
 
-    public LeftMenuFragment getLeftMenuFragment(){
+    public LeftMenuFragment getLeftMenuFragment() {
         return (LeftMenuFragment) getSupportFragmentManager().findFragmentByTag(LEFT_MENU_TAG);
     }
 
     //得到正文
     public ContentFragment getContentFragment() {
 
-        return (ContentFragment) getSupportFragmentManager().findFragmentByTag(MAIN_CONTENT_TAG );
+        return (ContentFragment) getSupportFragmentManager().findFragmentByTag(MAIN_CONTENT_TAG);
 
     }
 }

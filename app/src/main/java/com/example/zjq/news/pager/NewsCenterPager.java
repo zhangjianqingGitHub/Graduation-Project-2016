@@ -127,7 +127,7 @@ public class NewsCenterPager extends BasePager {
 
         //添加详情页面
         detailBasePagers = new ArrayList<>();
-        detailBasePagers.add(new NewsMenuDetailPager(context));
+        detailBasePagers.add(new NewsMenuDetailPager(context,strs));
         detailBasePagers.add(new TopicMenuDetailPager(context));
         detailBasePagers.add(new PhotosMenuDetailPager(context));
         detailBasePagers.add(new InteracMenuDetailPager(context));

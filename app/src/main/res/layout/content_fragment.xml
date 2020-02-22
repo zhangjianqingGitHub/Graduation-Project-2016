@@ -27,7 +27,6 @@
 
         <RadioButton
             android:id="@+id/rb_newscenter"
-
             style="@style/bottom_tag_style"
             android:background="@null"
             android:drawableTop="@drawable/rb_newscenter_drawable_selector"

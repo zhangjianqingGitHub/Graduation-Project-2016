@@ -9,6 +9,7 @@
 apply plugin: 'android-library'
 
 dependencies {
+implementation 'androidx.fragment:fragment:1.2.1'
 }
 
 android {

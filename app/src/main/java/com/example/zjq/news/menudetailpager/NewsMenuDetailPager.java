@@ -1,20 +1,19 @@
 package com.example.zjq.news.menudetailpager;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.zjq.news.R;
 import com.example.zjq.news.activity.MainActivity;
 import com.example.zjq.news.base.MenuDetailBasePager;
+import com.example.zjq.news.bean.NewsCenterPagerBean;
 import com.example.zjq.news.menudetailpager.tabdetailpager.TabDetailPager;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.viewpagerindicator.TabPageIndicator;
@@ -23,6 +22,8 @@ import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * 新闻详情页面
@@ -36,7 +37,7 @@ public class NewsMenuDetailPager extends MenuDetailBasePager {
     @ViewInject(R.id.tabPageIndicator)
     private TabPageIndicator tabPageIndicator;
 
-    private String[] strings;
+    private List<NewsCenterPagerBean.ResultBean.DataBean> dataBeans;
 
     @ViewInject(R.id.tab_next)
     private ImageButton ib_tab_next;
@@ -44,9 +45,9 @@ public class NewsMenuDetailPager extends MenuDetailBasePager {
     //页签页面的集合
     private ArrayList<TabDetailPager> tabDetailPagers;
 
-    public NewsMenuDetailPager(Context context, String[] strings) {
+    public NewsMenuDetailPager(Context context, List<NewsCenterPagerBean.ResultBean.DataBean> datas) {
         super(context);
-        this.strings = strings;
+        this.dataBeans = datas;
 
 
     }
@@ -72,9 +73,9 @@ public class NewsMenuDetailPager extends MenuDetailBasePager {
         super.initData();
 
         tabDetailPagers = new ArrayList<>();
-        for (int i = 0; i < strings.length; i++) {
+        for (int i = 0; i < dataBeans.size(); i++) {
 
-            tabDetailPagers.add(new TabDetailPager(context, strings[i]));
+            tabDetailPagers.add(new TabDetailPager(context, dataBeans.get(i)));
         }
 
         viewPager.setAdapter(new MynewMenuDetailPagerAdapter());
@@ -136,7 +137,10 @@ public class NewsMenuDetailPager extends MenuDetailBasePager {
         @Nullable
         @Override
         public CharSequence getPageTitle(int position) {
-            return strings[position];
+
+            String date = dataBeans.get(position).getDate().substring(5);
+
+            return " " +date +" ";
         }
 
         @NonNull

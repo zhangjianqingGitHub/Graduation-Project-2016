@@ -68,6 +68,7 @@ dimen default_title_indicator_footer_padding
 dimen default_title_indicator_text_size
 dimen default_title_indicator_title_padding
 dimen default_title_indicator_top_padding
+drawable news_tab_item_bg_select
 drawable vpi__tab_indicator
 drawable vpi__tab_selected_focused_holo
 drawable vpi__tab_selected_holo
@@ -75,6 +76,7 @@ drawable vpi__tab_selected_pressed_holo
 drawable vpi__tab_unselected_focused_holo
 drawable vpi__tab_unselected_holo
 drawable vpi__tab_unselected_pressed_holo
+drawable vpi_tab_textcolor_indicator
 id bottom
 id none
 id top

@@ -1,9 +1,13 @@
 package com.example.zjq.news.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+//import android.support.v4.app.FragmentManager;
+//import android.support.v4.app.FragmentTransaction;
 import android.view.Window;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.zjq.news.R;
 import com.example.zjq.news.fragment.ContentFragment;
@@ -72,14 +76,14 @@ public class MainActivity extends SlidingFragmentActivity {
 
     }
 
-    public LeftMenuFragment getLeftMenuFragment() {
-        return (LeftMenuFragment) getSupportFragmentManager().findFragmentByTag(LEFT_MENU_TAG);
+    public Fragment getLeftMenuFragment() {
+        return  getSupportFragmentManager().findFragmentByTag(LEFT_MENU_TAG);
     }
 
     //得到正文
-    public ContentFragment getContentFragment() {
+    public Fragment getContentFragment() {
 
-        return (ContentFragment) getSupportFragmentManager().findFragmentByTag(MAIN_CONTENT_TAG);
+        return  getSupportFragmentManager().findFragmentByTag(MAIN_CONTENT_TAG);
 
     }
 }

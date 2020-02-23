@@ -1,11 +1,11 @@
 package com.example.zjq.news.fragment;
 
-import android.support.v4.view.ViewPager;
-import android.view.Gravity;
-import android.view.MotionEvent;
+
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.zjq.news.R;
 import com.example.zjq.news.activity.MainActivity;
@@ -28,7 +28,7 @@ import java.util.ArrayList;
 public class ContentFragment extends BaseFragment {
 
     @ViewInject(R.id.viewpager)
-    private NoScrollViewPager viewPager;
+    private ViewPager viewPager;
     @ViewInject(R.id.rg_main)
     private RadioGroup rg_main;
 

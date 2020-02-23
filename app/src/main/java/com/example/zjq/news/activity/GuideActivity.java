@@ -3,15 +3,15 @@ package com.example.zjq.news.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
-import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.zjq.news.R;
 import com.example.zjq.news.SplashActivity;
@@ -21,6 +21,8 @@ import com.example.zjq.news.utils.DensityUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+
+//import android.support.v4.view.ViewPager;
 
 public class GuideActivity extends Activity {
 

@@ -64,7 +64,7 @@ public class LeftMenuFragment extends BaseFragment {
     private void swichPager(int position) {
         //把左侧菜单关闭
         MainActivity mainActivity = (MainActivity) mContext;
-        ContentFragment contentFragment = mainActivity.getContentFragment();
+        ContentFragment contentFragment = (ContentFragment) mainActivity.getContentFragment();
         NewsCenterPager newsCenterPager = contentFragment.getNewsCenterPager();
         newsCenterPager.swichPager(position);
     }

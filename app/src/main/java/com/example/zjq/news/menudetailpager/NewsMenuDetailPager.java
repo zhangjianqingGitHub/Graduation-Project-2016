@@ -138,7 +138,7 @@ public class NewsMenuDetailPager extends MenuDetailBasePager {
         @Override
         public CharSequence getPageTitle(int position) {
 
-            String date = dataBeans.get(position).getTitle();
+            String date = dataBeans.get(position).getAuthor_name();
 
             return " " +date +" ";
         }

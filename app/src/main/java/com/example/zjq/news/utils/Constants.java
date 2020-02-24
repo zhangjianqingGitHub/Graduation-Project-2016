@@ -26,12 +26,14 @@ public class Constants {
     public static final String NEWSCENTER_PAGER_URL = BASE_URL_JUHE + "?type=" + type + "&key=" + key;
 
 
-    /*极速数据*/
-    public static final String BASE_URL_JISU = "https://api.jisuapi.com/news";
-    public static final String key_JISU = "bf0185eb8113fe51";
+    /*阿凡达数据*/
+    public static final String BASE_URL_JISU = "http://api.avatardata.cn/GuoNeiNews";
+    public static final String key_AFanDa = "c4d3e9eb577c4559893e4ff4cd701eb2";
 
 
-    public static final String TABDETAILSPAGER = BASE_URL_JISU + "/get";
+
+
+    public static final String TABDETAILSPAGER = BASE_URL_JISU + "/Query";
 
 
 }

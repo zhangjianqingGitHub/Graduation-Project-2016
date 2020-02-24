@@ -2,6 +2,7 @@ package com.example.zjq.news.menudetailpager.tabdetailpager;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -13,12 +14,13 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.bumptech.glide.Glide;
 import com.example.zjq.news.R;
 import com.example.zjq.news.base.MenuDetailBasePager;
 import com.example.zjq.news.bean.NewsCenterPagerBean;
 import com.example.zjq.news.menudetailpager.adapter.MyListviewAdapter;
 import com.example.zjq.news.menudetailpager.bean.TabDetailBean;
-import com.example.zjq.news.utils.Constants;
+import com.example.zjq.news.view.HorizontalScrollViewPager;
 import com.google.gson.Gson;
 
 import org.xutils.common.Callback;
@@ -35,7 +37,7 @@ public class TabDetailPager extends MenuDetailBasePager {
 
     private List<String> imgs;
 
-    private ViewPager viewPager;
+    private HorizontalScrollViewPager viewPager;
 
     private TextView tv_title;
 
@@ -48,13 +50,15 @@ public class TabDetailPager extends MenuDetailBasePager {
 //    private MyRecyclerViewAdapter adapter;
 
     private MyListviewAdapter adapter;
-    private List<TabDetailBean.ResultBean.ListBean> list;
+    //    private List<TabDetailBean.ResultBean.ListBean> list;
     private int next = 0;
+    private List<TabDetailBean.ShowapiResBodyBean.PagebeanBean.ContentlistBean> list;
 
 
     public TabDetailPager(Context context, NewsCenterPagerBean.ResultBean.DataBean dataBean) {
         super(context);
         this.data = dataBean;
+
     }
 
     @Override
@@ -101,13 +105,13 @@ public class TabDetailPager extends MenuDetailBasePager {
 
     private void getDataForRecyclerview() {
 
-        String url = Constants.TABDETAILSPAGER;
+        String url = "http://route.showapi.com/109-35";
 
         RequestParams params = new RequestParams(url);
-        params.addBodyParameter("channel", "头条");
-        params.addBodyParameter("num", 10);
-        params.addBodyParameter("start", next);
-        params.addBodyParameter("appkey", Constants.key_JISU);
+        params.addBodyParameter("showapi_appid", "149226");
+        params.addBodyParameter("showapi_sign", "a1f1947fe6f24dbc8225cdf8b3e961ae");
+        params.addBodyParameter("channelId", "5572a108b3cdc86cf39001cd");
+        params.addBodyParameter("page", 1);
 
 
         x.http().get(params, new Callback.CommonCallback<String>() {
@@ -116,17 +120,11 @@ public class TabDetailPager extends MenuDetailBasePager {
 
                 TabDetailBean bean = new Gson().fromJson(result, TabDetailBean.class);
 
-                if (bean.getStatus() == 0) {
-                    list = bean.getResult().getList();
+                if (bean.getShowapi_res_code() == 0) {
+                    list = bean.getShowapi_res_body().getPagebean().getContentlist();
 
                     adapter = new MyListviewAdapter(context, list);
                     listView.setAdapter(adapter);
-
-                    if (next <= 400) {
-                        next += 10;
-                    } else {
-                        next = 0;
-                    }
 
                 }
 
@@ -134,6 +132,9 @@ public class TabDetailPager extends MenuDetailBasePager {
 
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
+
+                Log.e("zjq-res", ex.getMessage());
+
 
             }
 
@@ -224,6 +225,7 @@ public class TabDetailPager extends MenuDetailBasePager {
         @Override
         public void onPageScrollStateChanged(int state) {
 
+
         }
     }
 
@@ -244,11 +246,13 @@ public class TabDetailPager extends MenuDetailBasePager {
         public Object instantiateItem(@NonNull ViewGroup container, int position) {
 
             ImageView imageView = new ImageView(context);
-            imageView.setBackgroundResource(R.drawable.home_scroll_default);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+
+            imageView.setBackgroundResource(R.drawable.home_scroll_default);
             container.addView(imageView);
 
-            x.image().bind(imageView, imgs.get(position));
+            Glide.with(context).load(imgs.get(position)).into(imageView);
+//            x.image().bind(imageView, imgs.get(position),imageOptions);
             return imageView;
         }
 

@@ -1,18 +1,14 @@
 package com.example.zjq.news.pager;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.widget.TextView;
 
-import com.example.zjq.news.activity.MainActivity;
 import com.example.zjq.news.base.BasePager;
 import com.example.zjq.news.base.MenuDetailBasePager;
 import com.example.zjq.news.bean.NewsCenterPagerBean;
-import com.example.zjq.news.fragment.LeftMenuFragment;
+import com.example.zjq.news.fragment.bean.LeftMenuBean;
 import com.example.zjq.news.menudetailpager.InteracMenuDetailPager;
 import com.example.zjq.news.menudetailpager.NewsMenuDetailPager;
 import com.example.zjq.news.menudetailpager.PhotosMenuDetailPager;
@@ -31,12 +27,14 @@ import java.util.List;
 
 public class NewsCenterPager extends BasePager {
 
-    private List<NewsCenterPagerBean.ResultBean.DataBean> list;
+    private List<NewsCenterPagerBean.DataBean> list;
     private String url;
 
     //详情页面的集合
     private List<MenuDetailBasePager> detailBasePagers;
-    private String[] strs = {};
+
+    private List<LeftMenuBean.DataBean> list_left;
+    private int position_left;
 
     public NewsCenterPager(Context context) {
         super(context);
@@ -48,21 +46,10 @@ public class NewsCenterPager extends BasePager {
         super.initData();
 
         ib_menu.setVisibility(View.VISIBLE);
-        //设置标题
-        tv_title.setText("新闻中心");
-        //联网请求得到数据，创建视图
-        TextView textView = new TextView(context);
-        textView.setGravity(Gravity.CENTER);
-        textView.setTextColor(Color.RED);
-        textView.setTextSize(25);
-        fl_content.addView(textView);
-        //绑定数据
-        textView.setText("新闻中心内容");
-
 
         if (CacheUtils.isConnect(context)) {
 
-            url = Constants.NEWSCENTER_PAGER_URL;
+            url = Constants.NewsList;
             //有网
             getDataFromNet(url);
 
@@ -86,10 +73,10 @@ public class NewsCenterPager extends BasePager {
 
     private void getDataFromNet(final String url) {
 
-        Constants.type = Constants.type_top;
-
 
         RequestParams params = new RequestParams(url);
+        params.addBodyParameter("typeId", list_left.get(position_left).getTypeId());
+        params.addBodyParameter("page", 1);
 
         x.http().get(params, new Callback.CacheCallback<String>() {
             @Override
@@ -102,15 +89,12 @@ public class NewsCenterPager extends BasePager {
 
                 CacheUtils.setString(context, url, result);
 
-                //设置适配器
-
-                //给左侧菜单传递数据
-
             }
 
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
-                Log.e("zjq-onError-1", ex.getMessage());
+
+                Log.e("zjq-onError-1", ex.getMessage() + "--" + ex.getLocalizedMessage());
 
 
             }
@@ -140,35 +124,35 @@ public class NewsCenterPager extends BasePager {
 
         NewsCenterPagerBean bean = new Gson().fromJson(result, NewsCenterPagerBean.class);
 
-        int code = Integer.parseInt(bean.getResult().getStat());
+        int code = bean.getCode();
 
         if (code == 1) {
-            list.addAll(bean.getResult().getData());
+            list.addAll(bean.getData());
         }
 
 
-        strs = new String[]{"头条", "社会", "国内", "国际", "娱乐", "体育", "军事", "科技", "财经", "时尚"};
-
-        MainActivity mainActivity = (MainActivity) context;
-        LeftMenuFragment leftMenuFragment = (LeftMenuFragment) mainActivity.getLeftMenuFragment();
+//        MainActivity mainActivity = (MainActivity) context;
+//        LeftMenuFragment leftMenuFragment = (LeftMenuFragment) mainActivity.getLeftMenuFragment();
 
         //添加详情页面
         detailBasePagers = new ArrayList<>();
-        detailBasePagers.add(new NewsMenuDetailPager(context, bean.getResult().getData()));
+        detailBasePagers.add(new NewsMenuDetailPager(context,list));
         detailBasePagers.add(new TopicMenuDetailPager(context));
         detailBasePagers.add(new PhotosMenuDetailPager(context));
         detailBasePagers.add(new InteracMenuDetailPager(context));
-
-        leftMenuFragment.setData(strs);
 
 
     }
 
     //根据位置切换详情页面
-    public void swichPager(int position) {
+    public void swichPager(int position, List<LeftMenuBean.DataBean> list) {
+
+        this.list_left = list;
+        this.position_left = position;
+
 
         //1 标题
-        tv_title.setText(strs[position]);
+        tv_title.setText(list.get(position).getTypeName());
 
         //移除之前内容
         fl_content.removeAllViews();

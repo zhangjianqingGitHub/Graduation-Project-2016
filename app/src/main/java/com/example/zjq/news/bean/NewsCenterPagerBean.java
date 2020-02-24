@@ -6,158 +6,112 @@ public class NewsCenterPagerBean {
 
 
     /**
-     * reason : 成功的返回
-     * result : {"stat":"1","data":[{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{"uniquekey":"9272e3a075d4dfc2cc9c39bdcae49e26","title":"朱丹再曝家事，\u201c卑微丹\u201d再上线，您能不能换个人设？","date":"2020-02-15 07:45","category":"头条","author_name":"八抓娱","url":"http://mini.eastday.com/mobile/200215074550196.html","thumbnail_pic_s":"http://07imgmini.eastday.com/mobile/20200215/20200215074550_ce28ac34d0607b28e2be5347fbb22b9f_8_mwpm_03200403.jpg","thumbnail_pic_s02":"http://07imgmini.eastday.com/mobile/20200215/20200215074550_ce28ac34d0607b28e2be5347fbb22b9f_10_mwpm_03200403.jpg","thumbnail_pic_s03":"http://07imgmini.eastday.com/mobile/20200215/20200215074550_ce28ac34d0607b28e2be5347fbb22b9f_7_mwpm_03200403.jpg"},{"uniquekey":"596a550894bbe3c3ef112b86b86c9110","title":"煮虾时，直接下锅就\u201c废\u201d了，这样做，鲜嫩又弹牙！","date":"2020-02-15 07:45","category":"头条","author_name":"这样做饭更好吃","url":"http://mini.eastday.com/mobile/200215074546850.html","thumbnail_pic_s":"http://05imgmini.eastday.com/mobile/20200215/20200215074546_9a29f1dc70fda3905a48589fb1c6718a_7_mwpm_03200403.jpg","thumbnail_pic_s02":"http://05imgmini.eastday.com/mobile/20200215/20200215074546_9a29f1dc70fda3905a48589fb1c6718a_1_mwpm_03200403.jpg","thumbnail_pic_s03":"http://05imgmini.eastday.com/mobile/20200215/20200215074546_9a29f1dc70fda3905a48589fb1c6718a_6_mwpm_03200403.jpg"}]}
-     * error_code : 0
+     * code : 1
+     * msg : 数据返回成功！现已提供app_id方式请求接口，不限速，不限流，不封IP，可在自建服务器调用api，欢迎升级使用！非app_id请求的方式将于不久后关闭，请提前替换成app_id请求的方式，详情请访问：https://github.com/MZCretin/RollToolsApi#%E8%A7%A3%E9%94%81%E6%96%B0%E6%96%B9%E5%BC%8F
+     * data : [{},{},{},{},{},{},{},{},{"title":"各银行行用卡用卡小技巧","imgList":["http://bjnewsrec-cv.ws.126.net/little286199f2100j00q658in0023d000s600hlp.jpg"],"source":"POS机服务台","newsId":"F63383140539C0P8","digest":"","postTime":"2020-02-23 15:23:21","videoList":null},{"title":"银行理财产品平均收益率连升三周至4.03% 农行再次夺人眼球","imgList":["http://bjnewsrec-cv.ws.126.net/little986050f626cc45ff05a852ea74a3cbb4c3a.jpg"],"source":"金融界","newsId":"F65T521C0519QIKK","digest":"","postTime":"2020-02-24 17:35:27","videoList":null},{"title":"利好叠加助力5G板块加速上攻 20只概念股冲至涨停","imgList":["http://cms-bucket.ws.126.net/2020/0224/263b2d56p00q66zd4003wc000ad007ic.png"],"source":"证券日报","newsId":"F65ES2VQ002580S6","digest":null,"postTime":"2020-02-24 12:33:00","videoList":null}]
      */
 
-    private String reason;
-    private ResultBean result;
-    private int error_code;
+    private int code;
+    private String msg;
+    private List<DataBean> data;
 
-    public String getReason() {
-        return reason;
+    public int getCode() {
+        return code;
     }
 
-    public void setReason(String reason) {
-        this.reason = reason;
+    public void setCode(int code) {
+        this.code = code;
     }
 
-    public ResultBean getResult() {
-        return result;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setResult(ResultBean result) {
-        this.result = result;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
-    public int getError_code() {
-        return error_code;
+    public List<DataBean> getData() {
+        return data;
     }
 
-    public void setError_code(int error_code) {
-        this.error_code = error_code;
+    public void setData(List<DataBean> data) {
+        this.data = data;
     }
 
-    public static class ResultBean {
+    public static class DataBean {
         /**
-         * stat : 1
-         * data : [{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{"uniquekey":"9272e3a075d4dfc2cc9c39bdcae49e26","title":"朱丹再曝家事，\u201c卑微丹\u201d再上线，您能不能换个人设？","date":"2020-02-15 07:45","category":"头条","author_name":"八抓娱","url":"http://mini.eastday.com/mobile/200215074550196.html","thumbnail_pic_s":"http://07imgmini.eastday.com/mobile/20200215/20200215074550_ce28ac34d0607b28e2be5347fbb22b9f_8_mwpm_03200403.jpg","thumbnail_pic_s02":"http://07imgmini.eastday.com/mobile/20200215/20200215074550_ce28ac34d0607b28e2be5347fbb22b9f_10_mwpm_03200403.jpg","thumbnail_pic_s03":"http://07imgmini.eastday.com/mobile/20200215/20200215074550_ce28ac34d0607b28e2be5347fbb22b9f_7_mwpm_03200403.jpg"},{"uniquekey":"596a550894bbe3c3ef112b86b86c9110","title":"煮虾时，直接下锅就\u201c废\u201d了，这样做，鲜嫩又弹牙！","date":"2020-02-15 07:45","category":"头条","author_name":"这样做饭更好吃","url":"http://mini.eastday.com/mobile/200215074546850.html","thumbnail_pic_s":"http://05imgmini.eastday.com/mobile/20200215/20200215074546_9a29f1dc70fda3905a48589fb1c6718a_7_mwpm_03200403.jpg","thumbnail_pic_s02":"http://05imgmini.eastday.com/mobile/20200215/20200215074546_9a29f1dc70fda3905a48589fb1c6718a_1_mwpm_03200403.jpg","thumbnail_pic_s03":"http://05imgmini.eastday.com/mobile/20200215/20200215074546_9a29f1dc70fda3905a48589fb1c6718a_6_mwpm_03200403.jpg"}]
+         * title : 各银行行用卡用卡小技巧
+         * imgList : ["http://bjnewsrec-cv.ws.126.net/little286199f2100j00q658in0023d000s600hlp.jpg"]
+         * source : POS机服务台
+         * newsId : F63383140539C0P8
+         * digest :
+         * postTime : 2020-02-23 15:23:21
+         * videoList : null
          */
 
-        private String stat;
-        private List<DataBean> data;
+        private String title;
+        private String source;
+        private String newsId;
+        private String digest;
+        private String postTime;
+        private Object videoList;
+        private List<String> imgList;
 
-        public String getStat() {
-            return stat;
+        public String getTitle() {
+            return title;
         }
 
-        public void setStat(String stat) {
-            this.stat = stat;
+        public void setTitle(String title) {
+            this.title = title;
         }
 
-        public List<DataBean> getData() {
-            return data;
+        public String getSource() {
+            return source;
         }
 
-        public void setData(List<DataBean> data) {
-            this.data = data;
+        public void setSource(String source) {
+            this.source = source;
         }
 
-        public static class DataBean {
-            /**
-             * uniquekey : 9272e3a075d4dfc2cc9c39bdcae49e26
-             * title : 朱丹再曝家事，“卑微丹”再上线，您能不能换个人设？
-             * date : 2020-02-15 07:45
-             * category : 头条
-             * author_name : 八抓娱
-             * url : http://mini.eastday.com/mobile/200215074550196.html
-             * thumbnail_pic_s : http://07imgmini.eastday.com/mobile/20200215/20200215074550_ce28ac34d0607b28e2be5347fbb22b9f_8_mwpm_03200403.jpg
-             * thumbnail_pic_s02 : http://07imgmini.eastday.com/mobile/20200215/20200215074550_ce28ac34d0607b28e2be5347fbb22b9f_10_mwpm_03200403.jpg
-             * thumbnail_pic_s03 : http://07imgmini.eastday.com/mobile/20200215/20200215074550_ce28ac34d0607b28e2be5347fbb22b9f_7_mwpm_03200403.jpg
-             */
+        public String getNewsId() {
+            return newsId;
+        }
 
-            private String uniquekey;
-            private String title;
-            private String date;
-            private String category;
-            private String author_name;
-            private String url;
-            private String thumbnail_pic_s;
-            private String thumbnail_pic_s02;
-            private String thumbnail_pic_s03;
+        public void setNewsId(String newsId) {
+            this.newsId = newsId;
+        }
 
-            public String getUniquekey() {
-                return uniquekey;
-            }
+        public String getDigest() {
+            return digest;
+        }
 
-            public void setUniquekey(String uniquekey) {
-                this.uniquekey = uniquekey;
-            }
+        public void setDigest(String digest) {
+            this.digest = digest;
+        }
 
-            public String getTitle() {
-                return title;
-            }
+        public String getPostTime() {
+            return postTime;
+        }
 
-            public void setTitle(String title) {
-                this.title = title;
-            }
+        public void setPostTime(String postTime) {
+            this.postTime = postTime;
+        }
 
-            public String getDate() {
-                return date;
-            }
+        public Object getVideoList() {
+            return videoList;
+        }
 
-            public void setDate(String date) {
-                this.date = date;
-            }
+        public void setVideoList(Object videoList) {
+            this.videoList = videoList;
+        }
 
-            public String getCategory() {
-                return category;
-            }
+        public List<String> getImgList() {
+            return imgList;
+        }
 
-            public void setCategory(String category) {
-                this.category = category;
-            }
-
-            public String getAuthor_name() {
-                return author_name;
-            }
-
-            public void setAuthor_name(String author_name) {
-                this.author_name = author_name;
-            }
-
-            public String getUrl() {
-                return url;
-            }
-
-            public void setUrl(String url) {
-                this.url = url;
-            }
-
-            public String getThumbnail_pic_s() {
-                return thumbnail_pic_s;
-            }
-
-            public void setThumbnail_pic_s(String thumbnail_pic_s) {
-                this.thumbnail_pic_s = thumbnail_pic_s;
-            }
-
-            public String getThumbnail_pic_s02() {
-                return thumbnail_pic_s02;
-            }
-
-            public void setThumbnail_pic_s02(String thumbnail_pic_s02) {
-                this.thumbnail_pic_s02 = thumbnail_pic_s02;
-            }
-
-            public String getThumbnail_pic_s03() {
-                return thumbnail_pic_s03;
-            }
-
-            public void setThumbnail_pic_s03(String thumbnail_pic_s03) {
-                this.thumbnail_pic_s03 = thumbnail_pic_s03;
-            }
+        public void setImgList(List<String> imgList) {
+            this.imgList = imgList;
         }
     }
 }

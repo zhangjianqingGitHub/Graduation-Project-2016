@@ -7,10 +7,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.zjq.news.R;
 import com.example.zjq.news.menudetailpager.bean.TabDetailBean;
-
-import org.xutils.x;
 
 import java.util.List;
 
@@ -65,7 +64,9 @@ public class MyListviewAdapter extends BaseAdapter {
 
         if (bean.getImageurls().size() != 0) {
 
-            x.image().bind(viewHolder.iv_img, bean.getImageurls().get(0).getUrl());
+//            x.image().bind(viewHolder.iv_img, bean.getImageurls().get(0).getUrl());
+
+            Glide.with(context).load(bean.getImageurls().get(0).getUrl()).into(viewHolder.iv_img);
 
         }
 

@@ -37,7 +37,7 @@ public class NewsMenuDetailPager extends MenuDetailBasePager {
     @ViewInject(R.id.tabPageIndicator)
     private TabPageIndicator tabPageIndicator;
 
-    private List<NewsCenterPagerBean.ResultBean.DataBean> dataBeans;
+    private List<NewsCenterPagerBean.DataBean> dataBeans;
 
     @ViewInject(R.id.tab_next)
     private ImageButton ib_tab_next;
@@ -45,7 +45,7 @@ public class NewsMenuDetailPager extends MenuDetailBasePager {
     //页签页面的集合
     private ArrayList<TabDetailPager> tabDetailPagers;
 
-    public NewsMenuDetailPager(Context context, List<NewsCenterPagerBean.ResultBean.DataBean> datas) {
+    public NewsMenuDetailPager(Context context, List<NewsCenterPagerBean.DataBean> datas) {
         super(context);
         this.dataBeans = datas;
 
@@ -138,7 +138,7 @@ public class NewsMenuDetailPager extends MenuDetailBasePager {
         @Override
         public CharSequence getPageTitle(int position) {
 
-            String date = dataBeans.get(position).getAuthor_name();
+            String date = dataBeans.get(position).getSource();
 
             return " " +date +" ";
         }

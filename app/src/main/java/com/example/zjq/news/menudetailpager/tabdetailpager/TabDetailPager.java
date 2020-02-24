@@ -33,7 +33,7 @@ import java.util.List;
 
 public class TabDetailPager extends MenuDetailBasePager {
 
-    private NewsCenterPagerBean.ResultBean.DataBean data;
+    private NewsCenterPagerBean.DataBean data;
 
     private List<String> imgs;
 
@@ -55,7 +55,7 @@ public class TabDetailPager extends MenuDetailBasePager {
     private List<TabDetailBean.ShowapiResBodyBean.PagebeanBean.ContentlistBean> list;
 
 
-    public TabDetailPager(Context context, NewsCenterPagerBean.ResultBean.DataBean dataBean) {
+    public TabDetailPager(Context context, NewsCenterPagerBean.DataBean dataBean) {
         super(context);
         this.data = dataBean;
 
@@ -66,16 +66,16 @@ public class TabDetailPager extends MenuDetailBasePager {
 
         View view = View.inflate(context, R.layout.tabdetail_pager, null);
 
-        View topNewxView = View.inflate(context, R.layout.topnewx, null);
+//        View topNewxView = View.inflate(context, R.layout.topnewx, null);
         //Todo:这里用xutil可能会报错
 //        x.view().inject(this, view);
 //        x.view().inject(this, topNewxView);
-        viewPager = topNewxView.findViewById(R.id.viewpager);
-        tv_title = topNewxView.findViewById(R.id.tv_title);
-        ll_point_group = topNewxView.findViewById(R.id.ll_point_group);
+        viewPager = view.findViewById(R.id.viewpager);
+        tv_title = view.findViewById(R.id.tv_title);
+        ll_point_group = view.findViewById(R.id.ll_point_group);
         listView = view.findViewById(R.id.listview);
 
-        listView.addHeaderView(topNewxView);
+//        listView.addHeaderView(topNewxView);
 
         return view;
     }
@@ -83,8 +83,6 @@ public class TabDetailPager extends MenuDetailBasePager {
     @Override
     public void initData() {
         super.initData();
-
-        String url = data.getUrl();
 
 //        //下方list view
 //        HtmlAsynTask task = new HtmlAsynTask();
@@ -97,7 +95,7 @@ public class TabDetailPager extends MenuDetailBasePager {
         RedPoint();
 
         //下方数据
-        getDataForRecyclerview();
+//        getDataForRecyclerview();
 
 
     }
@@ -184,17 +182,12 @@ public class TabDetailPager extends MenuDetailBasePager {
     private void viewpagerTop() {
         imgs = new ArrayList<>();
 
-        if (!TextUtils.isEmpty(data.getThumbnail_pic_s())) {
-            imgs.add(data.getThumbnail_pic_s());
+        for (int i = 0; i < data.getImgList().size(); i++) {
+            if (!TextUtils.isEmpty(data.getImgList().get(i))) {
+                imgs.add(data.getImgList().get(i));
+            }
         }
 
-        if (!TextUtils.isEmpty(data.getThumbnail_pic_s02())) {
-            imgs.add(data.getThumbnail_pic_s02());
-        }
-
-        if (!TextUtils.isEmpty(data.getThumbnail_pic_s03())) {
-            imgs.add(data.getThumbnail_pic_s03());
-        }
 
         //设置viewpager的适配器
         viewPager.setAdapter(new TabDetailPagerTopNewsAdapter());

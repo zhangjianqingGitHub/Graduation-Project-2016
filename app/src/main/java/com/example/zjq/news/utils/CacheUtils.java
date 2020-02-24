@@ -5,8 +5,6 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.example.zjq.news.SplashActivity;
-import com.example.zjq.news.activity.GuideActivity;
 
 public class CacheUtils {
 

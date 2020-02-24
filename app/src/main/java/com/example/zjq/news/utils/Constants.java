@@ -31,9 +31,21 @@ public class Constants {
     public static final String key_AFanDa = "c4d3e9eb577c4559893e4ff4cd701eb2";
 
 
-
-
     public static final String TABDETAILSPAGER = BASE_URL_JISU + "/Query";
+
+
+    //app_id:yhlrkxpsofduvtjb   app_secret:OXlid3FmY0IrTVRtR1NQYUYyRGs2Zz09
+
+//    https://www.mxnzp.com
+    // http://www.mxnzp.com/api/news/list?typeId=509&page=1&app_id=yhlrkxpsofduvtjb&app_secret=OXlid3FmY0IrTVRtR1NQYUYyRGs2Zz09
+
+    public static final String NewsMian = "https://www.mxnzp.com/api";
+
+    public static final String APPID = "yhlrkxpsofduvtjb";
+    public static final String APPSECRET = "OXlid3FmY0IrTVRtR1NQYUYyRGs2Zz09";
+
+    public static final String NewsTypes = NewsMian + "/news/types";
+    public static final String NewsList = NewsMian + "/news/list";
 
 
 }

@@ -1,12 +1,11 @@
 package com.example.zjq.news.fragment;
 
 import android.graphics.Color;
+import android.text.TextUtils;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -14,9 +13,17 @@ import android.widget.TextView;
 import com.example.zjq.news.R;
 import com.example.zjq.news.activity.MainActivity;
 import com.example.zjq.news.base.BaseFragment;
-import com.example.zjq.news.base.BasePager;
+import com.example.zjq.news.fragment.bean.LeftMenuBean;
 import com.example.zjq.news.pager.NewsCenterPager;
+import com.example.zjq.news.utils.CacheUtils;
+import com.example.zjq.news.utils.Constants;
 import com.example.zjq.news.utils.DensityUtil;
+import com.example.zjq.news.utils.ToastUtil;
+import com.google.gson.Gson;
+
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,9 +34,10 @@ import java.util.List;
 public class LeftMenuFragment extends BaseFragment {
 
     private ListView listView;
-    private String[] data;
-    private int prePosition=0;
+    private int prePosition = 0;
     private LeftmenuFragmentAdapter Left_adapter;
+    private List<LeftMenuBean.DataBean> list;
+    private String url;
 
     @Override
     public View initView() {
@@ -66,42 +74,100 @@ public class LeftMenuFragment extends BaseFragment {
         MainActivity mainActivity = (MainActivity) mContext;
         ContentFragment contentFragment = (ContentFragment) mainActivity.getContentFragment();
         NewsCenterPager newsCenterPager = contentFragment.getNewsCenterPager();
-        newsCenterPager.swichPager(position);
+
+        newsCenterPager.swichPager(position, list);
     }
 
     @Override
     public void initData() {
-
-
         super.initData();
 
+        if (CacheUtils.isConnect(mContext)) {
+
+            url = Constants.NewsTypes;
+            //有网
+            getData(url);
+
+            ToastUtil.show_center(mContext, "数据已缓存，断网也能查看部分内容！");
+
+        } else {
+
+            //解析缓存数据
+            String result = CacheUtils.getString(mContext, url);
+
+            if (!TextUtils.isEmpty(result)) {
+
+                ToastUtil.show_center(mContext, "没有联网哦！先看看缓存的数据吧~");
+
+                processData(result);
+            }
+
+
+        }
+
 
     }
 
-    //接受数据
-    public void setData(String[] data) {
+    private void getData(final String url) {
+        RequestParams params = new RequestParams(url);
+        params.addBodyParameter("app_id", Constants.APPID);
+        params.addBodyParameter("app_secret", Constants.APPSECRET);
 
-        this.data = data;
-
-
-        //数据    ArrayAdapter<String> adapter = new ArrayAdapter<String>
-        //                (this,android.R.layout.simple_expandable_list_item_1,strs);
-//        ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(mContext,android.R.layout.simple_expandable_list_item_1,data);
-
-        //设置适配器
-        Left_adapter = new LeftmenuFragmentAdapter();
-        listView.setAdapter(Left_adapter);
-
-        swichPager(prePosition);
+        x.http().get(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
 
 
+                processData(result);
+
+                CacheUtils.setString(mContext, url, result);
+
+
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+
+                Log.e("zjq-Left", ex.getMessage());
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
     }
+
+    //解析数据
+    private void processData(String result) {
+
+        LeftMenuBean bean = new Gson().fromJson(result, LeftMenuBean.class);
+        if (bean.getCode() == 1) {
+
+//                    ToastUtil.show_center(mContext, bean.getMsg());
+
+            list = new ArrayList<>();
+            list = bean.getData();
+
+            Left_adapter = new LeftmenuFragmentAdapter();
+            listView.setAdapter(Left_adapter);
+
+            swichPager(prePosition);
+
+        }
+    }
+
 
     class LeftmenuFragmentAdapter extends BaseAdapter {
 
         @Override
         public int getCount() {
-            return data.length;
+            return list.size();
         }
 
         @Override
@@ -119,13 +185,7 @@ public class LeftMenuFragment extends BaseFragment {
         public View getView(int position, View view, ViewGroup viewGroup) {
 
             TextView textView = (TextView) View.inflate(mContext, R.layout.item_leftmenu, null);
-            textView.setText(data[position]);
-
-//            if (position==prePosition){
-//                textView.setEnabled(true);
-//            }else {
-//                textView.setEnabled(false);
-//            }
+            textView.setText(list.get(position).getTypeName());
 
             textView.setEnabled(position == prePosition);
 

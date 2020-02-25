@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,6 +19,7 @@ import com.example.zjq.news.bean.NewsCenterPagerBean;
 import com.example.zjq.news.menudetailpager.adapter.MyListviewAdapter;
 import com.example.zjq.news.menudetailpager.bean.TabDetailBean;
 import com.example.zjq.news.view.HorizontalScrollViewPager;
+import com.example.zjq.news.view.RefreshListView;
 import com.google.gson.Gson;
 
 import org.xutils.common.Callback;
@@ -42,7 +42,7 @@ public class TabDetailPager extends MenuDetailBasePager {
 
     private LinearLayout ll_point_group;
 
-    private ListView listView;
+    private RefreshListView  listView;
 
     //之前高亮点位置
     private int prePosition;

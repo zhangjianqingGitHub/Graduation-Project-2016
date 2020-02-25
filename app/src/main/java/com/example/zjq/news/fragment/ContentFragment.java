@@ -3,7 +3,6 @@ package com.example.zjq.news.fragment;
 
 import android.view.View;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import androidx.viewpager.widget.ViewPager;
 
@@ -17,7 +16,6 @@ import com.example.zjq.news.pager.HomePager;
 import com.example.zjq.news.pager.NewsCenterPager;
 import com.example.zjq.news.pager.SettingPager;
 import com.example.zjq.news.pager.SmartServicePager;
-import com.example.zjq.news.view.NoScrollViewPager;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 import org.xutils.view.annotation.ViewInject;
@@ -85,7 +83,7 @@ public class ContentFragment extends BaseFragment {
             public void onPageSelected(int position) {
 
                 //去除viewpager预加载
-                pagers.get(position).initData();
+//                pagers.get(position).initData();
             }
 
             @Override

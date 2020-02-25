@@ -19,15 +19,26 @@ public class MyListviewAdapter extends BaseAdapter {
     private final Context context;
     private List<TabDetailBean.ShowapiResBodyBean.PagebeanBean.ContentlistBean> mDataList;
 
-    public MyListviewAdapter(Context context, List<TabDetailBean.ShowapiResBodyBean.PagebeanBean.ContentlistBean> list) {
+    public MyListviewAdapter(Context context) {
         this.context = context;
+    }
+
+    public void setData(List<TabDetailBean.ShowapiResBodyBean.PagebeanBean.ContentlistBean> list) {
         this.mDataList = list;
+        notifyDataSetChanged();
+
     }
 
 
     @Override
     public int getCount() {
-        return mDataList.size();
+
+        if (mDataList != null && mDataList.size() != 0) {
+            return mDataList.size();
+
+        } else {
+            return 0;
+        }
     }
 
     @Override

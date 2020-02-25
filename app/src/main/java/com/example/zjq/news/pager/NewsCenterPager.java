@@ -5,9 +5,11 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
+import com.example.zjq.news.activity.MainActivity;
 import com.example.zjq.news.base.BasePager;
 import com.example.zjq.news.base.MenuDetailBasePager;
 import com.example.zjq.news.bean.NewsCenterPagerBean;
+import com.example.zjq.news.fragment.LeftMenuFragment;
 import com.example.zjq.news.fragment.bean.LeftMenuBean;
 import com.example.zjq.news.menudetailpager.InteracMenuDetailPager;
 import com.example.zjq.news.menudetailpager.NewsMenuDetailPager;
@@ -28,13 +30,14 @@ import java.util.List;
 public class NewsCenterPager extends BasePager {
 
     private List<NewsCenterPagerBean.DataBean> list;
-    private String url;
+    private String url, url_left;
+
+    private List<LeftMenuBean.DataBean> list_left;
 
     //详情页面的集合
     private List<MenuDetailBasePager> detailBasePagers;
-
-    private List<LeftMenuBean.DataBean> list_left;
     private int position_left;
+
 
     public NewsCenterPager(Context context) {
         super(context);
@@ -45,11 +48,20 @@ public class NewsCenterPager extends BasePager {
     public void initData() {
         super.initData();
 
+
+        //获取侧滑菜单数据
+        SetLeftData();
+
+
+    }
+
+    private void SetMainData() {
         ib_menu.setVisibility(View.VISIBLE);
+
+        url = Constants.NewsList;
 
         if (CacheUtils.isConnect(context)) {
 
-            url = Constants.NewsList;
             //有网
             getDataFromNet(url);
 
@@ -67,8 +79,96 @@ public class NewsCenterPager extends BasePager {
 
 
         }
+    }
+
+    private void SetLeftData() {
+
+        url_left = Constants.NewsTypes;
+
+        if (CacheUtils.isConnect(context)) {
+            //有网
+            getData_left(url_left);
+
+            ToastUtil.show_center(context, "数据已缓存，断网也能查看部分内容！");
+
+        } else {
+
+            //解析缓存数据
+            String result = CacheUtils.getString(context, url_left);
+
+            if (!TextUtils.isEmpty(result)) {
+
+                ToastUtil.show_center(context, "没有联网哦！先看看缓存的数据吧~");
+
+                processData_left(result);
+            }
+
+        }
+    }
 
 
+    private void getData_left(final String url_left) {
+        RequestParams params = new RequestParams(url_left);
+        params.addBodyParameter("app_id", Constants.APPID);
+        params.addBodyParameter("app_secret", Constants.APPSECRET);
+
+        x.http().get(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+
+
+                processData_left(result);
+
+                CacheUtils.setString(context, url_left, result);
+
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+
+                Log.e("zjq-Left", ex.getMessage());
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
+    }
+
+    //解析侧滑数据
+    private void processData_left(String result) {
+
+        LeftMenuBean bean = new Gson().fromJson(result, LeftMenuBean.class);
+        if (bean.getCode() == 1) {
+
+            list_left = new ArrayList<>();
+            list_left = bean.getData();
+
+            //添加详情页面,根据侧滑中的数据有几个添加几个
+            detailBasePagers = new ArrayList<>();
+            detailBasePagers.add(new NewsMenuDetailPager(context));
+            detailBasePagers.add(new TopicMenuDetailPager(context));
+            detailBasePagers.add(new PhotosMenuDetailPager(context));
+            detailBasePagers.add(new InteracMenuDetailPager(context));
+
+            //获取页面数据
+            SetMainData();
+
+            MainActivity mainActivity = (MainActivity) context;
+            LeftMenuFragment fragment = (LeftMenuFragment) mainActivity.getLeftMenuFragment();
+
+            fragment.setData(list_left);
+
+//
+//            swichPager(0);
+
+        }
     }
 
     private void getDataFromNet(final String url) {
@@ -82,12 +182,11 @@ public class NewsCenterPager extends BasePager {
             @Override
             public void onSuccess(String result) {
 
-                Log.e("zjq", result);
 
+                CacheUtils.setString(context, url, result);
                 //解析数据
                 processData(result);
 
-                CacheUtils.setString(context, url, result);
 
             }
 
@@ -130,29 +229,19 @@ public class NewsCenterPager extends BasePager {
             list.addAll(bean.getData());
         }
 
+        NewsMenuDetailPager detailBasePager = (NewsMenuDetailPager) detailBasePagers.get(0);
+        detailBasePager.setData(list);
 
-//        MainActivity mainActivity = (MainActivity) context;
-//        LeftMenuFragment leftMenuFragment = (LeftMenuFragment) mainActivity.getLeftMenuFragment();
-
-        //添加详情页面
-        detailBasePagers = new ArrayList<>();
-        detailBasePagers.add(new NewsMenuDetailPager(context,list));
-        detailBasePagers.add(new TopicMenuDetailPager(context));
-        detailBasePagers.add(new PhotosMenuDetailPager(context));
-        detailBasePagers.add(new InteracMenuDetailPager(context));
-
-
+        swichPager(0);
     }
 
     //根据位置切换详情页面
-    public void swichPager(int position, List<LeftMenuBean.DataBean> list) {
+    public void swichPager(int position) {
 
-        this.list_left = list;
-        this.position_left = position;
-
+        position_left = position;
 
         //1 标题
-        tv_title.setText(list.get(position).getTypeName());
+        tv_title.setText(list_left.get(position).getTypeName());
 
         //移除之前内容
         fl_content.removeAllViews();

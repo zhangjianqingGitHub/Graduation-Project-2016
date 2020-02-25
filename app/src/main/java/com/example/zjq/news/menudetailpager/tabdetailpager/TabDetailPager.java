@@ -2,7 +2,6 @@ package com.example.zjq.news.menudetailpager.tabdetailpager;
 
 import android.content.Context;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -47,12 +46,11 @@ public class TabDetailPager extends MenuDetailBasePager {
 
     //之前高亮点位置
     private int prePosition;
-//    private MyRecyclerViewAdapter adapter;
 
     private MyListviewAdapter adapter;
-    //    private List<TabDetailBean.ResultBean.ListBean> list;
     private int next = 0;
     private List<TabDetailBean.ShowapiResBodyBean.PagebeanBean.ContentlistBean> list;
+    private int page = 1;
 
 
     public TabDetailPager(Context context, NewsCenterPagerBean.DataBean dataBean) {
@@ -66,16 +64,13 @@ public class TabDetailPager extends MenuDetailBasePager {
 
         View view = View.inflate(context, R.layout.tabdetail_pager, null);
 
-//        View topNewxView = View.inflate(context, R.layout.topnewx, null);
-        //Todo:这里用xutil可能会报错
-//        x.view().inject(this, view);
-//        x.view().inject(this, topNewxView);
-        viewPager = view.findViewById(R.id.viewpager);
-        tv_title = view.findViewById(R.id.tv_title);
-        ll_point_group = view.findViewById(R.id.ll_point_group);
+        View topNewxView = View.inflate(context, R.layout.topnewx, null);
+        viewPager = topNewxView.findViewById(R.id.viewpager);
+        tv_title = topNewxView.findViewById(R.id.tv_title);
+        ll_point_group = topNewxView.findViewById(R.id.ll_point_group);
         listView = view.findViewById(R.id.listview);
 
-//        listView.addHeaderView(topNewxView);
+        listView.addHeaderView(topNewxView);
 
         return view;
     }
@@ -94,8 +89,10 @@ public class TabDetailPager extends MenuDetailBasePager {
         //红点
         RedPoint();
 
+        adapter = new MyListviewAdapter(context);
+        listView.setAdapter(adapter);
         //下方数据
-//        getDataForRecyclerview();
+        getDataForRecyclerview();
 
 
     }
@@ -105,11 +102,11 @@ public class TabDetailPager extends MenuDetailBasePager {
 
         String url = "http://route.showapi.com/109-35";
 
-        RequestParams params = new RequestParams(url);
+        final RequestParams params = new RequestParams(url);
         params.addBodyParameter("showapi_appid", "149226");
         params.addBodyParameter("showapi_sign", "a1f1947fe6f24dbc8225cdf8b3e961ae");
         params.addBodyParameter("channelId", "5572a108b3cdc86cf39001cd");
-        params.addBodyParameter("page", 1);
+        params.addBodyParameter("page", page);
 
 
         x.http().get(params, new Callback.CommonCallback<String>() {
@@ -121,8 +118,10 @@ public class TabDetailPager extends MenuDetailBasePager {
                 if (bean.getShowapi_res_code() == 0) {
                     list = bean.getShowapi_res_body().getPagebean().getContentlist();
 
-                    adapter = new MyListviewAdapter(context, list);
-                    listView.setAdapter(adapter);
+                    adapter.setData(list);
+
+
+                    page++;
 
                 }
 
@@ -130,8 +129,6 @@ public class TabDetailPager extends MenuDetailBasePager {
 
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
-
-                Log.e("zjq-res", ex.getMessage());
 
 
             }
@@ -182,12 +179,14 @@ public class TabDetailPager extends MenuDetailBasePager {
     private void viewpagerTop() {
         imgs = new ArrayList<>();
 
-        for (int i = 0; i < data.getImgList().size(); i++) {
-            if (!TextUtils.isEmpty(data.getImgList().get(i))) {
-                imgs.add(data.getImgList().get(i));
+        if (data.getImgList() != null && data.getImgList().size() != 0) {
+            for (int i = 0; i < data.getImgList().size(); i++) {
+                if (!TextUtils.isEmpty(data.getImgList().get(i))) {
+                    imgs.add(data.getImgList().get(i));
+                }
             }
-        }
 
+        }
 
         //设置viewpager的适配器
         viewPager.setAdapter(new TabDetailPagerTopNewsAdapter());
@@ -213,6 +212,8 @@ public class TabDetailPager extends MenuDetailBasePager {
             ll_point_group.getChildAt(position).setEnabled(true);
 
             prePosition = position;
+
+            getDataForRecyclerview();
         }
 
         @Override

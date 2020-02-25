@@ -37,7 +37,8 @@ public class Constants {
     //app_id:yhlrkxpsofduvtjb   app_secret:OXlid3FmY0IrTVRtR1NQYUYyRGs2Zz09
 
 //    https://www.mxnzp.com
-    // http://www.mxnzp.com/api/news/list?typeId=509&page=1&app_id=yhlrkxpsofduvtjb&app_secret=OXlid3FmY0IrTVRtR1NQYUYyRGs2Zz09
+    // http://www.mxnzp.com/api/news/details?newsId=F686PCT500258105&app_id=yhlrkxpsofduvtjb&app_secret=OXlid3FmY0IrTVRtR1NQYUYyRGs2Zz09
+    // http://www.mxnzp.com/api/news/types?&app_id=yhlrkxpsofduvtjb&app_secret=OXlid3FmY0IrTVRtR1NQYUYyRGs2Zz09
 
     public static final String NewsMian = "https://www.mxnzp.com/api";
 
@@ -46,6 +47,7 @@ public class Constants {
 
     public static final String NewsTypes = NewsMian + "/news/types";
     public static final String NewsList = NewsMian + "/news/list";
+    public static final String NewsDetail = NewsMian + "/news/details";
 
 
 }

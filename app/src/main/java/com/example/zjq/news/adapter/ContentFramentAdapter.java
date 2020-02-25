@@ -42,7 +42,7 @@ public class ContentFramentAdapter extends PagerAdapter {
 
         View rootView = basePager.rootView;//各个子页面
 
-//        basePager.initData();
+        basePager.initData();
 
         container.addView(rootView);
 

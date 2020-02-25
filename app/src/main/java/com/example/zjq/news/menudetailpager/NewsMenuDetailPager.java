@@ -45,12 +45,18 @@ public class NewsMenuDetailPager extends MenuDetailBasePager {
     //页签页面的集合
     private ArrayList<TabDetailPager> tabDetailPagers;
 
-    public NewsMenuDetailPager(Context context, List<NewsCenterPagerBean.DataBean> datas) {
+    public NewsMenuDetailPager(Context context) {
         super(context);
-        this.dataBeans = datas;
-
 
     }
+
+    public void setData(List<NewsCenterPagerBean.DataBean> datas) {
+        this.dataBeans = datas;
+
+    }
+
+    //Html.fromHtml(“需要解析的内容”)，
+
 
     @Override
     public View initView() {
@@ -140,7 +146,7 @@ public class NewsMenuDetailPager extends MenuDetailBasePager {
 
             String date = dataBeans.get(position).getSource();
 
-            return " " +date +" ";
+            return " " + date + " ";
         }
 
         @NonNull

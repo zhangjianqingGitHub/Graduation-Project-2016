@@ -204,17 +204,17 @@ public class RefreshListView extends ListView {
             case pull_down_refresh://下拉刷新
 
                 iv_arrow.startAnimation(downAnimation);
-                tv_status.setText("下拉刷新...");
+                tv_status.setText("小玲下拉刷新了...");
 
                 break;
             case release_refresh://手松刷新
 
                 iv_arrow.startAnimation(upAnimation);
-                tv_status.setText("松手刷新...");
+                tv_status.setText("小玲请松手...");
                 break;
             case refreshing://正在刷新
                 pb_status.setVisibility(VISIBLE);
-                tv_status.setText("正在刷新...");
+                tv_status.setText("小玲正在刷新...");
                 iv_arrow.clearAnimation();
                 iv_arrow.setVisibility(INVISIBLE);
 
@@ -247,7 +247,7 @@ public class RefreshListView extends ListView {
     //得到当前系统时间
     private String getSystemTime() {
 
-        SimpleDateFormat format = new SimpleDateFormat("yyy-MM-dd HH:mm:ss");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss");
 
         return format.format(new Date());
 

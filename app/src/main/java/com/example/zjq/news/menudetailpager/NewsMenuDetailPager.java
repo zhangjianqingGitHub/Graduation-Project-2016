@@ -53,6 +53,8 @@ public class NewsMenuDetailPager extends MenuDetailBasePager {
     public void setData(List<NewsCenterPagerBean.DataBean> datas) {
         this.dataBeans = datas;
 
+        //根据
+
     }
 
     //Html.fromHtml(“需要解析的内容”)，
@@ -80,6 +82,8 @@ public class NewsMenuDetailPager extends MenuDetailBasePager {
 
         tabDetailPagers = new ArrayList<>();
         for (int i = 0; i < dataBeans.size(); i++) {
+
+//            dataBeans.get(i).getNewsId()
 
             tabDetailPagers.add(new TabDetailPager(context, dataBeans.get(i)));
         }

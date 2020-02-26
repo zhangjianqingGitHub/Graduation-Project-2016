@@ -74,7 +74,7 @@ public class NewsCenterPagerBean {
             this.source = source;
         }
 
-        public String getNewsId() {
+        public String  getNewsId() {
             return newsId;
         }
 

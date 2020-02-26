@@ -2,6 +2,7 @@ package com.example.zjq.news.menudetailpager.tabdetailpager;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -18,6 +19,8 @@ import com.example.zjq.news.base.MenuDetailBasePager;
 import com.example.zjq.news.bean.NewsCenterPagerBean;
 import com.example.zjq.news.menudetailpager.adapter.MyListviewAdapter;
 import com.example.zjq.news.menudetailpager.bean.TabDetailBean;
+import com.example.zjq.news.menudetailpager.bean.TabDetailViewPagerBean;
+import com.example.zjq.news.utils.Constants;
 import com.example.zjq.news.view.HorizontalScrollViewPager;
 import com.example.zjq.news.view.RefreshListView;
 import com.google.gson.Gson;
@@ -57,6 +60,8 @@ public class TabDetailPager extends MenuDetailBasePager {
         super(context);
         this.data = dataBean;
 
+//        data.getNewsId()
+
     }
 
     @Override
@@ -95,11 +100,9 @@ public class TabDetailPager extends MenuDetailBasePager {
 //        HtmlAsynTask task = new HtmlAsynTask();
 //        task.execute(url);
 
-        //加载上方轮播图
-        viewpagerTop();
 
-        //红点
-        RedPoint();
+        getDataForImgs();
+
 
         adapter = new MyListviewAdapter(context);
         listView.setAdapter(adapter);
@@ -109,16 +112,89 @@ public class TabDetailPager extends MenuDetailBasePager {
 
     }
 
+    private void getDataForImgs() {
+        String newsId = data.getNewsId();
+        String url = Constants.NewsDetail;
+
+        RequestParams params = new RequestParams(url);
+        params.addBodyParameter("app_id", Constants.APPID);
+        params.addBodyParameter("app_secret", Constants.APPSECRET);
+        params.addBodyParameter("newsId", newsId);
+
+        x.http().get(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+
+                TabDetailViewPagerBean bean = new Gson().fromJson(result, TabDetailViewPagerBean.class);
+
+                //加载上方轮播图
+
+                List<TabDetailViewPagerBean.DataBean.ImgDataBean> list_imgs = bean.getData().getImages();
+
+                imgs = new ArrayList<>();
+
+                //添加外层图片
+                if (data.getImgList() != null && data.getImgList().size() != 0) {
+                    for (int i = 0; i < data.getImgList().size(); i++) {
+                        if (!TextUtils.isEmpty(data.getImgList().get(i))) {
+                            imgs.add(data.getImgList().get(i));
+                        }
+                    }
+                }
+
+                int size = list_imgs.size();
+
+                if (size > 4) {
+                    size = 4;
+                }
+                //添加内层图片
+                for (int i = 0; i < size; i++) {
+                    if (!TextUtils.isEmpty(list_imgs.get(i).getImgSrc())) {
+                        imgs.add(list_imgs.get(i).getImgSrc());
+                    }
+                }
+
+                //设置viewpager的适配器
+                viewPager.setAdapter(new TabDetailPagerTopNewsAdapter());
+
+                //红点
+                RedPoint();
+
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+
+                Log.e("zjq-result-aa", ex.getMessage() + "");
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
+
+    }
+
 
     private void getDataForRecyclerview() {
 
+//        http://route.showapi.com/2217-4?showapi_appid=149226&showapi_sign=a1f1947fe6f24dbc8225cdf8b3e961ae
+
         String url = "http://route.showapi.com/109-35";
 
-        final RequestParams params = new RequestParams(url);
+        RequestParams params = new RequestParams(url);
         params.addBodyParameter("showapi_appid", "149226");
         params.addBodyParameter("showapi_sign", "a1f1947fe6f24dbc8225cdf8b3e961ae");
         params.addBodyParameter("channelId", "5572a108b3cdc86cf39001cd");
         params.addBodyParameter("page", page);
+        params.addBodyParameter("maxResult", "100");
+        params.addBodyParameter("needAllList", "1");
 
 
         x.http().get(params, new Callback.CommonCallback<String>() {
@@ -193,22 +269,6 @@ public class TabDetailPager extends MenuDetailBasePager {
     }
 
 
-    private void viewpagerTop() {
-        imgs = new ArrayList<>();
-
-        if (data.getImgList() != null && data.getImgList().size() != 0) {
-            for (int i = 0; i < data.getImgList().size(); i++) {
-                if (!TextUtils.isEmpty(data.getImgList().get(i))) {
-                    imgs.add(data.getImgList().get(i));
-                }
-            }
-
-        }
-
-        //设置viewpager的适配器
-        viewPager.setAdapter(new TabDetailPagerTopNewsAdapter());
-    }
-
     class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
 
         @Override
@@ -261,7 +321,7 @@ public class TabDetailPager extends MenuDetailBasePager {
             imageView.setBackgroundResource(R.drawable.home_scroll_default);
             container.addView(imageView);
 
-            Glide.with(context).load(imgs.get(position)).into(imageView);
+            Glide.with(context).load(imgs.get(position)).placeholder(R.drawable.news_pic_default).into(imageView);
 //            x.image().bind(imageView, imgs.get(position),imageOptions);
             return imageView;
         }

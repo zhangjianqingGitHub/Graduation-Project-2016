@@ -14,6 +14,9 @@ import android.widget.TextView;
 
 import com.example.zjq.news.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * 自定义下拉刷新的List View
  */
@@ -52,6 +55,8 @@ public class RefreshListView extends ListView {
 
     private Animation upAnimation;
     private Animation downAnimation;
+
+    private OnRefreshListener onRefreshListener;
 
     public RefreshListView(Context context) {
         this(context, null);
@@ -171,7 +176,7 @@ public class RefreshListView extends ListView {
                     //下拉高度足够，松手就刷新
                     currentStatus = refreshing;
                     //设置状态为正在刷新
-                    //回调接口
+
 
                     refreshViewState();
 
@@ -179,6 +184,10 @@ public class RefreshListView extends ListView {
                     ll_pull_down.setPadding(0, 0, 0, 0);
 
 
+                    //回调接口
+                    if (onRefreshListener != null) {
+                        onRefreshListener.onPullDownRefresh();
+                    }
                 }
 
 
@@ -212,5 +221,49 @@ public class RefreshListView extends ListView {
                 break;
         }
 
+    }
+
+    //当联网成功或者失败时候记录请求联网的时间
+    public void onRefreshFinish(boolean sucess) {
+
+        //还原状态
+        tv_status.setText("下拉刷新...");
+        currentStatus = pull_down_refresh;
+        iv_arrow.clearAnimation();
+        pb_status.setVisibility(INVISIBLE);
+        iv_arrow.setVisibility(VISIBLE);
+
+        //隐藏下拉刷新控件
+        ll_pull_down.setPadding(0, -headHeight, 0, 0);
+
+        if (sucess) {
+            //成功
+            //设置时间
+            tv_time.setText("上次更新时间：" + getSystemTime());
+        }
+
+    }
+
+    //得到当前系统时间
+    private String getSystemTime() {
+
+        SimpleDateFormat format = new SimpleDateFormat("yyy-MM-dd HH:mm:ss");
+
+        return format.format(new Date());
+
+    }
+
+    //定义接口
+    public interface OnRefreshListener {
+
+        //当下拉刷新时回调这个方法
+        void onPullDownRefresh();
+
+    }
+
+
+    //设置监听刷新
+    public void setOnRefreshListener(OnRefreshListener listener) {
+        this.onRefreshListener = listener;
     }
 }

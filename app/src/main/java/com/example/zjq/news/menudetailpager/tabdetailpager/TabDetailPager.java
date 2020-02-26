@@ -42,7 +42,7 @@ public class TabDetailPager extends MenuDetailBasePager {
 
     private LinearLayout ll_point_group;
 
-    private RefreshListView  listView;
+    private RefreshListView listView;
 
     //之前高亮点位置
     private int prePosition;
@@ -72,7 +72,19 @@ public class TabDetailPager extends MenuDetailBasePager {
 
         listView.addHeaderView(topNewxView);
 
+        //设置监听刷新
+        listView.setOnRefreshListener(new MyOnRefreshListener());
+
         return view;
+    }
+
+    class MyOnRefreshListener implements RefreshListView.OnRefreshListener {
+
+        @Override
+        public void onPullDownRefresh() {
+
+            getDataForRecyclerview();
+        }
     }
 
     @Override
@@ -120,8 +132,11 @@ public class TabDetailPager extends MenuDetailBasePager {
 
                     adapter.setData(list);
 
-
                     page++;
+
+                    //隐藏下拉刷新控件-更新时间(true)
+                    listView.onRefreshFinish(true);
+
 
                 }
 
@@ -130,6 +145,8 @@ public class TabDetailPager extends MenuDetailBasePager {
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
 
+                //隐藏下拉刷新控件
+                listView.onRefreshFinish(true);
 
             }
 
@@ -213,7 +230,6 @@ public class TabDetailPager extends MenuDetailBasePager {
 
             prePosition = position;
 
-            getDataForRecyclerview();
         }
 
         @Override

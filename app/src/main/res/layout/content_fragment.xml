@@ -11,13 +11,15 @@
         android:layout_weight="1" />
 
     <RadioGroup
+        android:paddingTop="5dp"
         android:id="@+id/rg_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bottom_tab_bg"
+        android:background="#44000000"
         android:orientation="horizontal">
 
         <RadioButton
+            android:textStyle="bold"
             android:id="@+id/rb_home"
             style="@style/bottom_tag_style"
             android:background="@null"
@@ -26,6 +28,8 @@
             android:text="主页" />
 
         <RadioButton
+            android:textStyle="bold"
+
             android:id="@+id/rb_newscenter"
             style="@style/bottom_tag_style"
             android:background="@null"
@@ -35,6 +39,7 @@
 
         <RadioButton
             android:id="@+id/rb_smartservice"
+            android:textStyle="bold"
 
             style="@style/bottom_tag_style"
             android:background="@null"
@@ -44,6 +49,7 @@
 
         <RadioButton
             android:id="@+id/rb_govaffair"
+            android:textStyle="bold"
 
             style="@style/bottom_tag_style"
             android:background="@null"
@@ -52,6 +58,8 @@
             android:text="政要" />
 
         <RadioButton
+            android:textStyle="bold"
+
             android:id="@+id/rb_setting"
             style="@style/bottom_tag_style"
             android:background="@null"

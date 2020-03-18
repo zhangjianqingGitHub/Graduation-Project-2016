@@ -52,7 +52,7 @@ public class TabDetailPager extends MenuDetailBasePager {
 
     private MyListviewAdapter adapter;
     private int next = 0;
-    private List<TabDetailBean.ShowapiResBodyBean.PagebeanBean.ContentlistBean> list;
+    private List<TabDetailBean.ResultBean.DataBean> list;
     private int page = 1;
 
 
@@ -127,9 +127,6 @@ public class TabDetailPager extends MenuDetailBasePager {
 
                 TabDetailViewPagerBean bean = new Gson().fromJson(result, TabDetailViewPagerBean.class);
 
-                //加载上方轮播图
-
-                List<TabDetailViewPagerBean.DataBean.ImgDataBean> list_imgs = bean.getData().getImages();
 
                 imgs = new ArrayList<>();
 
@@ -142,16 +139,23 @@ public class TabDetailPager extends MenuDetailBasePager {
                     }
                 }
 
-                int size = list_imgs.size();
+                //加载上方轮播图
 
-                if (size > 4) {
-                    size = 4;
-                }
-                //添加内层图片
-                for (int i = 0; i < size; i++) {
-                    if (!TextUtils.isEmpty(list_imgs.get(i).getImgSrc())) {
-                        imgs.add(list_imgs.get(i).getImgSrc());
+                if (bean.getData().getImages() != null) {
+
+                    List<TabDetailViewPagerBean.DataBean.ImgDataBean> list_imgs = bean.getData().getImages();
+                    int size = list_imgs.size();
+
+                    if (size > 4) {
+                        size = 4;
                     }
+                    //添加内层图片
+                    for (int i = 0; i < size; i++) {
+                        if (list_imgs.get(i).getImgSrc() != null && !TextUtils.isEmpty(list_imgs.get(i).getImgSrc())) {
+                            imgs.add(list_imgs.get(i).getImgSrc());
+                        }
+                    }
+
                 }
 
                 //设置viewpager的适配器
@@ -184,27 +188,24 @@ public class TabDetailPager extends MenuDetailBasePager {
 
     private void getDataForRecyclerview() {
 
-//        http://route.showapi.com/2217-4?showapi_appid=149226&showapi_sign=a1f1947fe6f24dbc8225cdf8b3e961ae
-
-        String url = "http://route.showapi.com/109-35";
+        String url = "http://v.juhe.cn/toutiao/index";
 
         RequestParams params = new RequestParams(url);
-        params.addBodyParameter("showapi_appid", "149226");
-        params.addBodyParameter("showapi_sign", "a1f1947fe6f24dbc8225cdf8b3e961ae");
-        params.addBodyParameter("channelId", "5572a108b3cdc86cf39001cd");
-        params.addBodyParameter("page", page);
-        params.addBodyParameter("maxResult", "100");
-        params.addBodyParameter("needAllList", "1");
+        params.addBodyParameter("key", "b0b89109785634c4fcd0a3ca78cd3ad9");
+        params.addBodyParameter("type", "top");
+
 
 
         x.http().get(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
 
+                Log.e("zjq-res", result);
+
                 TabDetailBean bean = new Gson().fromJson(result, TabDetailBean.class);
 
-                if (bean.getShowapi_res_code() == 0) {
-                    list = bean.getShowapi_res_body().getPagebean().getContentlist();
+                if (bean.getResult().getStat().equals("1")) {
+                    list = bean.getResult().getData();
 
                     adapter.setData(list);
 
@@ -220,6 +221,8 @@ public class TabDetailPager extends MenuDetailBasePager {
 
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
+
+                Log.e("zjq-aa", ex.getMessage());
 
                 //隐藏下拉刷新控件
                 listView.onRefreshFinish(true);
@@ -281,7 +284,6 @@ public class TabDetailPager extends MenuDetailBasePager {
 
             //设置文本
             tv_title.setText(data.getTitle());
-            //红点高亮
 
             //把之前的变成灰色，
             ll_point_group.getChildAt(prePosition).setEnabled(false);

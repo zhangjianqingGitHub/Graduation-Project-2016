@@ -17,13 +17,13 @@ public class MyListviewAdapter extends BaseAdapter {
 
 
     private final Context context;
-    private List<TabDetailBean.ShowapiResBodyBean.PagebeanBean.ContentlistBean> mDataList;
+    private List<TabDetailBean.ResultBean.DataBean> mDataList;
 
     public MyListviewAdapter(Context context) {
         this.context = context;
     }
 
-    public void setData(List<TabDetailBean.ShowapiResBodyBean.PagebeanBean.ContentlistBean> list) {
+    public void setData(List<TabDetailBean.ResultBean.DataBean> list) {
         this.mDataList = list;
         notifyDataSetChanged();
 
@@ -71,19 +71,17 @@ public class MyListviewAdapter extends BaseAdapter {
 
 
         }
-        TabDetailBean.ShowapiResBodyBean.PagebeanBean.ContentlistBean bean = mDataList.get(position);
+        TabDetailBean.ResultBean.DataBean bean = mDataList.get(position);
 
-        if (bean.getImageurls().size() != 0) {
+        if (bean.getThumbnail_pic_s() != null) {
 
-//            x.image().bind(viewHolder.iv_img, bean.getImageurls().get(0).getUrl());
-
-            Glide.with(context).load(bean.getImageurls().get(0).getUrl()).into(viewHolder.iv_img);
+            Glide.with(context).load(bean.getThumbnail_pic_s()).into(viewHolder.iv_img);
 
         }
 
         viewHolder.tv_content.setText(bean.getTitle());
 
-        viewHolder.tv_time.setText(bean.getPubDate());
+        viewHolder.tv_time.setText(bean.getTitle());
 
         return convertView;
     }

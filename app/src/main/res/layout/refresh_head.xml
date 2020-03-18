@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="下拉刷新"
-                android:textColor="#ff0000"
+                android:textColor="@color/main_color"
                 android:textSize="18sp" />
 
             <TextView

@@ -1,6 +1,7 @@
 package com.example.zjq.news.menudetailpager;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -54,6 +55,12 @@ public class NewsMenuDetailPager extends MenuDetailBasePager {
         this.dataBeans = datas;
 
         //根据
+
+        for (int i = 0; i < dataBeans.size(); i++) {
+            if (TextUtils.isEmpty(dataBeans.get(i).getSource())||dataBeans.get(i).getSource()==null||dataBeans.get(i).getImgList().size()==0) {
+                dataBeans.remove(i);
+            }
+        }
 
     }
 
@@ -148,9 +155,8 @@ public class NewsMenuDetailPager extends MenuDetailBasePager {
         @Override
         public CharSequence getPageTitle(int position) {
 
-            String date = dataBeans.get(position).getSource();
+            return dataBeans.get(position).getSource();
 
-            return " " + date + " ";
         }
 
         @NonNull

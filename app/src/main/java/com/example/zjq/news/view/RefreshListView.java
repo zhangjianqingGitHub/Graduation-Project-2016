@@ -204,17 +204,17 @@ public class RefreshListView extends ListView {
             case pull_down_refresh://下拉刷新
 
                 iv_arrow.startAnimation(downAnimation);
-                tv_status.setText("小玲下拉刷新了...");
+                tv_status.setText("下拉刷新...");
 
                 break;
             case release_refresh://手松刷新
 
                 iv_arrow.startAnimation(upAnimation);
-                tv_status.setText("小玲请松手...");
+                tv_status.setText("松手刷新...");
                 break;
             case refreshing://正在刷新
                 pb_status.setVisibility(VISIBLE);
-                tv_status.setText("小玲正在刷新...");
+                tv_status.setText("正在刷新...");
                 iv_arrow.clearAnimation();
                 iv_arrow.setVisibility(INVISIBLE);
 

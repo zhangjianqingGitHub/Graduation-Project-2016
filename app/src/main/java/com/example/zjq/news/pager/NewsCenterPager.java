@@ -173,10 +173,13 @@ public class NewsCenterPager extends BasePager {
 
     private void getDataFromNet(final String url) {
 
-
         RequestParams params = new RequestParams(url);
+        params.addBodyParameter("app_id", Constants.APPID);
+        params.addBodyParameter("app_secret", Constants.APPSECRET);
         params.addBodyParameter("typeId", list_left.get(position_left).getTypeId());
         params.addBodyParameter("page", 1);
+
+        Log.e("zjq", list_left.get(position_left).getTypeId() + "");
 
         x.http().get(params, new Callback.CacheCallback<String>() {
             @Override

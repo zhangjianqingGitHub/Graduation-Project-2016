@@ -24,7 +24,7 @@ dependencies {
     //xutils
     implementation 'org.xutils:xutils:3.8.4'
     //gosn
-    implementation 'com.google.code.gson:gson:2.8.6' \
+    implementation 'com.google.code.gson:gson:2.8.6'
     //侧滑菜单
     implementation project(path: ':SlidingMenu_library')
 

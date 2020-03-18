@@ -6,281 +6,157 @@ public class TabDetailBean {
 
 
     /**
-     * showapi_res_error :
-     * showapi_res_code : 0
-     * showapi_res_id : 11ec33619b6f4ba2b6d4868ed9e2d793
-     * showapi_res_body : {"ret_code":0,"pagebean":{"allPages":128157,"contentlist":[{"id":"66d9dedd57754339dc4587c472551e7b","havePic":true,"pubDate":"2020-02-25 07:55:00","title":" 从小白到高管，硅谷大佬深度解读工程师职业进阶之路","channelName":"创业最新","imageurls":[{"height":0,"width":0,"url":"https://cdnwww.lieyunwang.com/themes/default/images/theme/company_code.jpg"}],"source":"猎云网","channelId":"3f4794412eaa17ed","link":"https://www.lieyunwang.com/archives/463445","img":"https://cdnwww.lieyunwang.com/themes/default/images/theme/company_code.jpg"},{"id":"86db6202078e2df3f96cbc7cbf5c45a9","havePic":true,"pubDate":"2020-02-24 13:38:56","title":"又一个概念板块涨停了！给特斯拉写封信，问问明天该炒啥？","channelName":"财经焦点","imageurls":[{"height":0,"width":0,"url":"http://image.nbd.com.cn/uploads/articles/images/826574/___.jpg"},{"height":0,"width":0,"url":"http://nbd-gallery.oss-cn-hangzhou.aliyuncs.com/625d869b?Expires=1898139027&OSSAccessKeyId=LTAIcYTsN8IjKgNY&Signature=OPe3p%2BxbPnBAHiGSlarfv8AqQ7Q%3D"},{"height":0,"width":0,"url":"http://nbd-gallery.oss-cn-hangzhou.aliyuncs.com/191ea77b?Expires=1898139027&OSSAccessKeyId=LTAIcYTsN8IjKgNY&Signature=8XJDKEkRU%2FCds%2BCdmjitT5COecw%3D"}],"source":"每经网","channelId":"5572a108b3cdc86cf39001d0","link":"http://www.nbd.com.cn/articles/2020-02-24/1410902.html","img":"http://image.nbd.com.cn/uploads/articles/images/826574/___.jpg"},{"id":"c9f4e1d594518a3b9ed0910b4324bd63","havePic":true,"pubDate":"2020-02-24 13:36:26","title":"想学快乐电竞？工作钱多又happy？醒醒，凭什么是你","channelName":"体育最新","imageurls":[{"height":0,"width":0,"url":"http://image1.chinanews.com.cn/cnsupload/big/2019/11-15/4-426/17b09cf8cd30443aa29cf63ed5221daf.jpg"},{"height":0,"width":0,"url":"http://i2.chinanews.com/simg/cmshd/2020/02/17/249815dbbf614bd8866d9aa8686230f6.jpg"},{"height":0,"width":0,"url":"http://image1.chinanews.com.cn/cnsupload/big/2016/08-29/4-426/4132e7dbd9ad47e1ad4aca5aab346f51.jpg"},{"height":0,"width":0,"url":"http://image1.chinanews.com.cn/cnsupload/big/2019/12-03/4-426/37839915af5f4fe6ba50bc6293d8aaa0.jpg"},{"height":0,"width":0,"url":"http://image1.chinanews.com.cn/cnsupload/big/2019/03-25/4-426/e2ca89fd6ae54fe28b88312823d1e0a5.jpg"},{"height":0,"width":0,"url":"http://image1.chinanews.com.cn/cnsupload/big/2016/12-13/4-426/54a2ac76304745fe88d55ed6de615265.jpg"},{"height":0,"width":0,"url":"http://i2.chinanews.com/simg/cmshd/2020/02/24/9541cb72cc424163b9a3ee20f10d34d0.jpg"},{"height":0,"width":0,"url":"http://i2.chinanews.com/simg/cmshd/2020/02/24/a0cd3409b9e544d88d00f1c4a5e6f339.jpg"}],"desc":"资料图：世预赛亚洲区40强赛中，国足客场1:2不敌叙利亚，比赛中对手先入一球，此后武磊凌空推射扳平比分，张琳芃不慎乌龙导致国足再度落后。图为张琳芃在比赛中。\r\n\n　　中新网客户端北京2月24日电(王昊)在LPL(英雄联盟中国大陆赛区)因为新冠肺炎疫情推迟的时候，欧洲赛区的G2搞出了\u201c花活儿\u201d。被认为在欧洲实力一骑绝尘的他们此前遭遇两连败，G2的\u201c快乐\u201d似乎\u201c触礁\u201d了。","source":"中国新闻网","channelId":"5572a109b3cdc86cf39001e6","link":"http://www.chinanews.com/ty/2020/02-24/9102596.shtml"}],"currentPage":1,"allNum":384469,"maxResult":3}}
+     * reason : 成功的返回
+     * result : {"stat":"1","data":[{"uniquekey":"776c9b4c4f117ddfbdec020e5069b077","title":"重组新冠疫苗获批启动临床试验","date":"2020-03-17 19:05","category":"头条","author_name":"央视网","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317190544433.html","thumbnail_pic_s":"https://06imgmini.eastday.com/mobile/20200317/20200317190544_0587dfa87134eb2356210dbf91d58b00_1_mwpm_03200403.jpg","thumbnail_pic_s02":"http://06imgmini.eastday.com/mobile/20200317/20200317190544_aef9cda5e22682cbc973cd776594c191_2_mwpm_03200403.jpg"},{"uniquekey":"8db1e02b01bde2ae4a49dcc090728bf6","title":"大数据深度解读\u201c新基建\u201d，经济增长全靠它？","date":"2020-03-17 14:01:35","category":"头条","author_name":"聚合数据","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2FuxekqOSnttOHzZSdzw70aQ","thumbnail_pic_s":"https://juhe.oss-cn-hangzhou.aliyuncs.com/api_image/235/8db1e02b01bde2ae4a49dcc090728bf6.png","thumbnail_pic_s02":"https://juhe.oss-cn-hangzhou.aliyuncs.com/api_image/235/8db1e02b01bde2ae4a49dcc090728bf6.png","thumbnail_pic_s03":"https://juhe.oss-cn-hangzhou.aliyuncs.com/api_image/235/8db1e02b01bde2ae4a49dcc090728bf6.png"},{"uniquekey":"5a3518988caf897e4a16703a93f9d064","title":"忠诚的伍思凯：婚后21年零绯闻，不离不弃，却被22岁儿子坑惨","date":"2020-03-17 19:00","category":"头条","author_name":"酱油女神","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317190025327.html","thumbnail_pic_s":"https://07imgmini.eastday.com/mobile/20200317/20200317190025_99463bbadb22775b68841f32fd5a405e_7_mwpm_03200403.jpg","thumbnail_pic_s02":"http://07imgmini.eastday.com/mobile/20200317/20200317190025_99463bbadb22775b68841f32fd5a405e_10_mwpm_03200403.jpg","thumbnail_pic_s03":"http://07imgmini.eastday.com/mobile/20200317/20200317190025_99463bbadb22775b68841f32fd5a405e_5_mwpm_03200403.jpg"},{"uniquekey":"411376f38624dce6707fc2cffeb1ba6e","title":"广西柳州大毒枭张加爱涉毒涉黑违法建筑被拆除","date":"2020-03-17 18:57","category":"头条","author_name":"中国新闻网","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317185700779.html","thumbnail_pic_s":"https://01imgmini.eastday.com/mobile/20200317/20200317185700_4271e4a8d738448e44ad286b580d06a3_3_mwpm_03200403.jpg","thumbnail_pic_s02":"http://01imgmini.eastday.com/mobile/20200317/20200317185700_4271e4a8d738448e44ad286b580d06a3_2_mwpm_03200403.jpg","thumbnail_pic_s03":"http://01imgmini.eastday.com/mobile/20200317/20200317185700_4271e4a8d738448e44ad286b580d06a3_1_mwpm_03200403.jpg"},{"uniquekey":"41f53970aa35dd47c83f9969cd4b2455","title":"游戏猜疑链：英雄联盟手游能否与王者荣耀共存","date":"2020-03-17 18:47","category":"头条","author_name":"提莫西亚","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317184750169.html","thumbnail_pic_s":"https://03imgmini.eastday.com/mobile/20200317/20200317184750_55943e8e43314b32f6db58836ff6155b_2_mwpm_03200403.jpg","thumbnail_pic_s02":"http://03imgmini.eastday.com/mobile/20200317/20200317184750_55943e8e43314b32f6db58836ff6155b_1_mwpm_03200403.jpg","thumbnail_pic_s03":"http://03imgmini.eastday.com/mobile/20200317/20200317184750_55943e8e43314b32f6db58836ff6155b_5_mwpm_03200403.jpg"},{"uniquekey":"541a67f03511274e9c611d868917ac1f","title":"王者荣耀：四大美女攻略合集，会玩的都是仙女姐姐？","date":"2020-03-17 18:47","category":"头条","author_name":"游戏日报","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317184745284.html","thumbnail_pic_s":"https://05imgmini.eastday.com/mobile/20200317/20200317184745_cb34082b63f0fd0c1b488176a80f6846_12_mwpm_03200403.jpg","thumbnail_pic_s02":"http://05imgmini.eastday.com/mobile/20200317/20200317184745_cb34082b63f0fd0c1b488176a80f6846_14_mwpm_03200403.jpg","thumbnail_pic_s03":"http://05imgmini.eastday.com/mobile/20200317/20200317184745_cb34082b63f0fd0c1b488176a80f6846_6_mwpm_03200403.jpg"},{"uniquekey":"8ed32cec6cc35e0a8147e6df4090e344","title":"一汽丰田首款纯电动SUV奕泽E擎曝光：续航达400公里","date":"2020-03-17 18:44","category":"头条","author_name":"快科技","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317184420646.html","thumbnail_pic_s":"https://09imgmini.eastday.com/mobile/20200317/20200317184420_27f543f563b2eba2eee108bea09bacca_2_mwpm_03200403.jpg","thumbnail_pic_s02":"http://09imgmini.eastday.com/mobile/20200317/20200317184420_27f543f563b2eba2eee108bea09bacca_1_mwpm_03200403.jpg"},{"uniquekey":"3acd7c57feba91fed442258dd021c5c7","title":"内蒙古累计投放企业复工复产贷款541.79亿","date":"2020-03-17 18:36","category":"头条","author_name":"中国新闻网","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317183647465.html","thumbnail_pic_s":"https://05imgmini.eastday.com/mobile/20200317/20200317183647_45de5120e899843c317825a04063e895_1_mwpm_03200403.jpg"},{"uniquekey":"cb289c442f507c59db1888d03a5e406e","title":"北京首都机场回应入境人员挤爆航站楼：已明显改善","date":"2020-03-17 18:30","category":"头条","author_name":"北青网","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317183035630.html","thumbnail_pic_s":"https://06imgmini.eastday.com/mobile/20200317/20200317183035_986ff0f6a51d1e90a2604e8c06707760_1_mwpm_03200403.jpg"},{"uniquekey":"3c7842117009a00e47a3f28b47adbc9f","title":"\u201c钙王\u201d被发现，鸡蛋牛奶都靠边，孩子常吃它长高个，记忆力强！","date":"2020-03-17 18:27","category":"头条","author_name":"美食杰官方","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317182712749.html","thumbnail_pic_s":"https://09imgmini.eastday.com/mobile/20200317/20200317182712_f60eddf445215cb07e4857953d5b1117_10_mwpm_03200403.jpg","thumbnail_pic_s02":"http://09imgmini.eastday.com/mobile/20200317/20200317182712_f60eddf445215cb07e4857953d5b1117_1_mwpm_03200403.jpg","thumbnail_pic_s03":"http://09imgmini.eastday.com/mobile/20200317/20200317182712_f60eddf445215cb07e4857953d5b1117_11_mwpm_03200403.jpg"},{"uniquekey":"13cdf83ef2397537f6cb1b8a7736a824","title":"陈赫二胎得女，首晒一家四口牵手照，妻子张子萱身材恢复极好","date":"2020-03-17 18:26","category":"头条","author_name":"东方号娱乐","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317182647916.html","thumbnail_pic_s":"https://01imgmini.eastday.com/mobile/20200317/2020031718_447243f866314313a7b2a92913d81d7f_2308_cover_mwpm_03200403.jpg","thumbnail_pic_s02":"http://01imgmini.eastday.com/mobile/20200317/2020031718_b946139e8a6745b2ac11a41abd3e5d1e_4503_cover_mwpm_03200403.jpg","thumbnail_pic_s03":"http://01imgmini.eastday.com/mobile/20200317/2020031718_7473f37b9b1c4430bf70e98ef002df57_2830_cover_mwpm_03200403.jpg"},{"uniquekey":"f0387e23a3260bb7111fb7892a4ab969","title":"刘亦菲在微胖的路上越走越远了，网友：女神气质还能维持多久？","date":"2020-03-17 18:22","category":"头条","author_name":"菲尔时尚达人","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317182215274.html","thumbnail_pic_s":"https://06imgmini.eastday.com/mobile/20200317/20200317182215_d58e517c7e5196d2324ba4725e06c94b_2_mwpm_03200403.jpg","thumbnail_pic_s02":"http://06imgmini.eastday.com/mobile/20200317/20200317182215_d58e517c7e5196d2324ba4725e06c94b_6_mwpm_03200403.jpg","thumbnail_pic_s03":"http://06imgmini.eastday.com/mobile/20200317/20200317182215_d58e517c7e5196d2324ba4725e06c94b_4_mwpm_03200403.jpg"},{"uniquekey":"99670c65715826645d39b7db7e4008aa","title":"郑州：高新企业倍增，连破千家大关","date":"2020-03-17 18:15","category":"头条","author_name":"科技日报","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317181539631.html","thumbnail_pic_s":"https://09imgmini.eastday.com/mobile/20200317/20200317181539_6d80e132f2dd21a3626e17fd24a535b7_2_mwpm_03200403.jpg","thumbnail_pic_s02":"http://09imgmini.eastday.com/mobile/20200317/20200317181539_6d80e132f2dd21a3626e17fd24a535b7_1_mwpm_03200403.jpg"},{"uniquekey":"fd72eeb2587a0945d813708e84e47665","title":"上海\u201c外滩22号\u201d北楼建筑确认为最高等级危房","date":"2020-03-17 18:14","category":"头条","author_name":"中国新闻网","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317181434778.html","thumbnail_pic_s":"https://09imgmini.eastday.com/mobile/20200317/20200317181434_a2f6436f48e23b2e730be81373d6f184_6_mwpm_03200403.jpg","thumbnail_pic_s02":"http://09imgmini.eastday.com/mobile/20200317/20200317181434_a2f6436f48e23b2e730be81373d6f184_8_mwpm_03200403.jpg","thumbnail_pic_s03":"http://09imgmini.eastday.com/mobile/20200317/20200317181434_a2f6436f48e23b2e730be81373d6f184_5_mwpm_03200403.jpg"},{"uniquekey":"2338a779d7917d78321d46828745e877","title":"伊朗发现神秘\u201c螳螂人\u201d史前岩画","date":"2020-03-17 18:14","category":"头条","author_name":"环球网","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317181434452.html","thumbnail_pic_s":"https://00imgmini.eastday.com/mobile/20200317/20200317181434_566393b6a3a9ebcd9f67f0c2c4a17cb9_1_mwpm_03200403.jpg"},{"uniquekey":"a906140653bf3333d49828477c18f231","title":"陈赫晒二女儿脚丫照 称安姐现在最喜欢的人是妹妹","date":"2020-03-17 18:14","category":"头条","author_name":"新浪娱乐","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317181429271.html","thumbnail_pic_s":"https://06imgmini.eastday.com/mobile/20200317/20200317181553_85496c5ba8b99ab25a12caf9c079db54_1_mwpm_03200403.jpg","thumbnail_pic_s02":"http://06imgmini.eastday.com/mobile/20200317/20200317181553_85496c5ba8b99ab25a12caf9c079db54_4_mwpm_03200403.jpg","thumbnail_pic_s03":"http://06imgmini.eastday.com/mobile/20200317/20200317181553_85496c5ba8b99ab25a12caf9c079db54_5_mwpm_03200403.jpg"},{"uniquekey":"ac8e68cdf452eb6c31b4ef937ae1b234","title":"爱心企业为色尼区防疫一线捐赠防疫物资","date":"2020-03-17 18:13","category":"头条","author_name":"那曲看点","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317181305609.html","thumbnail_pic_s":"https://03imgmini.eastday.com/mobile/20200317/20200317181305_9627afbe37f89c1337a127bf8ea02cf8_1_mwpm_03200403.jpg"},{"uniquekey":"7f9ad5ef6a2df6feb5745d6288c11d52","title":"郎平体坛的一大传奇教练！到了退休的年纪，她现在的年薪是多少？","date":"2020-03-17 18:12","category":"头条","author_name":"体育来一发TB","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317181242691.html","thumbnail_pic_s":"https://09imgmini.eastday.com/mobile/20200317/20200317181242_dd4efb524e9dc8a5a793be64558f8498_1_mwpm_03200403.jpg","thumbnail_pic_s02":"http://09imgmini.eastday.com/mobile/20200317/20200317181242_dd4efb524e9dc8a5a793be64558f8498_3_mwpm_03200403.jpg","thumbnail_pic_s03":"http://09imgmini.eastday.com/mobile/20200317/20200317181242_dd4efb524e9dc8a5a793be64558f8498_2_mwpm_03200403.jpg"},{"uniquekey":"aaf603f8ab397773be2214bb7c69dd76","title":"北欧式排队再现上海，他们在排啥？","date":"2020-03-17 18:11","category":"头条","author_name":"解放网","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317181148154.html","thumbnail_pic_s":"https://03imgmini.eastday.com/mobile/20200317/20200317181148_a08c0707db57be5620118e58a95b41a2_1_mwpm_03200403.jpg","thumbnail_pic_s02":"http://03imgmini.eastday.com/mobile/20200317/20200317181148_a08c0707db57be5620118e58a95b41a2_8_mwpm_03200403.jpg","thumbnail_pic_s03":"http://03imgmini.eastday.com/mobile/20200317/20200317181148_a08c0707db57be5620118e58a95b41a2_2_mwpm_03200403.jpg"},{"uniquekey":"ed020eac80c53a402dc61cf68b7cd5b0","title":"本赛季十大溢价合同 其中三个溢价合同竟在一支球队 让人诧异不已","date":"2020-03-17 18:10","category":"头条","author_name":"小李的篮球观TB","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317181058360.html","thumbnail_pic_s":"https://06imgmini.eastday.com/mobile/20200317/20200317181058_8bb14b63cbab507ca29f0b3ca869668a_2_mwpm_03200403.jpg","thumbnail_pic_s02":"http://06imgmini.eastday.com/mobile/20200317/20200317181058_8bb14b63cbab507ca29f0b3ca869668a_6_mwpm_03200403.jpg","thumbnail_pic_s03":"http://06imgmini.eastday.com/mobile/20200317/20200317181058_8bb14b63cbab507ca29f0b3ca869668a_3_mwpm_03200403.jpg"},{"uniquekey":"c50d910c1a2694b7bb4919033e75a3f7","title":"深度！想要翻身，勇士这几点要做出改变，把握好或许能够再度夺冠","date":"2020-03-17 18:09","category":"头条","author_name":"豪情NBA","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317180934855.html","thumbnail_pic_s":"https://02imgmini.eastday.com/mobile/20200317/20200317180934_bef3c711a279d33e27b41057dc72f5c5_12_mwpm_03200403.jpg","thumbnail_pic_s02":"http://02imgmini.eastday.com/mobile/20200317/20200317180934_bef3c711a279d33e27b41057dc72f5c5_9_mwpm_03200403.jpg","thumbnail_pic_s03":"http://02imgmini.eastday.com/mobile/20200317/20200317180934_bef3c711a279d33e27b41057dc72f5c5_7_mwpm_03200403.jpg"},{"uniquekey":"416da2843088d456f91353b0aa69ab65","title":"王者荣耀：穿\u201c情侣装\u201d的非官方CP，伽罗一个人占了2对？","date":"2020-03-17 18:09","category":"头条","author_name":"游戏日报","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317180912946.html","thumbnail_pic_s":"https://09imgmini.eastday.com/mobile/20200317/20200317180912_8173d46df2f650116a1817c27889bac8_5_mwpm_03200403.jpg","thumbnail_pic_s02":"http://09imgmini.eastday.com/mobile/20200317/20200317180912_8173d46df2f650116a1817c27889bac8_3_mwpm_03200403.jpg","thumbnail_pic_s03":"http://09imgmini.eastday.com/mobile/20200317/20200317180912_8173d46df2f650116a1817c27889bac8_7_mwpm_03200403.jpg"},{"uniquekey":"385096419b1a59b8aac6aa6cf4353c60","title":"CBA赛会制将采取蛇形分组：疆辽京同组，广东广厦同组","date":"2020-03-17 18:09","category":"头条","author_name":"球长社圈","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317180911396.html","thumbnail_pic_s":"https://07imgmini.eastday.com/mobile/20200317/20200317180911_7ffb238b70226228d194abf3a1113954_1_mwpm_03200403.jpg"},{"uniquekey":"ff519c81b1379a043b5bacd92a08c7c1","title":"各国神话均有记载大洪水时期，史前大洪水时期真的存在吗?","date":"2020-03-17 18:08","category":"头条","author_name":"历史斋录","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317180856862.html","thumbnail_pic_s":"https://08imgmini.eastday.com/mobile/20200317/20200317180856_1a0964e8fca9bccfb6287d0a5fde8f81_1_mwpm_03200403.jpg","thumbnail_pic_s02":"http://08imgmini.eastday.com/mobile/20200317/20200317180856_1a0964e8fca9bccfb6287d0a5fde8f81_4_mwpm_03200403.jpg","thumbnail_pic_s03":"http://08imgmini.eastday.com/mobile/20200317/20200317180856_1a0964e8fca9bccfb6287d0a5fde8f81_3_mwpm_03200403.jpg"},{"uniquekey":"7ec46ff560c5d5412b7d7ed084a717a5","title":"历史上四大暗杀事件，知道三个以上一般都是大佬，你都知道哪些？","date":"2020-03-17 18:05","category":"头条","author_name":"经史合参","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317180502262.html","thumbnail_pic_s":"https://03imgmini.eastday.com/mobile/20200317/2020031718_ad29853d74ee4ddc8f8205ff4648d08a_6217_mwpm_03200403.jpg","thumbnail_pic_s02":"http://03imgmini.eastday.com/mobile/20200317/2020031718_393ba41ebdf44f9d92e0b1eef39f9c27_2089_mwpm_03200403.jpg","thumbnail_pic_s03":"http://03imgmini.eastday.com/mobile/20200317/2020031718_d00c717f7aa847e085f98bf3b131c271_9395_mwpm_03200403.jpg"},{"uniquekey":"2d48edd6706e5e0b6b8f513af0e5bf80","title":"经典石器火爆开服,80后老玩家齐聚!想玩就玩,想刷就刷!完美诠释石器经典","date":"2020-03-17 15:24:10","category":"头条","author_name":"休闲娱乐","url":"https://v.juhe.cn/toutiao/s?id=http%3A%2F%2Flandings.qumeng666.com%2Flandings%2F153","thumbnail_pic_s":"https://juhe.oss-cn-hangzhou.aliyuncs.com/api_image/235/2d48edd6706e5e0b6b8f513af0e5bf80.jpeg","thumbnail_pic_s02":"https://juhe.oss-cn-hangzhou.aliyuncs.com/api_image/235/2d48edd6706e5e0b6b8f513af0e5bf80.jpeg","thumbnail_pic_s03":"https://juhe.oss-cn-hangzhou.aliyuncs.com/api_image/235/2d48edd6706e5e0b6b8f513af0e5bf80.jpeg"},{"uniquekey":"bb30884240a986fe6171e024b7e4e9cd","title":"聚焦疫情｜约翰斯·霍普金斯大学：美国新冠肺炎病例数超4600例","date":"2020-03-17 17:59","category":"头条","author_name":"北青网","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317175919569.html","thumbnail_pic_s":"https://01imgmini.eastday.com/mobile/20200317/20200317175919_919a945c47e0ed00b7d3becd9e334ff4_2_mwpm_03200403.jpg","thumbnail_pic_s02":"http://01imgmini.eastday.com/mobile/20200317/20200317175919_919a945c47e0ed00b7d3becd9e334ff4_3_mwpm_03200403.jpg","thumbnail_pic_s03":"http://01imgmini.eastday.com/mobile/20200317/20200317175919_919a945c47e0ed00b7d3becd9e334ff4_5_mwpm_03200403.jpg"},{"uniquekey":"b9e7f186680fadf9bda678b99badda16","title":"98岁高龄重症患者治愈出院，雷神山医院好消息连连","date":"2020-03-17 17:54","category":"头条","author_name":"纵相新闻","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317175450197.html","thumbnail_pic_s":"https://09imgmini.eastday.com/mobile/20200317/20200317175450_ecec28da6c8cbbc435f6114a55ed91f5_2_mwpm_03200403.jpg","thumbnail_pic_s02":"http://09imgmini.eastday.com/mobile/20200317/20200317175450_ecec28da6c8cbbc435f6114a55ed91f5_3_mwpm_03200403.jpg","thumbnail_pic_s03":"http://09imgmini.eastday.com/mobile/20200317/20200317175450_ecec28da6c8cbbc435f6114a55ed91f5_4_mwpm_03200403.jpg"},{"uniquekey":"7877f3eb616670208e330b0ebf36c465","title":"土耳其自然爱好者上演\u201c激流勇进\u201d场面惊险刺激","date":"2020-03-17 17:53","category":"头条","author_name":"环球网","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317175356360.html","thumbnail_pic_s":"https://01imgmini.eastday.com/mobile/20200317/20200317175356_4baf88768d1f7a834b1129c309761e7c_7_mwpm_03200403.jpg","thumbnail_pic_s02":"http://01imgmini.eastday.com/mobile/20200317/20200317175356_4baf88768d1f7a834b1129c309761e7c_3_mwpm_03200403.jpg","thumbnail_pic_s03":"http://01imgmini.eastday.com/mobile/20200317/20200317175356_4baf88768d1f7a834b1129c309761e7c_4_mwpm_03200403.jpg"},{"uniquekey":"c972c16c5b46956fc8c7683ba8dde1ce","title":"为何靳东执意娶二婚的她？胡歌一语道出原因，原来如此","date":"2020-03-17 17:50","category":"头条","author_name":"老赵娱乐说说说","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317175048159.html","thumbnail_pic_s":"https://08imgmini.eastday.com/mobile/20200317/2020031521_14e0c48eb6bb4085bcfa8378fe290df4_7198_mwpm_03200403.jpg","thumbnail_pic_s02":"http://08imgmini.eastday.com/mobile/20200317/2020031521_b40e8963605b447c90f1925eff979481_4471_mwpm_03200403.jpg","thumbnail_pic_s03":"http://08imgmini.eastday.com/mobile/20200317/2020031521_6fa5423753b14fa39bb00d1a2de9c488_9332_mwpm_03200403.jpg"}]}
+     * error_code : 0
      */
 
-    private String showapi_res_error;
-    private int showapi_res_code;
-    private String showapi_res_id;
-    private ShowapiResBodyBean showapi_res_body;
+    private String reason;
+    private ResultBean result;
+    private int error_code;
 
-    public String getShowapi_res_error() {
-        return showapi_res_error;
+    public String getReason() {
+        return reason;
     }
 
-    public void setShowapi_res_error(String showapi_res_error) {
-        this.showapi_res_error = showapi_res_error;
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 
-    public int getShowapi_res_code() {
-        return showapi_res_code;
+    public ResultBean getResult() {
+        return result;
     }
 
-    public void setShowapi_res_code(int showapi_res_code) {
-        this.showapi_res_code = showapi_res_code;
+    public void setResult(ResultBean result) {
+        this.result = result;
     }
 
-    public String getShowapi_res_id() {
-        return showapi_res_id;
+    public int getError_code() {
+        return error_code;
     }
 
-    public void setShowapi_res_id(String showapi_res_id) {
-        this.showapi_res_id = showapi_res_id;
+    public void setError_code(int error_code) {
+        this.error_code = error_code;
     }
 
-    public ShowapiResBodyBean getShowapi_res_body() {
-        return showapi_res_body;
-    }
-
-    public void setShowapi_res_body(ShowapiResBodyBean showapi_res_body) {
-        this.showapi_res_body = showapi_res_body;
-    }
-
-    public static class ShowapiResBodyBean {
+    public static class ResultBean {
         /**
-         * ret_code : 0
-         * pagebean : {"allPages":128157,"contentlist":[{"id":"66d9dedd57754339dc4587c472551e7b","havePic":true,"pubDate":"2020-02-25 07:55:00","title":" 从小白到高管，硅谷大佬深度解读工程师职业进阶之路","channelName":"创业最新","imageurls":[{"height":0,"width":0,"url":"https://cdnwww.lieyunwang.com/themes/default/images/theme/company_code.jpg"}],"source":"猎云网","channelId":"3f4794412eaa17ed","link":"https://www.lieyunwang.com/archives/463445","img":"https://cdnwww.lieyunwang.com/themes/default/images/theme/company_code.jpg"},{"id":"86db6202078e2df3f96cbc7cbf5c45a9","havePic":true,"pubDate":"2020-02-24 13:38:56","title":"又一个概念板块涨停了！给特斯拉写封信，问问明天该炒啥？","channelName":"财经焦点","imageurls":[{"height":0,"width":0,"url":"http://image.nbd.com.cn/uploads/articles/images/826574/___.jpg"},{"height":0,"width":0,"url":"http://nbd-gallery.oss-cn-hangzhou.aliyuncs.com/625d869b?Expires=1898139027&OSSAccessKeyId=LTAIcYTsN8IjKgNY&Signature=OPe3p%2BxbPnBAHiGSlarfv8AqQ7Q%3D"},{"height":0,"width":0,"url":"http://nbd-gallery.oss-cn-hangzhou.aliyuncs.com/191ea77b?Expires=1898139027&OSSAccessKeyId=LTAIcYTsN8IjKgNY&Signature=8XJDKEkRU%2FCds%2BCdmjitT5COecw%3D"}],"source":"每经网","channelId":"5572a108b3cdc86cf39001d0","link":"http://www.nbd.com.cn/articles/2020-02-24/1410902.html","img":"http://image.nbd.com.cn/uploads/articles/images/826574/___.jpg"},{"id":"c9f4e1d594518a3b9ed0910b4324bd63","havePic":true,"pubDate":"2020-02-24 13:36:26","title":"想学快乐电竞？工作钱多又happy？醒醒，凭什么是你","channelName":"体育最新","imageurls":[{"height":0,"width":0,"url":"http://image1.chinanews.com.cn/cnsupload/big/2019/11-15/4-426/17b09cf8cd30443aa29cf63ed5221daf.jpg"},{"height":0,"width":0,"url":"http://i2.chinanews.com/simg/cmshd/2020/02/17/249815dbbf614bd8866d9aa8686230f6.jpg"},{"height":0,"width":0,"url":"http://image1.chinanews.com.cn/cnsupload/big/2016/08-29/4-426/4132e7dbd9ad47e1ad4aca5aab346f51.jpg"},{"height":0,"width":0,"url":"http://image1.chinanews.com.cn/cnsupload/big/2019/12-03/4-426/37839915af5f4fe6ba50bc6293d8aaa0.jpg"},{"height":0,"width":0,"url":"http://image1.chinanews.com.cn/cnsupload/big/2019/03-25/4-426/e2ca89fd6ae54fe28b88312823d1e0a5.jpg"},{"height":0,"width":0,"url":"http://image1.chinanews.com.cn/cnsupload/big/2016/12-13/4-426/54a2ac76304745fe88d55ed6de615265.jpg"},{"height":0,"width":0,"url":"http://i2.chinanews.com/simg/cmshd/2020/02/24/9541cb72cc424163b9a3ee20f10d34d0.jpg"},{"height":0,"width":0,"url":"http://i2.chinanews.com/simg/cmshd/2020/02/24/a0cd3409b9e544d88d00f1c4a5e6f339.jpg"}],"desc":"资料图：世预赛亚洲区40强赛中，国足客场1:2不敌叙利亚，比赛中对手先入一球，此后武磊凌空推射扳平比分，张琳芃不慎乌龙导致国足再度落后。图为张琳芃在比赛中。\r\n\n　　中新网客户端北京2月24日电(王昊)在LPL(英雄联盟中国大陆赛区)因为新冠肺炎疫情推迟的时候，欧洲赛区的G2搞出了\u201c花活儿\u201d。被认为在欧洲实力一骑绝尘的他们此前遭遇两连败，G2的\u201c快乐\u201d似乎\u201c触礁\u201d了。","source":"中国新闻网","channelId":"5572a109b3cdc86cf39001e6","link":"http://www.chinanews.com/ty/2020/02-24/9102596.shtml"}],"currentPage":1,"allNum":384469,"maxResult":3}
+         * stat : 1
+         * data : [{"uniquekey":"776c9b4c4f117ddfbdec020e5069b077","title":"重组新冠疫苗获批启动临床试验","date":"2020-03-17 19:05","category":"头条","author_name":"央视网","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317190544433.html","thumbnail_pic_s":"https://06imgmini.eastday.com/mobile/20200317/20200317190544_0587dfa87134eb2356210dbf91d58b00_1_mwpm_03200403.jpg","thumbnail_pic_s02":"http://06imgmini.eastday.com/mobile/20200317/20200317190544_aef9cda5e22682cbc973cd776594c191_2_mwpm_03200403.jpg"},{"uniquekey":"8db1e02b01bde2ae4a49dcc090728bf6","title":"大数据深度解读\u201c新基建\u201d，经济增长全靠它？","date":"2020-03-17 14:01:35","category":"头条","author_name":"聚合数据","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2FuxekqOSnttOHzZSdzw70aQ","thumbnail_pic_s":"https://juhe.oss-cn-hangzhou.aliyuncs.com/api_image/235/8db1e02b01bde2ae4a49dcc090728bf6.png","thumbnail_pic_s02":"https://juhe.oss-cn-hangzhou.aliyuncs.com/api_image/235/8db1e02b01bde2ae4a49dcc090728bf6.png","thumbnail_pic_s03":"https://juhe.oss-cn-hangzhou.aliyuncs.com/api_image/235/8db1e02b01bde2ae4a49dcc090728bf6.png"},{"uniquekey":"5a3518988caf897e4a16703a93f9d064","title":"忠诚的伍思凯：婚后21年零绯闻，不离不弃，却被22岁儿子坑惨","date":"2020-03-17 19:00","category":"头条","author_name":"酱油女神","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317190025327.html","thumbnail_pic_s":"https://07imgmini.eastday.com/mobile/20200317/20200317190025_99463bbadb22775b68841f32fd5a405e_7_mwpm_03200403.jpg","thumbnail_pic_s02":"http://07imgmini.eastday.com/mobile/20200317/20200317190025_99463bbadb22775b68841f32fd5a405e_10_mwpm_03200403.jpg","thumbnail_pic_s03":"http://07imgmini.eastday.com/mobile/20200317/20200317190025_99463bbadb22775b68841f32fd5a405e_5_mwpm_03200403.jpg"},{"uniquekey":"411376f38624dce6707fc2cffeb1ba6e","title":"广西柳州大毒枭张加爱涉毒涉黑违法建筑被拆除","date":"2020-03-17 18:57","category":"头条","author_name":"中国新闻网","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317185700779.html","thumbnail_pic_s":"https://01imgmini.eastday.com/mobile/20200317/20200317185700_4271e4a8d738448e44ad286b580d06a3_3_mwpm_03200403.jpg","thumbnail_pic_s02":"http://01imgmini.eastday.com/mobile/20200317/20200317185700_4271e4a8d738448e44ad286b580d06a3_2_mwpm_03200403.jpg","thumbnail_pic_s03":"http://01imgmini.eastday.com/mobile/20200317/20200317185700_4271e4a8d738448e44ad286b580d06a3_1_mwpm_03200403.jpg"},{"uniquekey":"41f53970aa35dd47c83f9969cd4b2455","title":"游戏猜疑链：英雄联盟手游能否与王者荣耀共存","date":"2020-03-17 18:47","category":"头条","author_name":"提莫西亚","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317184750169.html","thumbnail_pic_s":"https://03imgmini.eastday.com/mobile/20200317/20200317184750_55943e8e43314b32f6db58836ff6155b_2_mwpm_03200403.jpg","thumbnail_pic_s02":"http://03imgmini.eastday.com/mobile/20200317/20200317184750_55943e8e43314b32f6db58836ff6155b_1_mwpm_03200403.jpg","thumbnail_pic_s03":"http://03imgmini.eastday.com/mobile/20200317/20200317184750_55943e8e43314b32f6db58836ff6155b_5_mwpm_03200403.jpg"},{"uniquekey":"541a67f03511274e9c611d868917ac1f","title":"王者荣耀：四大美女攻略合集，会玩的都是仙女姐姐？","date":"2020-03-17 18:47","category":"头条","author_name":"游戏日报","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317184745284.html","thumbnail_pic_s":"https://05imgmini.eastday.com/mobile/20200317/20200317184745_cb34082b63f0fd0c1b488176a80f6846_12_mwpm_03200403.jpg","thumbnail_pic_s02":"http://05imgmini.eastday.com/mobile/20200317/20200317184745_cb34082b63f0fd0c1b488176a80f6846_14_mwpm_03200403.jpg","thumbnail_pic_s03":"http://05imgmini.eastday.com/mobile/20200317/20200317184745_cb34082b63f0fd0c1b488176a80f6846_6_mwpm_03200403.jpg"},{"uniquekey":"8ed32cec6cc35e0a8147e6df4090e344","title":"一汽丰田首款纯电动SUV奕泽E擎曝光：续航达400公里","date":"2020-03-17 18:44","category":"头条","author_name":"快科技","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317184420646.html","thumbnail_pic_s":"https://09imgmini.eastday.com/mobile/20200317/20200317184420_27f543f563b2eba2eee108bea09bacca_2_mwpm_03200403.jpg","thumbnail_pic_s02":"http://09imgmini.eastday.com/mobile/20200317/20200317184420_27f543f563b2eba2eee108bea09bacca_1_mwpm_03200403.jpg"},{"uniquekey":"3acd7c57feba91fed442258dd021c5c7","title":"内蒙古累计投放企业复工复产贷款541.79亿","date":"2020-03-17 18:36","category":"头条","author_name":"中国新闻网","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317183647465.html","thumbnail_pic_s":"https://05imgmini.eastday.com/mobile/20200317/20200317183647_45de5120e899843c317825a04063e895_1_mwpm_03200403.jpg"},{"uniquekey":"cb289c442f507c59db1888d03a5e406e","title":"北京首都机场回应入境人员挤爆航站楼：已明显改善","date":"2020-03-17 18:30","category":"头条","author_name":"北青网","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317183035630.html","thumbnail_pic_s":"https://06imgmini.eastday.com/mobile/20200317/20200317183035_986ff0f6a51d1e90a2604e8c06707760_1_mwpm_03200403.jpg"},{"uniquekey":"3c7842117009a00e47a3f28b47adbc9f","title":"\u201c钙王\u201d被发现，鸡蛋牛奶都靠边，孩子常吃它长高个，记忆力强！","date":"2020-03-17 18:27","category":"头条","author_name":"美食杰官方","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317182712749.html","thumbnail_pic_s":"https://09imgmini.eastday.com/mobile/20200317/20200317182712_f60eddf445215cb07e4857953d5b1117_10_mwpm_03200403.jpg","thumbnail_pic_s02":"http://09imgmini.eastday.com/mobile/20200317/20200317182712_f60eddf445215cb07e4857953d5b1117_1_mwpm_03200403.jpg","thumbnail_pic_s03":"http://09imgmini.eastday.com/mobile/20200317/20200317182712_f60eddf445215cb07e4857953d5b1117_11_mwpm_03200403.jpg"},{"uniquekey":"13cdf83ef2397537f6cb1b8a7736a824","title":"陈赫二胎得女，首晒一家四口牵手照，妻子张子萱身材恢复极好","date":"2020-03-17 18:26","category":"头条","author_name":"东方号娱乐","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317182647916.html","thumbnail_pic_s":"https://01imgmini.eastday.com/mobile/20200317/2020031718_447243f866314313a7b2a92913d81d7f_2308_cover_mwpm_03200403.jpg","thumbnail_pic_s02":"http://01imgmini.eastday.com/mobile/20200317/2020031718_b946139e8a6745b2ac11a41abd3e5d1e_4503_cover_mwpm_03200403.jpg","thumbnail_pic_s03":"http://01imgmini.eastday.com/mobile/20200317/2020031718_7473f37b9b1c4430bf70e98ef002df57_2830_cover_mwpm_03200403.jpg"},{"uniquekey":"f0387e23a3260bb7111fb7892a4ab969","title":"刘亦菲在微胖的路上越走越远了，网友：女神气质还能维持多久？","date":"2020-03-17 18:22","category":"头条","author_name":"菲尔时尚达人","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317182215274.html","thumbnail_pic_s":"https://06imgmini.eastday.com/mobile/20200317/20200317182215_d58e517c7e5196d2324ba4725e06c94b_2_mwpm_03200403.jpg","thumbnail_pic_s02":"http://06imgmini.eastday.com/mobile/20200317/20200317182215_d58e517c7e5196d2324ba4725e06c94b_6_mwpm_03200403.jpg","thumbnail_pic_s03":"http://06imgmini.eastday.com/mobile/20200317/20200317182215_d58e517c7e5196d2324ba4725e06c94b_4_mwpm_03200403.jpg"},{"uniquekey":"99670c65715826645d39b7db7e4008aa","title":"郑州：高新企业倍增，连破千家大关","date":"2020-03-17 18:15","category":"头条","author_name":"科技日报","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317181539631.html","thumbnail_pic_s":"https://09imgmini.eastday.com/mobile/20200317/20200317181539_6d80e132f2dd21a3626e17fd24a535b7_2_mwpm_03200403.jpg","thumbnail_pic_s02":"http://09imgmini.eastday.com/mobile/20200317/20200317181539_6d80e132f2dd21a3626e17fd24a535b7_1_mwpm_03200403.jpg"},{"uniquekey":"fd72eeb2587a0945d813708e84e47665","title":"上海\u201c外滩22号\u201d北楼建筑确认为最高等级危房","date":"2020-03-17 18:14","category":"头条","author_name":"中国新闻网","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317181434778.html","thumbnail_pic_s":"https://09imgmini.eastday.com/mobile/20200317/20200317181434_a2f6436f48e23b2e730be81373d6f184_6_mwpm_03200403.jpg","thumbnail_pic_s02":"http://09imgmini.eastday.com/mobile/20200317/20200317181434_a2f6436f48e23b2e730be81373d6f184_8_mwpm_03200403.jpg","thumbnail_pic_s03":"http://09imgmini.eastday.com/mobile/20200317/20200317181434_a2f6436f48e23b2e730be81373d6f184_5_mwpm_03200403.jpg"},{"uniquekey":"2338a779d7917d78321d46828745e877","title":"伊朗发现神秘\u201c螳螂人\u201d史前岩画","date":"2020-03-17 18:14","category":"头条","author_name":"环球网","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317181434452.html","thumbnail_pic_s":"https://00imgmini.eastday.com/mobile/20200317/20200317181434_566393b6a3a9ebcd9f67f0c2c4a17cb9_1_mwpm_03200403.jpg"},{"uniquekey":"a906140653bf3333d49828477c18f231","title":"陈赫晒二女儿脚丫照 称安姐现在最喜欢的人是妹妹","date":"2020-03-17 18:14","category":"头条","author_name":"新浪娱乐","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317181429271.html","thumbnail_pic_s":"https://06imgmini.eastday.com/mobile/20200317/20200317181553_85496c5ba8b99ab25a12caf9c079db54_1_mwpm_03200403.jpg","thumbnail_pic_s02":"http://06imgmini.eastday.com/mobile/20200317/20200317181553_85496c5ba8b99ab25a12caf9c079db54_4_mwpm_03200403.jpg","thumbnail_pic_s03":"http://06imgmini.eastday.com/mobile/20200317/20200317181553_85496c5ba8b99ab25a12caf9c079db54_5_mwpm_03200403.jpg"},{"uniquekey":"ac8e68cdf452eb6c31b4ef937ae1b234","title":"爱心企业为色尼区防疫一线捐赠防疫物资","date":"2020-03-17 18:13","category":"头条","author_name":"那曲看点","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317181305609.html","thumbnail_pic_s":"https://03imgmini.eastday.com/mobile/20200317/20200317181305_9627afbe37f89c1337a127bf8ea02cf8_1_mwpm_03200403.jpg"},{"uniquekey":"7f9ad5ef6a2df6feb5745d6288c11d52","title":"郎平体坛的一大传奇教练！到了退休的年纪，她现在的年薪是多少？","date":"2020-03-17 18:12","category":"头条","author_name":"体育来一发TB","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317181242691.html","thumbnail_pic_s":"https://09imgmini.eastday.com/mobile/20200317/20200317181242_dd4efb524e9dc8a5a793be64558f8498_1_mwpm_03200403.jpg","thumbnail_pic_s02":"http://09imgmini.eastday.com/mobile/20200317/20200317181242_dd4efb524e9dc8a5a793be64558f8498_3_mwpm_03200403.jpg","thumbnail_pic_s03":"http://09imgmini.eastday.com/mobile/20200317/20200317181242_dd4efb524e9dc8a5a793be64558f8498_2_mwpm_03200403.jpg"},{"uniquekey":"aaf603f8ab397773be2214bb7c69dd76","title":"北欧式排队再现上海，他们在排啥？","date":"2020-03-17 18:11","category":"头条","author_name":"解放网","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317181148154.html","thumbnail_pic_s":"https://03imgmini.eastday.com/mobile/20200317/20200317181148_a08c0707db57be5620118e58a95b41a2_1_mwpm_03200403.jpg","thumbnail_pic_s02":"http://03imgmini.eastday.com/mobile/20200317/20200317181148_a08c0707db57be5620118e58a95b41a2_8_mwpm_03200403.jpg","thumbnail_pic_s03":"http://03imgmini.eastday.com/mobile/20200317/20200317181148_a08c0707db57be5620118e58a95b41a2_2_mwpm_03200403.jpg"},{"uniquekey":"ed020eac80c53a402dc61cf68b7cd5b0","title":"本赛季十大溢价合同 其中三个溢价合同竟在一支球队 让人诧异不已","date":"2020-03-17 18:10","category":"头条","author_name":"小李的篮球观TB","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317181058360.html","thumbnail_pic_s":"https://06imgmini.eastday.com/mobile/20200317/20200317181058_8bb14b63cbab507ca29f0b3ca869668a_2_mwpm_03200403.jpg","thumbnail_pic_s02":"http://06imgmini.eastday.com/mobile/20200317/20200317181058_8bb14b63cbab507ca29f0b3ca869668a_6_mwpm_03200403.jpg","thumbnail_pic_s03":"http://06imgmini.eastday.com/mobile/20200317/20200317181058_8bb14b63cbab507ca29f0b3ca869668a_3_mwpm_03200403.jpg"},{"uniquekey":"c50d910c1a2694b7bb4919033e75a3f7","title":"深度！想要翻身，勇士这几点要做出改变，把握好或许能够再度夺冠","date":"2020-03-17 18:09","category":"头条","author_name":"豪情NBA","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317180934855.html","thumbnail_pic_s":"https://02imgmini.eastday.com/mobile/20200317/20200317180934_bef3c711a279d33e27b41057dc72f5c5_12_mwpm_03200403.jpg","thumbnail_pic_s02":"http://02imgmini.eastday.com/mobile/20200317/20200317180934_bef3c711a279d33e27b41057dc72f5c5_9_mwpm_03200403.jpg","thumbnail_pic_s03":"http://02imgmini.eastday.com/mobile/20200317/20200317180934_bef3c711a279d33e27b41057dc72f5c5_7_mwpm_03200403.jpg"},{"uniquekey":"416da2843088d456f91353b0aa69ab65","title":"王者荣耀：穿\u201c情侣装\u201d的非官方CP，伽罗一个人占了2对？","date":"2020-03-17 18:09","category":"头条","author_name":"游戏日报","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317180912946.html","thumbnail_pic_s":"https://09imgmini.eastday.com/mobile/20200317/20200317180912_8173d46df2f650116a1817c27889bac8_5_mwpm_03200403.jpg","thumbnail_pic_s02":"http://09imgmini.eastday.com/mobile/20200317/20200317180912_8173d46df2f650116a1817c27889bac8_3_mwpm_03200403.jpg","thumbnail_pic_s03":"http://09imgmini.eastday.com/mobile/20200317/20200317180912_8173d46df2f650116a1817c27889bac8_7_mwpm_03200403.jpg"},{"uniquekey":"385096419b1a59b8aac6aa6cf4353c60","title":"CBA赛会制将采取蛇形分组：疆辽京同组，广东广厦同组","date":"2020-03-17 18:09","category":"头条","author_name":"球长社圈","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317180911396.html","thumbnail_pic_s":"https://07imgmini.eastday.com/mobile/20200317/20200317180911_7ffb238b70226228d194abf3a1113954_1_mwpm_03200403.jpg"},{"uniquekey":"ff519c81b1379a043b5bacd92a08c7c1","title":"各国神话均有记载大洪水时期，史前大洪水时期真的存在吗?","date":"2020-03-17 18:08","category":"头条","author_name":"历史斋录","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317180856862.html","thumbnail_pic_s":"https://08imgmini.eastday.com/mobile/20200317/20200317180856_1a0964e8fca9bccfb6287d0a5fde8f81_1_mwpm_03200403.jpg","thumbnail_pic_s02":"http://08imgmini.eastday.com/mobile/20200317/20200317180856_1a0964e8fca9bccfb6287d0a5fde8f81_4_mwpm_03200403.jpg","thumbnail_pic_s03":"http://08imgmini.eastday.com/mobile/20200317/20200317180856_1a0964e8fca9bccfb6287d0a5fde8f81_3_mwpm_03200403.jpg"},{"uniquekey":"7ec46ff560c5d5412b7d7ed084a717a5","title":"历史上四大暗杀事件，知道三个以上一般都是大佬，你都知道哪些？","date":"2020-03-17 18:05","category":"头条","author_name":"经史合参","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317180502262.html","thumbnail_pic_s":"https://03imgmini.eastday.com/mobile/20200317/2020031718_ad29853d74ee4ddc8f8205ff4648d08a_6217_mwpm_03200403.jpg","thumbnail_pic_s02":"http://03imgmini.eastday.com/mobile/20200317/2020031718_393ba41ebdf44f9d92e0b1eef39f9c27_2089_mwpm_03200403.jpg","thumbnail_pic_s03":"http://03imgmini.eastday.com/mobile/20200317/2020031718_d00c717f7aa847e085f98bf3b131c271_9395_mwpm_03200403.jpg"},{"uniquekey":"2d48edd6706e5e0b6b8f513af0e5bf80","title":"经典石器火爆开服,80后老玩家齐聚!想玩就玩,想刷就刷!完美诠释石器经典","date":"2020-03-17 15:24:10","category":"头条","author_name":"休闲娱乐","url":"https://v.juhe.cn/toutiao/s?id=http%3A%2F%2Flandings.qumeng666.com%2Flandings%2F153","thumbnail_pic_s":"https://juhe.oss-cn-hangzhou.aliyuncs.com/api_image/235/2d48edd6706e5e0b6b8f513af0e5bf80.jpeg","thumbnail_pic_s02":"https://juhe.oss-cn-hangzhou.aliyuncs.com/api_image/235/2d48edd6706e5e0b6b8f513af0e5bf80.jpeg","thumbnail_pic_s03":"https://juhe.oss-cn-hangzhou.aliyuncs.com/api_image/235/2d48edd6706e5e0b6b8f513af0e5bf80.jpeg"},{"uniquekey":"bb30884240a986fe6171e024b7e4e9cd","title":"聚焦疫情｜约翰斯·霍普金斯大学：美国新冠肺炎病例数超4600例","date":"2020-03-17 17:59","category":"头条","author_name":"北青网","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317175919569.html","thumbnail_pic_s":"https://01imgmini.eastday.com/mobile/20200317/20200317175919_919a945c47e0ed00b7d3becd9e334ff4_2_mwpm_03200403.jpg","thumbnail_pic_s02":"http://01imgmini.eastday.com/mobile/20200317/20200317175919_919a945c47e0ed00b7d3becd9e334ff4_3_mwpm_03200403.jpg","thumbnail_pic_s03":"http://01imgmini.eastday.com/mobile/20200317/20200317175919_919a945c47e0ed00b7d3becd9e334ff4_5_mwpm_03200403.jpg"},{"uniquekey":"b9e7f186680fadf9bda678b99badda16","title":"98岁高龄重症患者治愈出院，雷神山医院好消息连连","date":"2020-03-17 17:54","category":"头条","author_name":"纵相新闻","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317175450197.html","thumbnail_pic_s":"https://09imgmini.eastday.com/mobile/20200317/20200317175450_ecec28da6c8cbbc435f6114a55ed91f5_2_mwpm_03200403.jpg","thumbnail_pic_s02":"http://09imgmini.eastday.com/mobile/20200317/20200317175450_ecec28da6c8cbbc435f6114a55ed91f5_3_mwpm_03200403.jpg","thumbnail_pic_s03":"http://09imgmini.eastday.com/mobile/20200317/20200317175450_ecec28da6c8cbbc435f6114a55ed91f5_4_mwpm_03200403.jpg"},{"uniquekey":"7877f3eb616670208e330b0ebf36c465","title":"土耳其自然爱好者上演\u201c激流勇进\u201d场面惊险刺激","date":"2020-03-17 17:53","category":"头条","author_name":"环球网","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317175356360.html","thumbnail_pic_s":"https://01imgmini.eastday.com/mobile/20200317/20200317175356_4baf88768d1f7a834b1129c309761e7c_7_mwpm_03200403.jpg","thumbnail_pic_s02":"http://01imgmini.eastday.com/mobile/20200317/20200317175356_4baf88768d1f7a834b1129c309761e7c_3_mwpm_03200403.jpg","thumbnail_pic_s03":"http://01imgmini.eastday.com/mobile/20200317/20200317175356_4baf88768d1f7a834b1129c309761e7c_4_mwpm_03200403.jpg"},{"uniquekey":"c972c16c5b46956fc8c7683ba8dde1ce","title":"为何靳东执意娶二婚的她？胡歌一语道出原因，原来如此","date":"2020-03-17 17:50","category":"头条","author_name":"老赵娱乐说说说","url":"https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317175048159.html","thumbnail_pic_s":"https://08imgmini.eastday.com/mobile/20200317/2020031521_14e0c48eb6bb4085bcfa8378fe290df4_7198_mwpm_03200403.jpg","thumbnail_pic_s02":"http://08imgmini.eastday.com/mobile/20200317/2020031521_b40e8963605b447c90f1925eff979481_4471_mwpm_03200403.jpg","thumbnail_pic_s03":"http://08imgmini.eastday.com/mobile/20200317/2020031521_6fa5423753b14fa39bb00d1a2de9c488_9332_mwpm_03200403.jpg"}]
          */
 
-        private int ret_code;
-        private PagebeanBean pagebean;
+        private String stat;
+        private List<DataBean> data;
 
-        public int getRet_code() {
-            return ret_code;
+        public String getStat() {
+            return stat;
         }
 
-        public void setRet_code(int ret_code) {
-            this.ret_code = ret_code;
+        public void setStat(String stat) {
+            this.stat = stat;
         }
 
-        public PagebeanBean getPagebean() {
-            return pagebean;
+        public List<DataBean> getData() {
+            return data;
         }
 
-        public void setPagebean(PagebeanBean pagebean) {
-            this.pagebean = pagebean;
+        public void setData(List<DataBean> data) {
+            this.data = data;
         }
 
-        public static class PagebeanBean {
+        public static class DataBean {
             /**
-             * allPages : 128157
-             * contentlist : [{"id":"66d9dedd57754339dc4587c472551e7b","havePic":true,"pubDate":"2020-02-25 07:55:00","title":" 从小白到高管，硅谷大佬深度解读工程师职业进阶之路","channelName":"创业最新","imageurls":[{"height":0,"width":0,"url":"https://cdnwww.lieyunwang.com/themes/default/images/theme/company_code.jpg"}],"source":"猎云网","channelId":"3f4794412eaa17ed","link":"https://www.lieyunwang.com/archives/463445","img":"https://cdnwww.lieyunwang.com/themes/default/images/theme/company_code.jpg"},{"id":"86db6202078e2df3f96cbc7cbf5c45a9","havePic":true,"pubDate":"2020-02-24 13:38:56","title":"又一个概念板块涨停了！给特斯拉写封信，问问明天该炒啥？","channelName":"财经焦点","imageurls":[{"height":0,"width":0,"url":"http://image.nbd.com.cn/uploads/articles/images/826574/___.jpg"},{"height":0,"width":0,"url":"http://nbd-gallery.oss-cn-hangzhou.aliyuncs.com/625d869b?Expires=1898139027&OSSAccessKeyId=LTAIcYTsN8IjKgNY&Signature=OPe3p%2BxbPnBAHiGSlarfv8AqQ7Q%3D"},{"height":0,"width":0,"url":"http://nbd-gallery.oss-cn-hangzhou.aliyuncs.com/191ea77b?Expires=1898139027&OSSAccessKeyId=LTAIcYTsN8IjKgNY&Signature=8XJDKEkRU%2FCds%2BCdmjitT5COecw%3D"}],"source":"每经网","channelId":"5572a108b3cdc86cf39001d0","link":"http://www.nbd.com.cn/articles/2020-02-24/1410902.html","img":"http://image.nbd.com.cn/uploads/articles/images/826574/___.jpg"},{"id":"c9f4e1d594518a3b9ed0910b4324bd63","havePic":true,"pubDate":"2020-02-24 13:36:26","title":"想学快乐电竞？工作钱多又happy？醒醒，凭什么是你","channelName":"体育最新","imageurls":[{"height":0,"width":0,"url":"http://image1.chinanews.com.cn/cnsupload/big/2019/11-15/4-426/17b09cf8cd30443aa29cf63ed5221daf.jpg"},{"height":0,"width":0,"url":"http://i2.chinanews.com/simg/cmshd/2020/02/17/249815dbbf614bd8866d9aa8686230f6.jpg"},{"height":0,"width":0,"url":"http://image1.chinanews.com.cn/cnsupload/big/2016/08-29/4-426/4132e7dbd9ad47e1ad4aca5aab346f51.jpg"},{"height":0,"width":0,"url":"http://image1.chinanews.com.cn/cnsupload/big/2019/12-03/4-426/37839915af5f4fe6ba50bc6293d8aaa0.jpg"},{"height":0,"width":0,"url":"http://image1.chinanews.com.cn/cnsupload/big/2019/03-25/4-426/e2ca89fd6ae54fe28b88312823d1e0a5.jpg"},{"height":0,"width":0,"url":"http://image1.chinanews.com.cn/cnsupload/big/2016/12-13/4-426/54a2ac76304745fe88d55ed6de615265.jpg"},{"height":0,"width":0,"url":"http://i2.chinanews.com/simg/cmshd/2020/02/24/9541cb72cc424163b9a3ee20f10d34d0.jpg"},{"height":0,"width":0,"url":"http://i2.chinanews.com/simg/cmshd/2020/02/24/a0cd3409b9e544d88d00f1c4a5e6f339.jpg"}],"desc":"资料图：世预赛亚洲区40强赛中，国足客场1:2不敌叙利亚，比赛中对手先入一球，此后武磊凌空推射扳平比分，张琳芃不慎乌龙导致国足再度落后。图为张琳芃在比赛中。\r\n\n　　中新网客户端北京2月24日电(王昊)在LPL(英雄联盟中国大陆赛区)因为新冠肺炎疫情推迟的时候，欧洲赛区的G2搞出了\u201c花活儿\u201d。被认为在欧洲实力一骑绝尘的他们此前遭遇两连败，G2的\u201c快乐\u201d似乎\u201c触礁\u201d了。","source":"中国新闻网","channelId":"5572a109b3cdc86cf39001e6","link":"http://www.chinanews.com/ty/2020/02-24/9102596.shtml"}]
-             * currentPage : 1
-             * allNum : 384469
-             * maxResult : 3
+             * uniquekey : 776c9b4c4f117ddfbdec020e5069b077
+             * title : 重组新冠疫苗获批启动临床试验
+             * date : 2020-03-17 19:05
+             * category : 头条
+             * author_name : 央视网
+             * url : https://v.juhe.cn/toutiao/s?id=https%3A%2F%2Fmini.eastday.com%2Fmobile%2F200317190544433.html
+             * thumbnail_pic_s : https://06imgmini.eastday.com/mobile/20200317/20200317190544_0587dfa87134eb2356210dbf91d58b00_1_mwpm_03200403.jpg
+             * thumbnail_pic_s02 : http://06imgmini.eastday.com/mobile/20200317/20200317190544_aef9cda5e22682cbc973cd776594c191_2_mwpm_03200403.jpg
+             * thumbnail_pic_s03 : https://juhe.oss-cn-hangzhou.aliyuncs.com/api_image/235/8db1e02b01bde2ae4a49dcc090728bf6.png
              */
 
-            private int allPages;
-            private int currentPage;
-            private int allNum;
-            private int maxResult;
-            private List<ContentlistBean> contentlist;
+            private String uniquekey;
+            private String title;
+            private String date;
+            private String category;
+            private String author_name;
+            private String url;
+            private String thumbnail_pic_s;
+            private String thumbnail_pic_s02;
+            private String thumbnail_pic_s03;
 
-            public int getAllPages() {
-                return allPages;
+            public String getUniquekey() {
+                return uniquekey;
             }
 
-            public void setAllPages(int allPages) {
-                this.allPages = allPages;
+            public void setUniquekey(String uniquekey) {
+                this.uniquekey = uniquekey;
             }
 
-            public int getCurrentPage() {
-                return currentPage;
+            public String getTitle() {
+                return title;
             }
 
-            public void setCurrentPage(int currentPage) {
-                this.currentPage = currentPage;
+            public void setTitle(String title) {
+                this.title = title;
             }
 
-            public int getAllNum() {
-                return allNum;
+            public String getDate() {
+                return date;
             }
 
-            public void setAllNum(int allNum) {
-                this.allNum = allNum;
+            public void setDate(String date) {
+                this.date = date;
             }
 
-            public int getMaxResult() {
-                return maxResult;
+            public String getCategory() {
+                return category;
             }
 
-            public void setMaxResult(int maxResult) {
-                this.maxResult = maxResult;
+            public void setCategory(String category) {
+                this.category = category;
             }
 
-            public List<ContentlistBean> getContentlist() {
-                return contentlist;
+            public String getAuthor_name() {
+                return author_name;
             }
 
-            public void setContentlist(List<ContentlistBean> contentlist) {
-                this.contentlist = contentlist;
+            public void setAuthor_name(String author_name) {
+                this.author_name = author_name;
             }
 
-            public static class ContentlistBean {
-                /**
-                 * id : 66d9dedd57754339dc4587c472551e7b
-                 * havePic : true
-                 * pubDate : 2020-02-25 07:55:00
-                 * title :  从小白到高管，硅谷大佬深度解读工程师职业进阶之路
-                 * channelName : 创业最新
-                 * imageurls : [{"height":0,"width":0,"url":"https://cdnwww.lieyunwang.com/themes/default/images/theme/company_code.jpg"}]
-                 * source : 猎云网
-                 * channelId : 3f4794412eaa17ed
-                 * link : https://www.lieyunwang.com/archives/463445
-                 * img : https://cdnwww.lieyunwang.com/themes/default/images/theme/company_code.jpg
-                 * desc : 资料图：世预赛亚洲区40强赛中，国足客场1:2不敌叙利亚，比赛中对手先入一球，此后武磊凌空推射扳平比分，张琳芃不慎乌龙导致国足再度落后。图为张琳芃在比赛中。
-                 * <p>
-                 * 　　中新网客户端北京2月24日电(王昊)在LPL(英雄联盟中国大陆赛区)因为新冠肺炎疫情推迟的时候，欧洲赛区的G2搞出了“花活儿”。被认为在欧洲实力一骑绝尘的他们此前遭遇两连败，G2的“快乐”似乎“触礁”了。
-                 */
+            public String getUrl() {
+                return url;
+            }
 
-                private String id;
-                private boolean havePic;
-                private String pubDate;
-                private String title;
-                private String channelName;
-                private String source;
-                private String channelId;
-                private String link;
-                private String img;
-                private String desc;
-                private List<ImageurlsBean> imageurls;
+            public void setUrl(String url) {
+                this.url = url;
+            }
 
-                public String getId() {
-                    return id;
-                }
+            public String getThumbnail_pic_s() {
+                return thumbnail_pic_s;
+            }
 
-                public void setId(String id) {
-                    this.id = id;
-                }
+            public void setThumbnail_pic_s(String thumbnail_pic_s) {
+                this.thumbnail_pic_s = thumbnail_pic_s;
+            }
 
-                public boolean isHavePic() {
-                    return havePic;
-                }
+            public String getThumbnail_pic_s02() {
+                return thumbnail_pic_s02;
+            }
 
-                public void setHavePic(boolean havePic) {
-                    this.havePic = havePic;
-                }
+            public void setThumbnail_pic_s02(String thumbnail_pic_s02) {
+                this.thumbnail_pic_s02 = thumbnail_pic_s02;
+            }
 
-                public String getPubDate() {
-                    return pubDate;
-                }
+            public String getThumbnail_pic_s03() {
+                return thumbnail_pic_s03;
+            }
 
-                public void setPubDate(String pubDate) {
-                    this.pubDate = pubDate;
-                }
-
-                public String getTitle() {
-                    return title;
-                }
-
-                public void setTitle(String title) {
-                    this.title = title;
-                }
-
-                public String getChannelName() {
-                    return channelName;
-                }
-
-                public void setChannelName(String channelName) {
-                    this.channelName = channelName;
-                }
-
-                public String getSource() {
-                    return source;
-                }
-
-                public void setSource(String source) {
-                    this.source = source;
-                }
-
-                public String getChannelId() {
-                    return channelId;
-                }
-
-                public void setChannelId(String channelId) {
-                    this.channelId = channelId;
-                }
-
-                public String getLink() {
-                    return link;
-                }
-
-                public void setLink(String link) {
-                    this.link = link;
-                }
-
-                public String getImg() {
-                    return img;
-                }
-
-                public void setImg(String img) {
-                    this.img = img;
-                }
-
-                public String getDesc() {
-                    return desc;
-                }
-
-                public void setDesc(String desc) {
-                    this.desc = desc;
-                }
-
-                public List<ImageurlsBean> getImageurls() {
-                    return imageurls;
-                }
-
-                public void setImageurls(List<ImageurlsBean> imageurls) {
-                    this.imageurls = imageurls;
-                }
-
-                public static class ImageurlsBean {
-                    /**
-                     * height : 0
-                     * width : 0
-                     * url : https://cdnwww.lieyunwang.com/themes/default/images/theme/company_code.jpg
-                     */
-
-                    private int height;
-                    private int width;
-                    private String url;
-
-                    public int getHeight() {
-                        return height;
-                    }
-
-                    public void setHeight(int height) {
-                        this.height = height;
-                    }
-
-                    public int getWidth() {
-                        return width;
-                    }
-
-                    public void setWidth(int width) {
-                        this.width = width;
-                    }
-
-                    public String getUrl() {
-                        return url;
-                    }
-
-                    public void setUrl(String url) {
-                        this.url = url;
-                    }
-                }
+            public void setThumbnail_pic_s03(String thumbnail_pic_s03) {
+                this.thumbnail_pic_s03 = thumbnail_pic_s03;
             }
         }
     }

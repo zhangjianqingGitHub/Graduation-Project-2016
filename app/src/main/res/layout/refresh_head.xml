@@ -7,10 +7,11 @@
     <!--下拉刷新控件-->
 
     <LinearLayout
+        android:gravity="center"
         android:id="@+id/ll_pull_down"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <FrameLayout
             android:layout_width="wrap_content"
@@ -25,9 +26,11 @@
                 android:src="@drawable/common_listview_headview_red_arrow" />
 
             <ProgressBar
+                android:scaleY="0.5"
+                android:scaleX="0.5"
                 android:id="@+id/pb_status"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:indeterminateDrawable="@drawable/custom_progressbar"
                 android:visibility="invisible" />
@@ -36,7 +39,8 @@
         </FrameLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:orientation="vertical">
@@ -54,7 +58,6 @@
                 android:id="@+id/tv_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:gravity="center_horizontal"
                 android:text="上次更新时间"
                 android:textColor="#55000000"

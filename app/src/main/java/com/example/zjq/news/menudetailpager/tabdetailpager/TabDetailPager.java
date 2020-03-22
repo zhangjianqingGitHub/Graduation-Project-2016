@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
@@ -88,7 +89,14 @@ public class TabDetailPager extends MenuDetailBasePager {
         @Override
         public void onPullDownRefresh() {
 
+            Toast.makeText(context,"1111",Toast.LENGTH_SHORT).show();
             getDataForRecyclerview();
+        }
+
+        @Override
+        public void onLoadMore() {
+
+            Toast.makeText(context,"hhhh",Toast.LENGTH_SHORT).show();
         }
     }
 

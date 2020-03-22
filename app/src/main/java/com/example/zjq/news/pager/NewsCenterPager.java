@@ -60,25 +60,28 @@ public class NewsCenterPager extends BasePager {
 
         url = Constants.NewsList;
 
-        if (CacheUtils.isConnect(context)) {
+        //有网
+        getDataFromNet(url);
 
-            //有网
-            getDataFromNet(url);
-
-        } else {
-
-            //解析缓存数据
-            String result = CacheUtils.getString(context, url);
-
-            if (!TextUtils.isEmpty(result)) {
-
-                ToastUtil.show_center(context, "没有联网哦！先看看缓存的数据吧~");
-
-                processData(result);
-            }
-
-
-        }
+//        if (CacheUtils.isConnect(context)) {
+//
+//            //有网
+//            getDataFromNet(url);
+//
+//        } else {
+//
+//            //解析缓存数据
+//            String result = CacheUtils.getString(context, url);
+//
+//            if (!TextUtils.isEmpty(result)) {
+//
+//                ToastUtil.show_center(context, "没有联网哦！先看看缓存的数据吧~");
+//
+//                processData(result);
+//            }
+//
+//
+//        }
     }
 
     private void SetLeftData() {

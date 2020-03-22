@@ -2,10 +2,12 @@ package com.example.zjq.news.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
+import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -34,7 +36,7 @@ public class RefreshListView extends ListView {
     private TextView tv_time;
 
     //下拉刷新，顶部轮播图
-    private LinearLayout headerView;
+    private LinearLayout headerView, footView;
 
     //下拉刷新控件的高
     private int headHeight;
@@ -57,6 +59,11 @@ public class RefreshListView extends ListView {
     private Animation downAnimation;
 
     private OnRefreshListener onRefreshListener;
+    //加载更多空间的高
+    private int footerViewHeight;
+    //是否已经加载更多
+    private boolean isLoadMore = false;
+
 
     public RefreshListView(Context context) {
         this(context, null);
@@ -74,6 +81,65 @@ public class RefreshListView extends ListView {
         //动画
         initAnimation();
 
+        //
+        initFootView(context);
+
+    }
+
+    private void initFootView(Context context) {
+        footView = (LinearLayout) View.inflate(context, R.layout.refresh_foot, null);
+
+        footView.measure(0, 0);
+        footerViewHeight = footView.getMeasuredHeight();
+
+        footView.setPadding(0, -footerViewHeight, 0, 0);
+
+        //添加ListViewfooter
+        addFooterView(footView);
+
+        //监听listview 滑动
+        setOnScrollListener(new MyOnScrollListener());
+
+    }
+
+    class MyOnScrollListener implements OnScrollListener {
+
+        @Override
+        public void onScrollStateChanged(AbsListView absListView, int scrollState) {
+
+            //当静止时,或者惯性滚动的时候
+
+            if (scrollState == OnScrollListener.SCROLL_STATE_IDLE || scrollState == OnScrollListener.SCROLL_STATE_FLING) {
+
+                Log.e("zjq","1"+"-"+getLastVisiblePosition()+"_"+getCount());
+
+                //并且时最后一条可见的
+                if (getLastVisiblePosition() >= getCount()-1) {
+
+                    Log.e("zjq","2");
+
+
+                    //显示加载更多的布局
+                    footView.setPadding(8, 8, 8, 8);
+                    //状态改变
+                    isLoadMore = true;
+                    //回调接口
+                    if (onRefreshListener!=null){
+
+                        Log.e("zjq","3");
+
+                        onRefreshListener.onLoadMore();
+                    }
+                }
+            }
+
+
+        }
+
+        @Override
+        public void onScroll(AbsListView absListView, int i, int i1, int i2) {
+
+        }
     }
 
     private void initAnimation() {
@@ -258,6 +324,9 @@ public class RefreshListView extends ListView {
 
         //当下拉刷新时回调这个方法
         void onPullDownRefresh();
+
+        //加载更多
+        void onLoadMore();
 
     }
 

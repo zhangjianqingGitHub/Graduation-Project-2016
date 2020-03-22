@@ -239,27 +239,26 @@ public class TabDetailPager extends MenuDetailBasePager {
 
                         if (bean.getResult().getStat().equals("1")) {
 
-                            if (from == 1) {
-                                //下拉刷新
 
-                                start = 0;
-                                end = 10;
-                                list = list.subList(start, end);
+                            //下拉刷新
 
-                                adapter.setData(list);
+                            start = 0;
+                            end = 10;
+                            list = list.subList(start, end);
 
-                                //隐藏下拉刷新控件-更新时间(true)
-                                listView.onRefreshFinish(true);
+                            adapter.setData(list);
 
-
-                            } else {
-
-
-                            }
+                            //隐藏下拉刷新控件-更新时间(true)
+                            listView.onRefreshFinish(true);
 
 
                         }
                     } catch (Exception e) {
+
+
+                        //隐藏下拉刷新控件-更新时间(true)
+                        listView.onRefreshFinish(true);
+
                         //没有更多数据
                         listView.NoMore();
                     }

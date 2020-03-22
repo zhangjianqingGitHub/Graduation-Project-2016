@@ -67,6 +67,9 @@ public class RefreshListView extends ListView {
     //顶部轮播图部分
     private View topNewxView;
 
+    //listView再y轴的坐标
+    private int listViewOnScreenY = -1;
+
 
     public RefreshListView(Context context) {
         this(context, null);
@@ -207,6 +210,14 @@ public class RefreshListView extends ListView {
                     startY = ev.getY();
                 }
 
+                //判断顶部轮播图是否完全显示，只有完全显示才会有下拉刷新
+                boolean isDisplayTopNews = isDisplayTopNews();
+
+                if (!isDisplayTopNews) {
+                    //没有完全显示，加载更多，不走下面
+                    break;
+                }
+
                 //如果正在刷新，则不刷新
                 if (refreshing == currentStatus) {
                     break;
@@ -275,6 +286,36 @@ public class RefreshListView extends ListView {
 
 
         return super.onTouchEvent(ev);
+    }
+
+    //判断是否完全显示顶部轮播图
+    private boolean isDisplayTopNews() {
+
+        if (topNewxView != null) {
+            //1得到listview再屏幕上的坐标
+            int[] loaction = new int[2];
+
+            if (listViewOnScreenY == -1) {
+                getLocationOnScreen(loaction);
+                listViewOnScreenY = loaction[1];
+            }
+
+            //得到顶部轮播图再屏幕上的坐标
+            topNewxView.getLocationOnScreen(loaction);
+            int topOnScreenY = loaction[1];
+
+//        if (listViewOnScreenY <= topOnScreenY) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+
+            return listViewOnScreenY <= topOnScreenY;
+        } else {
+            return true;
+        }
+
+
     }
 
     private void refreshViewState() {

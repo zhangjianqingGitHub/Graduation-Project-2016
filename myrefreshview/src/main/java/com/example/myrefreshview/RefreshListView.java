@@ -1,4 +1,4 @@
-package com.example.zjq.news.view;
+package com.example.myrefreshview;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -13,8 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import com.example.zjq.news.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

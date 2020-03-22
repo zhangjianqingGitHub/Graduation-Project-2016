@@ -8,13 +8,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
+import com.example.myrefreshview.RefreshListView;
 import com.example.zjq.news.R;
 import com.example.zjq.news.base.MenuDetailBasePager;
 import com.example.zjq.news.bean.NewsCenterPagerBean;
@@ -23,7 +23,6 @@ import com.example.zjq.news.menudetailpager.bean.TabDetailBean;
 import com.example.zjq.news.menudetailpager.bean.TabDetailViewPagerBean;
 import com.example.zjq.news.utils.Constants;
 import com.example.zjq.news.view.HorizontalScrollViewPager;
-import com.example.zjq.news.view.RefreshListView;
 import com.google.gson.Gson;
 
 import org.xutils.common.Callback;

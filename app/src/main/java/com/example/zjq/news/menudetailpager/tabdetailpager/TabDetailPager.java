@@ -25,6 +25,8 @@ import com.example.zjq.news.utils.Constants;
 import com.example.zjq.news.view.HorizontalScrollViewPager;
 import com.google.gson.Gson;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.xutils.common.Callback;
 import org.xutils.common.util.DensityUtil;
 import org.xutils.http.RequestParams;
@@ -51,10 +53,10 @@ public class TabDetailPager extends MenuDetailBasePager {
     private int prePosition;
 
     private MyListviewAdapter adapter;
-    private List<TabDetailBean.ResultBean.DataBean> list;
-    private List<TabDetailBean.ResultBean.DataBean> list_more;
+    private List<TabDetailBean> list;
+    private List<TabDetailBean> list_more;
     private int start = 0;
-    private int end = 10;
+    private int end = 5;
 
 
     public TabDetailPager(Context context, NewsCenterPagerBean.DataBean dataBean) {
@@ -92,13 +94,13 @@ public class TabDetailPager extends MenuDetailBasePager {
         public void onPullDownRefresh() {
 
             getDataForImgs();
-            getDataForRecyclerview(1);
+            getDataForRecyclerview();
         }
 
         @Override
         public void onLoadMore() {
 
-            getDataForRecyclerview(2);
+            getDataForRecyclerview();
         }
     }
 
@@ -117,7 +119,7 @@ public class TabDetailPager extends MenuDetailBasePager {
         adapter = new MyListviewAdapter(context);
         listView.setAdapter(adapter);
         //下方数据
-        getDataForRecyclerview(1);
+        getDataForRecyclerview();
 
 
     }
@@ -196,99 +198,111 @@ public class TabDetailPager extends MenuDetailBasePager {
     }
 
 
-    private void getDataForRecyclerview(final int from) {
+    private void getDataForRecyclerview() {
+//
+//        if (from == 2) {
+//            //加载更多
+//
+//            if (start < list.size() - 1) {
+//
+//                start = end;
+//                end += 5;
+//
+//                if (end >= list.size() - 1) {
+//                    end = list.size() - 1;
+//                }
+//
+//                list_more = list.subList(start, end);
+//
+//                adapter.addAll(list_more);
+//
+//                listView.onRefreshFinish(false);
+//
+//
+//            } else {
+//                //没有更多数据
+//                listView.NoMore();
+//
+//
+//            }
+//        } else {
+        String url = "https://api.xiaohuwei.cn/news.php";
 
-        if (from == 2) {
-            //加载更多
-
-            if (start < list.size()) {
-
-                start = end;
-                end += 10;
-
-                list_more = list.subList(start, end);
-
-                adapter.addAll(list_more);
-
-                listView.onRefreshFinish(false);
-
-
-            } else {
-                //没有更多数据
-                listView.NoMore();
-
-
-            }
-        } else {
-            String url = "http://v.juhe.cn/toutiao/index";
-
-            RequestParams params = new RequestParams(url);
-            params.addBodyParameter("key", "b0b89109785634c4fcd0a3ca78cd3ad9");
-            params.addBodyParameter("type", "top");
-
-
-            x.http().get(params, new Callback.CommonCallback<String>() {
-                @Override
-                public void onSuccess(String result) {
-
-                    try {
-                        TabDetailBean bean = new Gson().fromJson(result, TabDetailBean.class);
-
-                        list = bean.getResult().getData();
-
-                        if (bean.getResult().getStat().equals("1")) {
+        RequestParams params = new RequestParams(url);
+        //PS：type 参数可为 hot（精选）yule (娱乐) toutiao (头条)motion (运动) 不传默认为 hot
+        params.addBodyParameter("type", "toutiao");
 
 
-                            //下拉刷新
+        x.http().get(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
 
-                            start = 0;
-                            end = 10;
-                            list = list.subList(start, end);
+                try {
 
-                            adapter.setData(list);
+                    JSONArray jsonArray = new JSONArray(result);
+                    list = new ArrayList<>();
 
-                            //隐藏下拉刷新控件-更新时间(true)
-                            listView.onRefreshFinish(true);
+                    for (int i = 1; i < jsonArray.length(); i++) {
 
+                        JSONObject jsonObject = (JSONObject) jsonArray.get(i);
 
+                        if (jsonObject != null) {
+                            TabDetailBean bean = new TabDetailBean(
+                                    jsonObject.optString("mtime"),
+                                    jsonObject.optString("digest"),
+                                    jsonObject.optString("imgsrc"),
+                                    jsonObject.optString("url"));
+
+                            list.add(bean);
                         }
-                    } catch (Exception e) {
 
 
-                        //隐藏下拉刷新控件-更新时间(true)
-                        listView.onRefreshFinish(true);
-
-                        //没有更多数据
-                        listView.NoMore();
                     }
 
+                    //下拉刷新
+//                    list_more = list.subList(start, end);
 
-                }
+                    adapter.setData(list);
 
-                @Override
-                public void onError(Throwable ex, boolean isOnCallback) {
+                    //隐藏下拉刷新控件-更新时间(true)
+                    listView.onRefreshFinish(true);
 
-                    Log.e("zjq-aa", ex.getMessage());
+                } catch (Exception e) {
 
-                    //隐藏下拉刷新控件
+                    //隐藏下拉刷新控件-更新时间(true)
                     listView.onRefreshFinish(true);
 
                     //没有更多数据
                     listView.NoMore();
-
                 }
 
-                @Override
-                public void onCancelled(CancelledException cex) {
 
-                }
+            }
 
-                @Override
-                public void onFinished() {
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
 
-                }
-            });
-        }
+                Log.e("zjq-aa", ex.getMessage());
+
+                //隐藏下拉刷新控件
+                listView.onRefreshFinish(true);
+
+                //没有更多数据
+                listView.NoMore();
+
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
+//        }
 
 
     }

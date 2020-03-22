@@ -182,7 +182,6 @@ public class NewsCenterPager extends BasePager {
         params.addBodyParameter("typeId", list_left.get(position_left).getTypeId());
         params.addBodyParameter("page", 1);
 
-        Log.e("zjq", list_left.get(position_left).getTypeId() + "");
 
         x.http().get(params, new Callback.CacheCallback<String>() {
             @Override

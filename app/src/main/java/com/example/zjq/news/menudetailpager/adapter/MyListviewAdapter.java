@@ -19,19 +19,19 @@ public class MyListviewAdapter extends BaseAdapter {
 
 
     private final Context context;
-    private List<TabDetailBean.ResultBean.DataBean> mDataList=new ArrayList<>();
+    private List<TabDetailBean> mDataList=new ArrayList<>();
 
     public MyListviewAdapter(Context context) {
         this.context = context;
     }
 
-    public void setData(List<TabDetailBean.ResultBean.DataBean> list) {
+    public void setData(List<TabDetailBean> list) {
         this.mDataList = list;
         notifyDataSetChanged();
 
     }
 
-    public void addAll(Collection<TabDetailBean.ResultBean.DataBean> list) {
+    public void addAll(Collection<TabDetailBean> list) {
 //        int lastIndex = this.mDataList.size();
 //        if (this.mDataList.addAll(list)) {
 //            notifyItemRangeInserted(lastIndex, list.size());
@@ -83,17 +83,17 @@ public class MyListviewAdapter extends BaseAdapter {
 
 
         }
-        TabDetailBean.ResultBean.DataBean bean = mDataList.get(position);
+        TabDetailBean bean = mDataList.get(position);
 
-        if (bean.getThumbnail_pic_s() != null) {
+        if (bean.getImgsrc() != null) {
 
-            Glide.with(context).load(bean.getThumbnail_pic_s()).into(viewHolder.iv_img);
+            Glide.with(context).load(bean.getImgsrc()).into(viewHolder.iv_img);
 
         }
 
-        viewHolder.tv_content.setText(bean.getTitle());
+        viewHolder.tv_content.setText(bean.getDigest());
 
-        viewHolder.tv_time.setText(bean.getTitle());
+        viewHolder.tv_time.setText(bean.getMtime());
 
         return convertView;
     }

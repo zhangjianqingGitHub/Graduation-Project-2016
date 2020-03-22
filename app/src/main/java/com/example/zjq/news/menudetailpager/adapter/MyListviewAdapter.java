@@ -11,13 +11,15 @@ import com.bumptech.glide.Glide;
 import com.example.zjq.news.R;
 import com.example.zjq.news.menudetailpager.bean.TabDetailBean;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class MyListviewAdapter extends BaseAdapter {
 
 
     private final Context context;
-    private List<TabDetailBean.ResultBean.DataBean> mDataList;
+    private List<TabDetailBean.ResultBean.DataBean> mDataList=new ArrayList<>();
 
     public MyListviewAdapter(Context context) {
         this.context = context;
@@ -25,6 +27,16 @@ public class MyListviewAdapter extends BaseAdapter {
 
     public void setData(List<TabDetailBean.ResultBean.DataBean> list) {
         this.mDataList = list;
+        notifyDataSetChanged();
+
+    }
+
+    public void addAll(Collection<TabDetailBean.ResultBean.DataBean> list) {
+//        int lastIndex = this.mDataList.size();
+//        if (this.mDataList.addAll(list)) {
+//            notifyItemRangeInserted(lastIndex, list.size());
+//        }
+        this.mDataList.addAll(list);
         notifyDataSetChanged();
 
     }

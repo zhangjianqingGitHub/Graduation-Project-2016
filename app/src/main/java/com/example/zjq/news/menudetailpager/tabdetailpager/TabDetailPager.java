@@ -52,9 +52,10 @@ public class TabDetailPager extends MenuDetailBasePager {
     private int prePosition;
 
     private MyListviewAdapter adapter;
-    private int next = 0;
     private List<TabDetailBean.ResultBean.DataBean> list;
-    private int page = 1;
+    private List<TabDetailBean.ResultBean.DataBean> list_more;
+    private int start = 0;
+    private int end = 10;
 
 
     public TabDetailPager(Context context, NewsCenterPagerBean.DataBean dataBean) {
@@ -62,6 +63,7 @@ public class TabDetailPager extends MenuDetailBasePager {
         this.data = dataBean;
 
 //        data.getNewsId()
+
 
     }
 
@@ -76,7 +78,8 @@ public class TabDetailPager extends MenuDetailBasePager {
         ll_point_group = topNewxView.findViewById(R.id.ll_point_group);
         listView = view.findViewById(R.id.listview);
 
-        listView.addHeaderView(topNewxView);
+//        listView.addHeaderView(topNewxView);
+        listView.addTopNewsView(topNewxView);
 
         //设置监听刷新
         listView.setOnRefreshListener(new MyOnRefreshListener());
@@ -89,14 +92,14 @@ public class TabDetailPager extends MenuDetailBasePager {
         @Override
         public void onPullDownRefresh() {
 
-            Toast.makeText(context,"1111",Toast.LENGTH_SHORT).show();
-            getDataForRecyclerview();
+            getDataForImgs();
+            getDataForRecyclerview(1);
         }
 
         @Override
         public void onLoadMore() {
 
-            Toast.makeText(context,"hhhh",Toast.LENGTH_SHORT).show();
+            getDataForRecyclerview(2);
         }
     }
 
@@ -115,7 +118,7 @@ public class TabDetailPager extends MenuDetailBasePager {
         adapter = new MyListviewAdapter(context);
         listView.setAdapter(adapter);
         //下方数据
-        getDataForRecyclerview();
+        getDataForRecyclerview(1);
 
 
     }
@@ -194,59 +197,101 @@ public class TabDetailPager extends MenuDetailBasePager {
     }
 
 
-    private void getDataForRecyclerview() {
+    private void getDataForRecyclerview(final int from) {
 
-        String url = "http://v.juhe.cn/toutiao/index";
+        if (from == 2) {
+            //加载更多
 
-        RequestParams params = new RequestParams(url);
-        params.addBodyParameter("key", "b0b89109785634c4fcd0a3ca78cd3ad9");
-        params.addBodyParameter("type", "top");
+            if (start < list.size()) {
+
+                start = end;
+                end += 10;
+
+                list_more = list.subList(start, end);
+
+                adapter.addAll(list_more);
+
+                listView.onRefreshFinish(false);
 
 
+            } else {
+                //没有更多数据
+                listView.NoMore();
 
-        x.http().get(params, new Callback.CommonCallback<String>() {
-            @Override
-            public void onSuccess(String result) {
 
-                Log.e("zjq-res", result);
+            }
+        } else {
+            String url = "http://v.juhe.cn/toutiao/index";
 
-                TabDetailBean bean = new Gson().fromJson(result, TabDetailBean.class);
+            RequestParams params = new RequestParams(url);
+            params.addBodyParameter("key", "b0b89109785634c4fcd0a3ca78cd3ad9");
+            params.addBodyParameter("type", "top");
 
-                if (bean.getResult().getStat().equals("1")) {
-                    list = bean.getResult().getData();
 
-                    adapter.setData(list);
+            x.http().get(params, new Callback.CommonCallback<String>() {
+                @Override
+                public void onSuccess(String result) {
 
-                    page++;
+                    try {
+                        TabDetailBean bean = new Gson().fromJson(result, TabDetailBean.class);
 
-                    //隐藏下拉刷新控件-更新时间(true)
-                    listView.onRefreshFinish(true);
+                        list = bean.getResult().getData();
+
+                        if (bean.getResult().getStat().equals("1")) {
+
+                            if (from == 1) {
+                                //下拉刷新
+
+                                start = 0;
+                                end = 10;
+                                list = list.subList(start, end);
+
+                                adapter.setData(list);
+
+                                //隐藏下拉刷新控件-更新时间(true)
+                                listView.onRefreshFinish(true);
+
+
+                            } else {
+
+
+                            }
+
+
+                        }
+                    } catch (Exception e) {
+                        //没有更多数据
+                        listView.NoMore();
+                    }
 
 
                 }
 
-            }
+                @Override
+                public void onError(Throwable ex, boolean isOnCallback) {
 
-            @Override
-            public void onError(Throwable ex, boolean isOnCallback) {
+                    Log.e("zjq-aa", ex.getMessage());
 
-                Log.e("zjq-aa", ex.getMessage());
+                    //隐藏下拉刷新控件
+                    listView.onRefreshFinish(true);
 
-                //隐藏下拉刷新控件
-                listView.onRefreshFinish(true);
+                    //没有更多数据
+                    listView.NoMore();
 
-            }
+                }
 
-            @Override
-            public void onCancelled(CancelledException cex) {
+                @Override
+                public void onCancelled(CancelledException cex) {
 
-            }
+                }
 
-            @Override
-            public void onFinished() {
+                @Override
+                public void onFinished() {
 
-            }
-        });
+                }
+            });
+        }
+
 
     }
 

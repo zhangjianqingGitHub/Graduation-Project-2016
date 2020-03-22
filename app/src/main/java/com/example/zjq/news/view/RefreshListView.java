@@ -29,9 +29,9 @@ public class RefreshListView extends ListView {
 
     private ImageView iv_arrow;
 
-    private ProgressBar pb_status;
+    private ProgressBar pb_status, pb_bar;
 
-    private TextView tv_status;
+    private TextView tv_status, tv_loadmore;
 
     private TextView tv_time;
 
@@ -64,6 +64,9 @@ public class RefreshListView extends ListView {
     //是否已经加载更多
     private boolean isLoadMore = false;
 
+    //顶部轮播图部分
+    private View topNewxView;
+
 
     public RefreshListView(Context context) {
         this(context, null);
@@ -89,6 +92,9 @@ public class RefreshListView extends ListView {
     private void initFootView(Context context) {
         footView = (LinearLayout) View.inflate(context, R.layout.refresh_foot, null);
 
+        pb_bar = footView.findViewById(R.id.pb_bar);
+        tv_loadmore = footView.findViewById(R.id.tv_loadmore);
+
         footView.measure(0, 0);
         footerViewHeight = footView.getMeasuredHeight();
 
@@ -102,6 +108,17 @@ public class RefreshListView extends ListView {
 
     }
 
+    public void addTopNewsView(View topNewxView) {
+
+        if (topNewxView != null) {
+            this.topNewxView = topNewxView;
+
+            headerView.addView(topNewxView);
+        }
+
+
+    }
+
     class MyOnScrollListener implements OnScrollListener {
 
         @Override
@@ -111,12 +128,9 @@ public class RefreshListView extends ListView {
 
             if (scrollState == OnScrollListener.SCROLL_STATE_IDLE || scrollState == OnScrollListener.SCROLL_STATE_FLING) {
 
-                Log.e("zjq","1"+"-"+getLastVisiblePosition()+"_"+getCount());
 
                 //并且时最后一条可见的
-                if (getLastVisiblePosition() >= getCount()-1) {
-
-                    Log.e("zjq","2");
+                if (getLastVisiblePosition() >= getCount() - 1) {
 
 
                     //显示加载更多的布局
@@ -124,9 +138,8 @@ public class RefreshListView extends ListView {
                     //状态改变
                     isLoadMore = true;
                     //回调接口
-                    if (onRefreshListener!=null){
+                    if (onRefreshListener != null) {
 
-                        Log.e("zjq","3");
 
                         onRefreshListener.onLoadMore();
                     }
@@ -292,22 +305,43 @@ public class RefreshListView extends ListView {
     //当联网成功或者失败时候记录请求联网的时间
     public void onRefreshFinish(boolean sucess) {
 
-        //还原状态
-        tv_status.setText("下拉刷新...");
-        currentStatus = pull_down_refresh;
-        iv_arrow.clearAnimation();
-        pb_status.setVisibility(INVISIBLE);
-        iv_arrow.setVisibility(VISIBLE);
+        if (isLoadMore) {
 
-        //隐藏下拉刷新控件
-        ll_pull_down.setPadding(0, -headHeight, 0, 0);
+            isLoadMore = false;
+            footView.setPadding(0, -footerViewHeight, 0, 0);
 
-        if (sucess) {
-            //成功
-            //设置时间
-            tv_time.setText("上次更新时间：" + getSystemTime());
+
+        } else {
+            //还原状态
+            tv_status.setText("下拉刷新...");
+            currentStatus = pull_down_refresh;
+            iv_arrow.clearAnimation();
+            pb_status.setVisibility(INVISIBLE);
+            iv_arrow.setVisibility(VISIBLE);
+
+            //隐藏下拉刷新控件
+            ll_pull_down.setPadding(0, -headHeight, 0, 0);
+
+            if (sucess) {
+                //成功
+                //设置时间
+                tv_time.setText("上次更新时间：" + getSystemTime());
+            }
         }
 
+
+    }
+
+    public void NoMore() {
+        if (isLoadMore) {
+            isLoadMore = false;
+
+            footView.setPadding(8, 8, 8, 8);
+
+            pb_bar.setVisibility(GONE);
+            tv_loadmore.setText("没有更多数据了...");
+
+        }
     }
 
     //得到当前系统时间

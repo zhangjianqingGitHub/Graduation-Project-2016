@@ -83,7 +83,7 @@ public class ContentFragment extends BaseFragment {
             public void onPageSelected(int position) {
 
                 //去除viewpager预加载
-//                pagers.get(position).initData();
+                pagers.get(position).initData();
             }
 
             @Override

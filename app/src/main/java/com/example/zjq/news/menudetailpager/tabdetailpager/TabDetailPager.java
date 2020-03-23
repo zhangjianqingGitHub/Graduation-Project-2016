@@ -267,10 +267,15 @@ public class TabDetailPager extends MenuDetailBasePager {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
 
-            //切换viewaPager下一个页面
-            int item = (viewPager.getCurrentItem() + 1) % imgs.size();
-            viewPager.setCurrentItem(item);
-            myhandler.postDelayed(new MyRunnable(), 3000);
+            try {
+                //切换viewaPager下一个页面
+                int item = (viewPager.getCurrentItem() + 1) % imgs.size();
+                viewPager.setCurrentItem(item);
+                myhandler.postDelayed(new MyRunnable(), 3000);
+            } catch (Exception e) {
+
+            }
+
 
         }
     }

@@ -1,2 +1,2 @@
 include ':app',':SlidingMenu_library', ':myrefreshview'
-include ':ViewPagerIndicator_library'
+

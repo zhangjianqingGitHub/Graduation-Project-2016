@@ -16,8 +16,8 @@ import com.example.zjq.news.activity.MainActivity;
 import com.example.zjq.news.base.MenuDetailBasePager;
 import com.example.zjq.news.bean.NewsCenterPagerBean;
 import com.example.zjq.news.menudetailpager.tabdetailpager.TabDetailPager;
+import com.google.android.material.tabs.TabLayout;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
-import com.viewpagerindicator.TabPageIndicator;
 
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -35,8 +35,8 @@ public class NewsMenuDetailPager extends MenuDetailBasePager {
     @ViewInject(R.id.vp_viewpager)
     private ViewPager viewPager;
 
-    @ViewInject(R.id.tabPageIndicator)
-    private TabPageIndicator tabPageIndicator;
+    @ViewInject(R.id.tablayout)
+    private TabLayout tablayout;
 
     private List<NewsCenterPagerBean.DataBean> dataBeans;
 
@@ -57,7 +57,7 @@ public class NewsMenuDetailPager extends MenuDetailBasePager {
         //根据
 
         for (int i = 0; i < dataBeans.size(); i++) {
-            if (TextUtils.isEmpty(dataBeans.get(i).getSource())||dataBeans.get(i).getSource()==null||dataBeans.get(i).getImgList().size()==0) {
+            if (TextUtils.isEmpty(dataBeans.get(i).getSource()) || dataBeans.get(i).getSource() == null || dataBeans.get(i).getImgList().size() == 0) {
                 dataBeans.remove(i);
             }
         }
@@ -95,13 +95,22 @@ public class NewsMenuDetailPager extends MenuDetailBasePager {
             tabDetailPagers.add(new TabDetailPager(context, dataBeans.get(i)));
         }
 
+
         viewPager.setAdapter(new MynewMenuDetailPagerAdapter());
 
-        //viewpager和tabpageIndicator关联
-        tabPageIndicator.setViewPager(viewPager);
 
-        //以后监听页面的变化，TabpageIndicator监听页面的变化
-        tabPageIndicator.setOnPageChangeListener(new MyOnPageChangeListener());
+        tablayout.setupWithViewPager(viewPager);
+
+        viewPager.addOnPageChangeListener(new MyOnPageChangeListener());
+
+        //设置固定或者滑动
+        tablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+
+        //viewpager和tabpageIndicator关联
+//        tabPageIndicator.setViewPager(viewPager);
+//
+//        //以后监听页面的变化，TabpageIndicator监听页面的变化
+//        tabPageIndicator.setOnPageChangeListener(new MyOnPageChangeListener());
 
 
     }

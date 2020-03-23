@@ -1,6 +1,7 @@
 package com.example.zjq.news.menudetailpager.tabdetailpager;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +19,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.bumptech.glide.Glide;
 import com.example.myrefreshview.RefreshListView;
 import com.example.zjq.news.R;
+import com.example.zjq.news.activity.NewsDetailActivity;
 import com.example.zjq.news.base.MenuDetailBasePager;
 import com.example.zjq.news.bean.NewsCenterPagerBean;
 import com.example.zjq.news.menudetailpager.adapter.MyListviewAdapter;
@@ -115,6 +117,12 @@ public class TabDetailPager extends MenuDetailBasePager {
                 //刷新
                 adapter.notifyDataSetChanged();//getCount--getView
             }
+
+            //跳转到新闻详情页面
+            Intent intent = new Intent(context, NewsDetailActivity.class);
+            intent.putExtra("url", data.getUrl());
+            intent.putExtra("source", data.getSource());
+            context.startActivity(intent);
         }
     }
 
@@ -282,7 +290,8 @@ public class TabDetailPager extends MenuDetailBasePager {
                                     jsonObject.optString("digest"),
                                     jsonObject.optString("imgsrc"),
                                     jsonObject.optString("url"),
-                                    jsonObject.optString("docid"));
+                                    jsonObject.optString("docid"),
+                                    jsonObject.optString("source"));
 
                             list.add(bean);
                         }

@@ -10,6 +10,24 @@ public class TabDetailBean {
     private String imgsrc;
     private String url;
     private String docid;
+    private String source;
+
+    public TabDetailBean(String mtime, String digest, String imgsrc, String url, String docid, String source) {
+        this.mtime = mtime;
+        this.digest = digest;
+        this.imgsrc = imgsrc;
+        this.url = url;
+        this.docid = docid;
+        this.source = source;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
 
     public String getDocid() {
         return docid;
@@ -19,13 +37,6 @@ public class TabDetailBean {
         this.docid = docid;
     }
 
-    public TabDetailBean(String mtime, String digest, String imgsrc, String url, String docid) {
-        this.mtime = mtime;
-        this.digest = digest;
-        this.imgsrc = imgsrc;
-        this.url = url;
-        this.docid = docid;
-    }
 
     public String getImgsrc() {
         return imgsrc;
@@ -34,7 +45,6 @@ public class TabDetailBean {
     public void setImgsrc(String imgsrc) {
         this.imgsrc = imgsrc;
     }
-
 
 
     public String getMtime() {
@@ -53,7 +63,6 @@ public class TabDetailBean {
     public void setDigest(String digest) {
         this.digest = digest;
     }
-
 
 
     public String getUrl() {

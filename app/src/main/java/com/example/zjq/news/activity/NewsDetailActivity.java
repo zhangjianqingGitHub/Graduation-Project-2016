@@ -3,6 +3,8 @@ package com.example.zjq.news.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +29,7 @@ public class NewsDetailActivity extends Activity implements View.OnClickListener
 
     private WebView webview;
     private ProgressBar pbLoading;
+    private WebSettings webSettings;
 
 
     @Override
@@ -48,7 +51,7 @@ public class NewsDetailActivity extends Activity implements View.OnClickListener
 
 
         //设置支持JS
-        WebSettings webSettings = webview.getSettings();
+        webSettings = webview.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
         //设置双击变大变小
@@ -56,6 +59,9 @@ public class NewsDetailActivity extends Activity implements View.OnClickListener
 
         //增加缩放按钮
         webSettings.setBuiltInZoomControls(true);
+
+        //设置文字大小
+        webSettings.setTextZoom(100);
 
         //不让从当前网页跳转到系统浏览器中
         webview.setWebViewClient(new WebViewClient() {
@@ -109,10 +115,77 @@ public class NewsDetailActivity extends Activity implements View.OnClickListener
             // Handle clicks for ibBack
             finish();
         } else if (v == ibTextsize) {
-            // Handle clicks for ibTextsize
+            showChangeTextSizeDialog();
+
+
         } else if (v == ibShare) {
             // Handle clicks for ibShare
         }
+    }
+
+    private int tempSize = 2;
+    private int realSize = tempSize;
+
+    private void showChangeTextSizeDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("设置文字大小");
+        String[] items = {"超大字体", "大字体", "正常字体", "小字体", "超小字体"};
+
+        builder.setSingleChoiceItems(items, realSize, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int position) {
+
+                tempSize = position;
+
+
+            }
+        });
+
+        builder.setNegativeButton("取消", null);
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                realSize = tempSize;
+
+                changeTextSize(realSize);
+            }
+        });
+
+        builder.show();
+
+    }
+
+    private void changeTextSize(int realSize) {
+
+        switch (realSize) {
+            case 0:
+                //超大
+                webSettings.setTextZoom(200);
+                break;
+            case 1:
+                //大
+                webSettings.setTextZoom(150);
+
+                break;
+            case 2:
+                webSettings.setTextZoom(100);
+
+                //正常
+                break;
+            case 3:
+                //小
+                webSettings.setTextZoom(75);
+
+                break;
+
+            case 4:
+                webSettings.setTextZoom(50);
+
+                //超小
+                break;
+        }
+
     }
 
 }

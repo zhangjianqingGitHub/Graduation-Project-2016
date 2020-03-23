@@ -5,9 +5,11 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
@@ -21,6 +23,7 @@ import com.example.zjq.news.bean.NewsCenterPagerBean;
 import com.example.zjq.news.menudetailpager.adapter.MyListviewAdapter;
 import com.example.zjq.news.menudetailpager.bean.TabDetailBean;
 import com.example.zjq.news.menudetailpager.bean.TabDetailViewPagerBean;
+import com.example.zjq.news.utils.CacheUtils;
 import com.example.zjq.news.utils.Constants;
 import com.example.zjq.news.view.HorizontalScrollViewPager;
 import com.google.gson.Gson;
@@ -37,6 +40,7 @@ import java.util.List;
 
 public class TabDetailPager extends MenuDetailBasePager {
 
+    public static final String READ_ARRAY_ID = "read_array_id";
     private NewsCenterPagerBean.DataBean data;
 
     private List<String> imgs;
@@ -85,7 +89,33 @@ public class TabDetailPager extends MenuDetailBasePager {
         //设置监听刷新
         listView.setOnRefreshListener(new MyOnRefreshListener());
 
+        //设置listViewitem的点击监听
+        listView.setOnItemClickListener(new OnItemClickListener());
+
         return view;
+    }
+
+    class OnItemClickListener implements AdapterView.OnItemClickListener {
+
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            int realPostion = i - 1;
+            TabDetailBean data = list.get(realPostion);
+
+//            Toast.makeText(context, data.getMtime(), Toast.LENGTH_SHORT).show();
+
+            //取出保存的id数组
+            String idArray = CacheUtils.getString(context, READ_ARRAY_ID);
+            //判断是否存在，不存在 则保存，变灰
+            if (!idArray.contains(data.getDocid())) {
+                //
+                CacheUtils.setString(context, READ_ARRAY_ID, idArray + data.getDocid() + ",");
+
+                //刷新
+                adapter.notifyDataSetChanged();//getCount--getView
+            }
+        }
     }
 
     class MyOnRefreshListener implements RefreshListView.OnRefreshListener {
@@ -251,7 +281,8 @@ public class TabDetailPager extends MenuDetailBasePager {
                                     jsonObject.optString("mtime"),
                                     jsonObject.optString("digest"),
                                     jsonObject.optString("imgsrc"),
-                                    jsonObject.optString("url"));
+                                    jsonObject.optString("url"),
+                                    jsonObject.optString("docid"));
 
                             list.add(bean);
                         }

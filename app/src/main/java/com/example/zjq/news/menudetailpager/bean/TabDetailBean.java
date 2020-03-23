@@ -9,12 +9,22 @@ public class TabDetailBean {
     private String digest;
     private String imgsrc;
     private String url;
+    private String docid;
 
-    public TabDetailBean(String mtime, String digest, String imgsrc, String url) {
+    public String getDocid() {
+        return docid;
+    }
+
+    public void setDocid(String docid) {
+        this.docid = docid;
+    }
+
+    public TabDetailBean(String mtime, String digest, String imgsrc, String url, String docid) {
         this.mtime = mtime;
         this.digest = digest;
         this.imgsrc = imgsrc;
         this.url = url;
+        this.docid = docid;
     }
 
     public String getImgsrc() {

@@ -1,6 +1,7 @@
 package com.example.zjq.news.menudetailpager.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.zjq.news.R;
 import com.example.zjq.news.menudetailpager.bean.TabDetailBean;
+import com.example.zjq.news.menudetailpager.tabdetailpager.TabDetailPager;
+import com.example.zjq.news.utils.CacheUtils;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,7 +22,8 @@ public class MyListviewAdapter extends BaseAdapter {
 
 
     private final Context context;
-    private List<TabDetailBean> mDataList=new ArrayList<>();
+    private List<TabDetailBean> mDataList = new ArrayList<>();
+
 
     public MyListviewAdapter(Context context) {
         this.context = context;
@@ -94,6 +98,16 @@ public class MyListviewAdapter extends BaseAdapter {
         viewHolder.tv_content.setText(bean.getDigest());
 
         viewHolder.tv_time.setText(bean.getMtime());
+
+        String idArray = CacheUtils.getString(context, TabDetailPager.READ_ARRAY_ID);
+        if (idArray.contains(bean.getDocid())) {
+            //设置为灰色
+            viewHolder.tv_content.setTextColor(Color.GRAY);
+        }else {
+            //设置为黑色
+            viewHolder.tv_content.setTextColor(Color.BLACK);
+
+        }
 
         return convertView;
     }

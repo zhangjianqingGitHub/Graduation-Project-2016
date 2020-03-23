@@ -1,9 +1,13 @@
 package com.example.zjq.news.menudetailpager.tabdetailpager;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -63,6 +67,7 @@ public class TabDetailPager extends MenuDetailBasePager {
     private List<TabDetailBean> list_more;
     private int start = 0;
     private int end = 5;
+    private MyHandler myhandler;
 
 
     public TabDetailPager(Context context, NewsCenterPagerBean.DataBean dataBean) {
@@ -214,6 +219,19 @@ public class TabDetailPager extends MenuDetailBasePager {
                 //红点
                 RedPoint();
 
+                //轮播图（Handler实现）
+
+                if (myhandler == null) {
+
+                    myhandler = new MyHandler();
+
+                }
+
+                myhandler.removeCallbacksAndMessages(null);
+
+                //三秒之后，执行Runnable中的run方法（new的时候再子线程，run方法就执行在主线程 ）
+                myhandler.postDelayed(new MyRunnable(), 3000);
+
             }
 
             @Override
@@ -233,6 +251,28 @@ public class TabDetailPager extends MenuDetailBasePager {
             }
         });
 
+    }
+
+    class MyRunnable implements Runnable {
+
+        @Override
+        public void run() {
+
+            myhandler.sendEmptyMessage(0);
+        }
+    }
+
+    class MyHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            //切换viewaPager下一个页面
+            int item = (viewPager.getCurrentItem() + 1) % imgs.size();
+            viewPager.setCurrentItem(item);
+            myhandler.postDelayed(new MyRunnable(), 3000);
+
+        }
     }
 
 
@@ -307,6 +347,7 @@ public class TabDetailPager extends MenuDetailBasePager {
                     //隐藏下拉刷新控件-更新时间(true)
                     listView.onRefreshFinish(true);
 
+
                 } catch (Exception e) {
 
                     //隐藏下拉刷新控件-更新时间(true)
@@ -373,7 +414,6 @@ public class TabDetailPager extends MenuDetailBasePager {
         viewPager.addOnPageChangeListener(new MyOnPageChangeListener());
         tv_title.setText(data.getTitle());
 
-
     }
 
 
@@ -399,8 +439,27 @@ public class TabDetailPager extends MenuDetailBasePager {
 
         }
 
+        private boolean isDradding = false;
+
         @Override
         public void onPageScrollStateChanged(int state) {
+
+            if (state == ViewPager.SCROLL_STATE_DRAGGING) {//拖拽
+
+                isDradding = true;
+                //移除\
+                myhandler.removeCallbacksAndMessages(null);
+            } else if (state == ViewPager.SCROLL_STATE_SETTLING && isDradding) {//惯性
+                myhandler.removeCallbacksAndMessages(null);
+
+                myhandler.postDelayed(new MyRunnable(), 3000);
+                isDradding = false;
+            } else if (state == ViewPager.SCROLL_STATE_IDLE && isDradding) {//静止
+                isDradding = false;
+                myhandler.removeCallbacksAndMessages(null);
+
+                myhandler.postDelayed(new MyRunnable(), 3000);
+            }
 
 
         }
@@ -418,6 +477,7 @@ public class TabDetailPager extends MenuDetailBasePager {
             return view == o;
         }
 
+        @SuppressLint("ClickableViewAccessibility")
         @NonNull
         @Override
         public Object instantiateItem(@NonNull ViewGroup container, int position) {
@@ -430,6 +490,38 @@ public class TabDetailPager extends MenuDetailBasePager {
 
             Glide.with(context).load(imgs.get(position)).placeholder(R.drawable.news_pic_default).into(imageView);
 //            x.image().bind(imageView, imgs.get(position),imageOptions);
+
+            imageView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View view, MotionEvent motionEvent) {
+                    switch (motionEvent.getAction()) {
+                        case MotionEvent.ACTION_DOWN://按下
+                            myhandler.removeCallbacksAndMessages(null);
+
+                            //三秒之后，执行Runnable中的run方法（new的时候再子线程，run方法就执行在主线程 ）
+
+                            break;
+                        case MotionEvent.ACTION_UP://离开
+                            myhandler.removeCallbacksAndMessages(null);
+
+                            myhandler.postDelayed(new MyRunnable(), 3000);
+
+                            break;
+
+//                        case MotionEvent.ACTION_CANCEL://取消
+//                            myhandler.removeCallbacksAndMessages(null);
+//
+//                            myhandler.postDelayed(new MyRunnable(), 3000);
+//
+//                            break;
+
+                    }
+
+                    //只有触摸事件可以返回true,即不往下传递了
+                    return true;
+                }
+            });
+
             return imageView;
         }
 

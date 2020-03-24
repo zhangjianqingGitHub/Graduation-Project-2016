@@ -4,5 +4,8 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#FF4081</color>
     <color name="main_color">#78CE83</color>
+    <color name="content_time">#808e8e8e</color>
+    <color name="white">#FFFFFF</color>
+
 
 </resources>

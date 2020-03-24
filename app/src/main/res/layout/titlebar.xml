@@ -3,8 +3,8 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/title_bg">
+    android:layout_height="40dp"
+    android:background="@color/main_color">
 
     <TextView
         android:id="@+id/tv_title"
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:textColor="@android:color/white"
-        android:textSize="23sp" />
+        android:textSize="16sp" />
 
 
     <ImageButton
@@ -22,6 +22,8 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="10dp"
         android:background="@android:color/transparent"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
         android:src="@drawable/img_menu"
         android:visibility="invisible" />
 
@@ -36,21 +38,21 @@
         android:visibility="invisible" />
 
     <LinearLayout
-        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="8dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
 
         <ImageButton
-            android:layout_marginRight="8dp"
             android:id="@+id/ib_textsize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="8dp"
             android:background="@android:color/transparent"
             android:src="@drawable/icon_textsize"
             android:visibility="invisible" />

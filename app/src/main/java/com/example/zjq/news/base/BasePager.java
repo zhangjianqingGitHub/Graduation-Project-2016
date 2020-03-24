@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.zjq.news.R;
@@ -32,6 +33,9 @@ public class BasePager {
     @ViewInject(R.id.fl_content)
     public FrameLayout fl_content;
 
+    @ViewInject(R.id.pb_loading)
+    public ProgressBar pbLoading;
+
     public BasePager(Context context) {
         this.context = context;
 
@@ -50,7 +54,7 @@ public class BasePager {
             public void onClick(View view) {
                 //把左侧菜单关闭
 
-                MainActivity mainActivity= (MainActivity) context;
+                MainActivity mainActivity = (MainActivity) context;
                 mainActivity.getSlidingMenu().toggle();//开就关，关就开
             }
         });

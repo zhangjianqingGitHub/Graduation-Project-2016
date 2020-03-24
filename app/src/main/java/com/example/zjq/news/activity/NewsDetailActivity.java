@@ -7,12 +7,14 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +23,7 @@ import com.example.zjq.news.R;
 
 public class NewsDetailActivity extends Activity implements View.OnClickListener {
 
-    private TextView tvTitle;
+    private TextView tvTitle, tv_html;
     private ImageButton ibMenu;
     private ImageButton ibBack;
     private ImageButton ibTextsize;
@@ -30,6 +32,7 @@ public class NewsDetailActivity extends Activity implements View.OnClickListener
     private WebView webview;
     private ProgressBar pbLoading;
     private WebSettings webSettings;
+    private RelativeLayout ll_webview;
 
 
     @Override
@@ -49,31 +52,45 @@ public class NewsDetailActivity extends Activity implements View.OnClickListener
         String url = intent.getStringExtra("url");
         tvTitle.setText(intent.getStringExtra("source"));
 
+        String from = intent.getStringExtra("from");
 
-        //设置支持JS
-        webSettings = webview.getSettings();
-        webSettings.setJavaScriptEnabled(true);
+        if (from != null && from.equals("top")) {
+            tv_html.setVisibility(View.VISIBLE);
+            ll_webview.setVisibility(View.GONE);
 
-        //设置双击变大变小
-        webSettings.setUseWideViewPort(true);
+            tv_html.setText(Html.fromHtml(url));
 
-        //增加缩放按钮
-        webSettings.setBuiltInZoomControls(true);
+        } else {
 
-        //设置文字大小
-        webSettings.setTextZoom(100);
+            tv_html.setVisibility(View.GONE);
+            ll_webview.setVisibility(View.VISIBLE);
 
-        //不让从当前网页跳转到系统浏览器中
-        webview.setWebViewClient(new WebViewClient() {
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
+            //设置支持JS
+            webSettings = webview.getSettings();
+            webSettings.setJavaScriptEnabled(true);
 
-                pbLoading.setVisibility(View.GONE);
-            }
-        });
+            //设置双击变大变小
+            webSettings.setUseWideViewPort(true);
 
-        webview.loadUrl(url);
+            //增加缩放按钮
+            webSettings.setBuiltInZoomControls(true);
+
+            //设置文字大小
+            webSettings.setTextZoom(100);
+
+            //不让从当前网页跳转到系统浏览器中
+            webview.setWebViewClient(new WebViewClient() {
+                @Override
+                public void onPageFinished(WebView view, String url) {
+                    super.onPageFinished(view, url);
+
+                    pbLoading.setVisibility(View.GONE);
+                }
+            });
+
+            webview.loadUrl(url);
+        }
+
 
     }
 
@@ -92,6 +109,8 @@ public class NewsDetailActivity extends Activity implements View.OnClickListener
         ibShare = (ImageButton) findViewById(R.id.ib_share);
         webview = (WebView) findViewById(R.id.webview);
         pbLoading = (ProgressBar) findViewById(R.id.pb_loading);
+        tv_html = findViewById(R.id.tv_html);
+        ll_webview = findViewById(R.id.ll_webview);
 
 
         ibBack.setVisibility(View.VISIBLE);

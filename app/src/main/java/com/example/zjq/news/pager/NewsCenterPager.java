@@ -42,11 +42,8 @@ public class NewsCenterPager extends BasePager {
     public void initData() {
         super.initData();
 
-
         //获取侧滑菜单数据
-
         getData_left();
-
 
     }
 
@@ -126,7 +123,10 @@ public class NewsCenterPager extends BasePager {
                     try {
 
                         for (int i = 0; i < bean.getData().size(); i++) {
-                            if (!TextUtils.isEmpty(bean.getData().get(i).getSource()) && bean.getData().get(i).getSource() != null && bean.getData().get(i).getImgList() != null) {
+                            if (!TextUtils.isEmpty(bean.getData().get(i).getSource()) && bean.getData().get(i).getSource() != null
+                                    && bean.getData().get(i).getImgList() != null
+                                    && bean.getData().get(i).getImgList().size() > 0
+                                    && bean.getData().get(i).getNewsId().length() > 6) {
 
                                 list.add(bean.getData().get(i));
 

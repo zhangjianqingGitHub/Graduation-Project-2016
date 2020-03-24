@@ -11,7 +11,7 @@ public class Constants {
 
     //    https://www.mxnzp.com
 //    https://www.mxnzp.com/api/news/list?&app_id=yhlrkxpsofduvtjb&app_secret=OXlid3FmY0IrTVRtR1NQYUYyRGs2Zz09&typeId=509&page=1
-    // http://www.mxnzp.com/api/news/details?newsId=F686PCT500258105&app_id=yhlrkxpsofduvtjb&app_secret=OXlid3FmY0IrTVRtR1NQYUYyRGs2Zz09
+    // http://www.mxnzp.com/api/news/details?newsId=220132&app_id=yhlrkxpsofduvtjb&app_secret=OXlid3FmY0IrTVRtR1NQYUYyRGs2Zz09
     // http://www.mxnzp.com/api/news/types?&app_id=yhlrkxpsofduvtjb&app_secret=OXlid3FmY0IrTVRtR1NQYUYyRGs2Zz09
 
     //新闻

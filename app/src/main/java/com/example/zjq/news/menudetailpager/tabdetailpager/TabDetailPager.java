@@ -68,14 +68,12 @@ public class TabDetailPager extends MenuDetailBasePager {
     private int start = 0;
     private int end = 5;
     private MyHandler myhandler;
+    private TabDetailViewPagerBean bean;
 
 
     public TabDetailPager(Context context, NewsCenterPagerBean.DataBean dataBean) {
         super(context);
         this.data = dataBean;
-
-//        data.getNewsId()
-
 
     }
 
@@ -180,37 +178,34 @@ public class TabDetailPager extends MenuDetailBasePager {
             @Override
             public void onSuccess(String result) {
 
-                TabDetailViewPagerBean bean = new Gson().fromJson(result, TabDetailViewPagerBean.class);
-
+                bean = new Gson().fromJson(result, TabDetailViewPagerBean.class);
 
                 imgs = new ArrayList<>();
 
-//                //添加外层图片
-//                if (data.getImgList() != null && data.getImgList().size() != 0) {
-//                    for (int i = 0; i < data.getImgList().size(); i++) {
-//                        if (!TextUtils.isEmpty(data.getImgList().get(i))) {
-//                            imgs.add(data.getImgList().get(i));
-//                        }
-//                    }
-//                }
-
-                //加载上方轮播图
-                if (bean.getData().getImages() != null) {
-
-                    List<TabDetailViewPagerBean.DataBean.ImgDataBean> list_imgs = bean.getData().getImages();
-                    int size = list_imgs.size();
-
-                    if (size > 4) {
-                        size = 4;
-                    }
-                    //添加内层图片
-                    for (int i = 0; i < size; i++) {
-                        if (list_imgs.get(i).getImgSrc() != null && !TextUtils.isEmpty(list_imgs.get(i).getImgSrc())) {
-                            imgs.add(list_imgs.get(i).getImgSrc());
+                //添加外层图片
+                if (data.getImgList() != null && data.getImgList().size() != 0) {
+                    for (int i = 0; i < data.getImgList().size(); i++) {
+                        if (!TextUtils.isEmpty(data.getImgList().get(i))) {
+                            imgs.add(data.getImgList().get(i));
                         }
                     }
-
                 }
+
+                //加载上方轮播图
+
+                List<TabDetailViewPagerBean.DataBean.ImgDataBean> list_imgs = bean.getData().getImages();
+                int size = list_imgs.size();
+
+                if (size > 4) {
+                    size = 4;
+                }
+                //添加内层图片
+                for (int i = 0; i < size; i++) {
+                    if (list_imgs.get(i).getImgSrc() != null && !TextUtils.isEmpty(list_imgs.get(i).getImgSrc())) {
+                        imgs.add(list_imgs.get(i).getImgSrc());
+                    }
+                }
+
 
                 //设置viewpager的适配器
                 viewPager.setAdapter(new TabDetailPagerTopNewsAdapter());
@@ -416,7 +411,7 @@ public class TabDetailPager extends MenuDetailBasePager {
 
         //监听页面得额改变
         viewPager.addOnPageChangeListener(new MyOnPageChangeListener());
-        tv_title.setText(data.getTitle());
+//        tv_title.setText(data.getTitle());
 
     }
 
@@ -493,32 +488,41 @@ public class TabDetailPager extends MenuDetailBasePager {
             container.addView(imageView);
 
             Glide.with(context).load(imgs.get(position)).placeholder(R.drawable.news_pic_default).into(imageView);
-//            x.image().bind(imageView, imgs.get(position),imageOptions);
 
-            imageView.setOnTouchListener(new View.OnTouchListener() {
+            imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public boolean onTouch(View view, MotionEvent motionEvent) {
-                    switch (motionEvent.getAction()) {
-                        case MotionEvent.ACTION_DOWN://按下
-                            myhandler.removeCallbacksAndMessages(null);
-
-                            //三秒之后，执行Runnable中的run方法（new的时候再子线程，run方法就执行在主线程 ）
-
-                            break;
-                        case MotionEvent.ACTION_UP://离开
-                            myhandler.removeCallbacksAndMessages(null);
-
-                            myhandler.sendEmptyMessageDelayed(0, 3000);
-
-                            break;
-
-
-                    }
-
-                    //只有触摸事件可以返回true,即不往下传递了
-                    return true;
+                public void onClick(View view) {
+                    //跳转到新闻详情页面
+                    Intent intent = new Intent(context, NewsDetailActivity.class);
+                    intent.putExtra("url", bean.getData().getContent());
+                    intent.putExtra("source", data.getSource());
+                    intent.putExtra("from", "top");
+                    context.startActivity(intent);
                 }
             });
+
+//            imageView.setOnTouchListener(new View.OnTouchListener() {
+//                @Override
+//                public boolean onTouch(View view, MotionEvent motionEvent) {
+//                    switch (motionEvent.getAction()) {
+//                        case MotionEvent.ACTION_DOWN://按下
+//                            myhandler.removeCallbacksAndMessages(null);
+//
+//                            break;
+//                        case MotionEvent.ACTION_UP://离开
+//                            myhandler.removeCallbacksAndMessages(null);
+//
+//                            myhandler.sendEmptyMessageDelayed(0, 1000);
+//
+//                            break;
+//
+//
+//                    }
+//
+//                    //只有触摸事件可以返回true,即不往下传递了
+//                    return true;
+//                }
+//            });
 
             return imageView;
         }

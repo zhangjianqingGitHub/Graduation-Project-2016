@@ -1,6 +1,7 @@
 package com.example.zjq.news.fragment;
 
 import android.graphics.Color;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -41,7 +42,7 @@ public class LeftMenuFragment extends BaseFragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                //记录点击得位置，变成红色
+                //记录点击得位置，变
 
                 prePosition = position;
                 Left_adapter.notifyDataSetChanged();
@@ -66,7 +67,7 @@ public class LeftMenuFragment extends BaseFragment {
         ContentFragment contentFragment = (ContentFragment) mainActivity.getContentFragment();
         NewsCenterPager newsCenterPager = contentFragment.getNewsCenterPager();
 
-        newsCenterPager.swichPager(position);
+        newsCenterPager.SetMainData(position);
     }
 
     @Override

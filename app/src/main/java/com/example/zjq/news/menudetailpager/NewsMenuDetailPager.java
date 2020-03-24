@@ -46,21 +46,10 @@ public class NewsMenuDetailPager extends MenuDetailBasePager {
     //页签页面的集合
     private ArrayList<TabDetailPager> tabDetailPagers;
 
-    public NewsMenuDetailPager(Context context) {
+    public NewsMenuDetailPager(Context context, List<NewsCenterPagerBean.DataBean> list) {
         super(context);
 
-    }
-
-    public void setData(List<NewsCenterPagerBean.DataBean> datas) {
-        this.dataBeans = datas;
-
-        //根据
-
-        for (int i = 0; i < dataBeans.size(); i++) {
-            if (TextUtils.isEmpty(dataBeans.get(i).getSource()) || dataBeans.get(i).getSource() == null || dataBeans.get(i).getImgList().size() == 0) {
-                dataBeans.remove(i);
-            }
-        }
+        this.dataBeans = list;
 
     }
 
@@ -89,8 +78,6 @@ public class NewsMenuDetailPager extends MenuDetailBasePager {
 
         tabDetailPagers = new ArrayList<>();
         for (int i = 0; i < dataBeans.size(); i++) {
-
-//            dataBeans.get(i).getNewsId()
 
             tabDetailPagers.add(new TabDetailPager(context, dataBeans.get(i)));
         }

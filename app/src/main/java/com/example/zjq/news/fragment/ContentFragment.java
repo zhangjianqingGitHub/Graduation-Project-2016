@@ -11,11 +11,9 @@ import com.example.zjq.news.activity.MainActivity;
 import com.example.zjq.news.adapter.ContentFramentAdapter;
 import com.example.zjq.news.base.BaseFragment;
 import com.example.zjq.news.base.BasePager;
-import com.example.zjq.news.pager.GovaffairPager;
 import com.example.zjq.news.pager.HomePager;
 import com.example.zjq.news.pager.NewsCenterPager;
 import com.example.zjq.news.pager.SettingPager;
-import com.example.zjq.news.pager.SmartServicePager;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 import org.xutils.view.annotation.ViewInject;
@@ -50,12 +48,10 @@ public class ContentFragment extends BaseFragment {
     public void initData() {
         super.initData();
 
-        //初始化五个页面，并且放入集合中
+        //初始化页面，并且放入集合中
         pagers = new ArrayList<>();
         pagers.add(new HomePager(mContext));
         pagers.add(new NewsCenterPager(mContext));
-        pagers.add(new SmartServicePager(mContext));
-        pagers.add(new GovaffairPager(mContext));
         pagers.add(new SettingPager(mContext));
         //默认选中首页
         rg_main.check(R.id.rb_home);
@@ -69,28 +65,27 @@ public class ContentFragment extends BaseFragment {
         isEnableSlidingMenu(false);
 
 
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int i, float v, int i1) {
-
-            }
-
-            /**
-             * 当某个页面被选中
-             * @param
-             */
-            @Override
-            public void onPageSelected(int position) {
-
-                //去除viewpager预加载
-                pagers.get(position).initData();
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int i) {
-
-            }
-        });
+//        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//            @Override
+//            public void onPageScrolled(int i, float v, int i1) {
+//
+//            }
+//
+//            /**
+//             * 当某个页面被选中
+//             * @param
+//             */
+//            @Override
+//            public void onPageSelected(int position) {
+//
+//                pagers.get(position).initData();
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int i) {
+//
+//            }
+//        });
 
         //设置RadioGroup的选中状态改变的监听
         rg_main.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -109,20 +104,9 @@ public class ContentFragment extends BaseFragment {
                         isEnableSlidingMenu(true);
 
                         break;
-                    case R.id.rb_smartservice:
-                        viewPager.setCurrentItem(2, false);
 
-                        isEnableSlidingMenu(false);
-
-                        break;
-                    case R.id.rb_govaffair:
-                        viewPager.setCurrentItem(3, false);
-
-                        isEnableSlidingMenu(false);
-
-                        break;
                     case R.id.rb_setting:
-                        viewPager.setCurrentItem(4, false);
+                        viewPager.setCurrentItem(2, false);
 
                         isEnableSlidingMenu(false);
 

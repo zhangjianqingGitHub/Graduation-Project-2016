@@ -185,17 +185,16 @@ public class TabDetailPager extends MenuDetailBasePager {
 
                 imgs = new ArrayList<>();
 
-                //添加外层图片
-                if (data.getImgList() != null && data.getImgList().size() != 0) {
-                    for (int i = 0; i < data.getImgList().size(); i++) {
-                        if (!TextUtils.isEmpty(data.getImgList().get(i))) {
-                            imgs.add(data.getImgList().get(i));
-                        }
-                    }
-                }
+//                //添加外层图片
+//                if (data.getImgList() != null && data.getImgList().size() != 0) {
+//                    for (int i = 0; i < data.getImgList().size(); i++) {
+//                        if (!TextUtils.isEmpty(data.getImgList().get(i))) {
+//                            imgs.add(data.getImgList().get(i));
+//                        }
+//                    }
+//                }
 
                 //加载上方轮播图
-
                 if (bean.getData().getImages() != null) {
 
                     List<TabDetailViewPagerBean.DataBean.ImgDataBean> list_imgs = bean.getData().getImages();
@@ -222,16 +221,13 @@ public class TabDetailPager extends MenuDetailBasePager {
                 //轮播图（Handler实现）
 
                 if (myhandler == null) {
-
                     myhandler = new MyHandler();
-
                 }
 
                 myhandler.removeCallbacksAndMessages(null);
-
                 //三秒之后，执行Runnable中的run方法（new的时候再子线程，run方法就执行在主线程 ）
-                myhandler.postDelayed(new MyRunnable(), 3000);
-
+//                myhandler.postDelayed(new MyRunnable(), 3000);
+                myhandler.sendEmptyMessageDelayed(0, 3000);
             }
 
             @Override
@@ -253,14 +249,14 @@ public class TabDetailPager extends MenuDetailBasePager {
 
     }
 
-    class MyRunnable implements Runnable {
-
-        @Override
-        public void run() {
-
-            myhandler.sendEmptyMessage(0);
-        }
-    }
+//    class MyRunnable implements Runnable {
+//
+//        @Override
+//        public void run() {
+//
+//            myhandler.sendEmptyMessage(0);
+//        }
+//    }
 
     class MyHandler extends Handler {
         @Override
@@ -271,9 +267,12 @@ public class TabDetailPager extends MenuDetailBasePager {
                 //切换viewaPager下一个页面
                 int item = (viewPager.getCurrentItem() + 1) % imgs.size();
                 viewPager.setCurrentItem(item);
-                myhandler.postDelayed(new MyRunnable(), 3000);
+
+                myhandler.removeCallbacksAndMessages(null);
+                myhandler.sendEmptyMessageDelayed(0, 3000);
             } catch (Exception e) {
 
+                Log.e("zjq-red", e.getMessage());
             }
 
 
@@ -457,13 +456,13 @@ public class TabDetailPager extends MenuDetailBasePager {
             } else if (state == ViewPager.SCROLL_STATE_SETTLING && isDradding) {//惯性
                 myhandler.removeCallbacksAndMessages(null);
 
-                myhandler.postDelayed(new MyRunnable(), 3000);
+                myhandler.sendEmptyMessageDelayed(0, 3000);
                 isDradding = false;
             } else if (state == ViewPager.SCROLL_STATE_IDLE && isDradding) {//静止
                 isDradding = false;
                 myhandler.removeCallbacksAndMessages(null);
 
-                myhandler.postDelayed(new MyRunnable(), 3000);
+                myhandler.sendEmptyMessageDelayed(0, 3000);
             }
 
 
@@ -509,16 +508,10 @@ public class TabDetailPager extends MenuDetailBasePager {
                         case MotionEvent.ACTION_UP://离开
                             myhandler.removeCallbacksAndMessages(null);
 
-                            myhandler.postDelayed(new MyRunnable(), 3000);
+                            myhandler.sendEmptyMessageDelayed(0, 3000);
 
                             break;
 
-//                        case MotionEvent.ACTION_CANCEL://取消
-//                            myhandler.removeCallbacksAndMessages(null);
-//
-//                            myhandler.postDelayed(new MyRunnable(), 3000);
-//
-//                            break;
 
                     }
 

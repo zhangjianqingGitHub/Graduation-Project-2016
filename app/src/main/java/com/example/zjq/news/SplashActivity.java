@@ -129,72 +129,13 @@ public class SplashActivity extends Activity {
 
     }
 
-/*    private void Animation() {
-        //渐变动画，缩放动画，旋转动画
-        AlphaAnimation alphaAnimation = new AlphaAnimation( 0, 1 );
-//        alphaAnimation.setDuration( 500 );
-        alphaAnimation.setFillAfter( true );//停留在播放结束后的状态
 
-        ScaleAnimation scaleAnimation = new ScaleAnimation( 0, 1, 0, 1,
-                ScaleAnimation.RELATIVE_TO_SELF, 0.5f,
-                ScaleAnimation.RELATIVE_TO_SELF, 0.5f );
-//        scaleAnimation.setDuration( 500 );
-        scaleAnimation.setFillAfter( true );
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
 
-        RotateAnimation rotateAnimation = new RotateAnimation( 0, 360,
-                RotateAnimation.RELATIVE_TO_SELF, 0.5f,
-                RotateAnimation.RELATIVE_TO_SELF, 0.5f );//在屏幕一半的位置，相对于自身旋转
-//        rotateAnimation.setDuration( 500 );
-        rotateAnimation.setFillAfter( true );
-
-        AnimationSet set = new AnimationSet( false );//Interpolator 可以用来控制动画显示过程的快慢（如动画开始很快，结束时有很慢
-        set.addAnimation( alphaAnimation );
-        set.addAnimation( scaleAnimation );
-        set.addAnimation( rotateAnimation );
-        set.setDuration( 2000 );
-
-        rl_splash.startAnimation( set );
-
-
-        //动画播放完成监听
-        set.setAnimationListener( new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-                //动画开始播放的时候
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-
-                //动画播放结束的时候
-
-                //是否进入引导页
-                boolean isStartMain = CacheUtils.getBoolean( SplashActivity.this, START_MAIN );//ctrl+alt+c
-
-                Intent intent;
-
-                if (isStartMain) {
-
-                    //跳转到主页面
-
-                    intent = new Intent( SplashActivity.this, MainActivity.class );
-
-                } else {
-                    intent = new Intent( SplashActivity.this, GuideActivity.class );
-                }
-
-                startActivity( intent );
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-                //动画重复播放的时候
-
-            }
-        } );
-
-
-    }*/
+        if (skip != null) {
+            skip.stop();
+        }
+    }
 }

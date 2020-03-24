@@ -10,9 +10,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <!--app:tabIndicatorColor="@color/white" // 下方滚动的下划线颜色
-app:tabSelectedTextColor="@color/gray" // tab被选中后，文字的颜色
-app:tabTextColor="@color/white" // tab默认的文字颜色-->
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tablayout"
@@ -24,13 +21,6 @@ app:tabTextColor="@color/white" // tab默认的文字颜色-->
             app:tabSelectedTextColor="@color/main_color"
             app:tabTextAppearance="@style/MyCustomTabTextAppearance" />
 
-
-        <!--        <com.viewpagerindicator.TabPageIndicator-->
-        <!--            android:id="@+id/tabPageIndicator"-->
-        <!--            android:layout_width="0dp"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_gravity="center_vertical"-->
-        <!--            android:layout_weight="1" />-->
 
         <ImageButton
             android:id="@+id/tab_next"

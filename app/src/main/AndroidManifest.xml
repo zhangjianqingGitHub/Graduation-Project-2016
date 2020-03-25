@@ -8,18 +8,22 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:theme="@style/AppTheme"
         android:name=".mApplication"
         android:allowBackup="true"
         android:icon="@mipmap/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".activity.NewsDetailActivity"></activity>
-        <activity
-            android:name=".activity.MainActivity"
-        />   <!--  android:theme="@style/Theme.PageIndicatorDefaults"-->
+        <activity android:name=".login.RegisterActivityNew" />
+        <activity android:name=".login.LoginActivityNew" />
+        <activity android:name=".activity.SettingActivity" />
+        <activity android:name=".activity.EditDataActivity" />
+        <activity android:name=".activity.EditUserInfoItemActivity" />
+        <activity android:name=".activity.PicActivity"/>
+        <activity android:name=".activity.MainActivity" />   <!--  android:theme="@style/Theme.PageIndicatorDefaults"-->
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

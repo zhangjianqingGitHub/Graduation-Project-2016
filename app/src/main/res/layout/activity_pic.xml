@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#80000000"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/pic_rl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/xiangkuang" />
+
+        <Button
+            android:id="@+id/btn_pai"
+            android:layout_width="240dp"
+            android:layout_height="45dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="57dp"
+            android:background="@drawable/bg_me_task_bt"
+            android:text="拍照"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/sss"
+            android:layout_width="240dp"
+            android:layout_height="45dp"
+            android:layout_below="@+id/btn_pai"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_me_task_bt"
+            android:onClick="gallery"
+            android:text="从相册中选择"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/bt_me_up"
+            android:layout_width="240dp"
+            android:layout_height="45dp"
+            android:layout_below="@+id/sss"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_me_task_bt2"
+            android:onClick="upload"
+            android:text="取消"
+            android:textColor="#323232"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+</LinearLayout>

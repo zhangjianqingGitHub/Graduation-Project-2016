@@ -1,18 +1,24 @@
 package com.example.zjq.news.activity;
 
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 //import android.support.v4.app.FragmentManager;
 //import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
+import android.view.View;
 import android.view.Window;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.bumptech.glide.Glide;
 import com.example.zjq.news.R;
 import com.example.zjq.news.fragment.ContentFragment;
 import com.example.zjq.news.fragment.LeftMenuFragment;
 import com.example.zjq.news.utils.DensityUtil;
+import com.example.zjq.news.utils.SharepUtils;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 
@@ -31,6 +37,8 @@ public class MainActivity extends SlidingFragmentActivity {
         //初始化Fragment
         initFragment();
     }
+
+
 
     private void initSlidingMenu() {
         //设置主页面
@@ -74,13 +82,15 @@ public class MainActivity extends SlidingFragmentActivity {
     }
 
     public Fragment getLeftMenuFragment() {
-        return  getSupportFragmentManager().findFragmentByTag(LEFT_MENU_TAG);
+        return getSupportFragmentManager().findFragmentByTag(LEFT_MENU_TAG);
     }
 
     //得到正文
     public Fragment getContentFragment() {
 
-        return  getSupportFragmentManager().findFragmentByTag(MAIN_CONTENT_TAG);
+        return getSupportFragmentManager().findFragmentByTag(MAIN_CONTENT_TAG);
 
     }
+
+
 }

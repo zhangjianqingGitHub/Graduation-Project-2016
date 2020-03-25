@@ -7,6 +7,8 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
 import com.example.zjq.news.R;
 import com.example.zjq.news.activity.MainActivity;
 
@@ -16,7 +18,7 @@ import org.xutils.x;
 /**
  *
  */
-public class BasePager {
+public class BasePager extends Fragment{
 
 
     public final Context context;
@@ -35,6 +37,10 @@ public class BasePager {
 
     @ViewInject(R.id.pb_loading)
     public ProgressBar pbLoading;
+
+    @ViewInject(R.id.top)
+    public View top;
+
 
     public BasePager(Context context) {
         this.context = context;

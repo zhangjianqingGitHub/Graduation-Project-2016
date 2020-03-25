@@ -347,6 +347,7 @@ public class TabDetailPager extends MenuDetailBasePager {
                     listView.onRefreshFinish(true);
 
 
+
                 } catch (Exception e) {
 
                     //隐藏下拉刷新控件-更新时间(true)

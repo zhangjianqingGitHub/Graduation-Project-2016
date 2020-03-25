@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_hui"
+    android:orientation="vertical">
+
+    <!--<include
+        android:id="@+id/top"
+        layout="@layout/activty_top_title" />
+-->
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/activity_top" />
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/re_me_setting_name"
+            android:layout_width="fill_parent"
+            android:layout_height="52dp"
+            android:background="@color/white"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="我的账号"
+                android:textColor="#515151"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_me_setting_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="16dp"
+                android:textColor="#515151"
+                android:textSize="14sp" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/re_me_setting_updatephone"
+            android:layout_width="fill_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="修改手机号"
+                android:textColor="#515151"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/setting_go" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/re_me_setting_psw"
+            android:layout_width="fill_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="修改登录密码"
+                android:textColor="#515151"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/setting_go" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/re_me_setting_huancun"
+            android:layout_width="fill_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="清除缓存"
+                android:textColor="#515151"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_huancun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:text="0M"
+                android:textColor="#515151"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+
+
+        <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:id="@+id/bt_quit"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginTop="45dp"
+            android:background="@drawable/background_bg_banyuan"
+            android:text="退出登录"
+            android:textColor="@color/white"
+            android:textSize="17sp" />
+    </LinearLayout>
+
+
+</LinearLayout>

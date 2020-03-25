@@ -21,17 +21,33 @@
         <item name="android:textSize">14sp</item>
         <item name="android:layout_weight">1</item>
     </style>
-    
-<!--
-    <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
-        <item name="tabMaxWidth">72dp</item>
-        <item name="tabMinWidth">72dp</item>
-        <item name="tabIndicatorColor">@color/main_color</item>
-        <item name="tabIndicatorHeight">2dp</item>
-        <item name="tabTextAppearance">@style/MyCustomTabTextAppearance</item>
-        <item name="tabSelectedTextColor">@color/main_color</item>
+
+    <style name="lineColor">
+
+        <item name="android:background">#F3F3F3</item>
     </style>
--->
+
+    <style name="MyEditText" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@null</item>
+        <item name="colorControlActivated">@null</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:textSize">14sp</item>
+
+    </style>
+
+    <!--
+        <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
+            <item name="tabMaxWidth">72dp</item>
+            <item name="tabMinWidth">72dp</item>
+            <item name="tabIndicatorColor">@color/main_color</item>
+            <item name="tabIndicatorHeight">2dp</item>
+            <item name="tabTextAppearance">@style/MyCustomTabTextAppearance</item>
+            <item name="tabSelectedTextColor">@color/main_color</item>
+        </style>
+    -->
 
     <style name="MyCustomTabTextAppearance" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">14sp</item>

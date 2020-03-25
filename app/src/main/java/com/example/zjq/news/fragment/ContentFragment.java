@@ -1,6 +1,7 @@
 package com.example.zjq.news.fragment;
 
 
+import android.content.Context;
 import android.view.View;
 import android.widget.RadioGroup;
 
@@ -13,7 +14,7 @@ import com.example.zjq.news.base.BaseFragment;
 import com.example.zjq.news.base.BasePager;
 import com.example.zjq.news.pager.HomePager;
 import com.example.zjq.news.pager.NewsCenterPager;
-import com.example.zjq.news.pager.SettingPager;
+import com.example.zjq.news.pager.MePager;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 import org.xutils.view.annotation.ViewInject;
@@ -30,7 +31,6 @@ public class ContentFragment extends BaseFragment {
 
     //装五个页面的集合
     private ArrayList<BasePager> pagers;
-
 
     @Override
     public View initView() {
@@ -50,11 +50,11 @@ public class ContentFragment extends BaseFragment {
 
         //初始化页面，并且放入集合中
         pagers = new ArrayList<>();
-        pagers.add(new HomePager(mContext));
         pagers.add(new NewsCenterPager(mContext));
-        pagers.add(new SettingPager(mContext));
+        pagers.add(new HomePager(mContext));
+        pagers.add(new MePager(mContext));
         //默认选中首页
-        rg_main.check(R.id.rb_home);
+        rg_main.check(R.id.rb_newscenter);
 
         //设置viewPager适配器
         viewPager.setAdapter(new ContentFramentAdapter(mContext, pagers));
@@ -65,27 +65,27 @@ public class ContentFragment extends BaseFragment {
         isEnableSlidingMenu(false);
 
 
-//        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//            @Override
-//            public void onPageScrolled(int i, float v, int i1) {
-//
-//            }
-//
-//            /**
-//             * 当某个页面被选中
-//             * @param
-//             */
-//            @Override
-//            public void onPageSelected(int position) {
-//
-//                pagers.get(position).initData();
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int i) {
-//
-//            }
-//        });
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+            }
+
+            /**
+             * 当某个页面被选中
+             * @param
+             */
+            @Override
+            public void onPageSelected(int position) {
+
+                pagers.get(position).initData();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
 
         //设置RadioGroup的选中状态改变的监听
         rg_main.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -93,15 +93,17 @@ public class ContentFragment extends BaseFragment {
             public void onCheckedChanged(RadioGroup radioGroup, int id) {
                 switch (id) {
                     case R.id.rb_home:
+                        viewPager.setCurrentItem(1, false);
+
+                        isEnableSlidingMenu(true);
+
+                        break;
+                    case R.id.rb_newscenter:
+
 
                         viewPager.setCurrentItem(0, false);//加上false 没有动画
 
                         isEnableSlidingMenu(false);
-                        break;
-                    case R.id.rb_newscenter:
-                        viewPager.setCurrentItem(1, false);
-
-                        isEnableSlidingMenu(true);
 
                         break;
 
@@ -136,7 +138,7 @@ public class ContentFragment extends BaseFragment {
     //得到新闻中心
     public NewsCenterPager getNewsCenterPager() {
 
-        return (NewsCenterPager) pagers.get(1);
+        return (NewsCenterPager) pagers.get(0);
     }
 
 }

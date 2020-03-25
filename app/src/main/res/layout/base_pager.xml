@@ -8,6 +8,14 @@
         android:id="@+id/top"
         layout="@layout/titlebar" />
 
+
+    <!--各个页面的视图，都是添加到这个控件-->
+    <FrameLayout
+        android:id="@+id/fl_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/top" />
+
     <ProgressBar
         android:id="@+id/pb_loading"
         android:layout_width="wrap_content"
@@ -16,12 +24,5 @@
         android:indeterminateDrawable="@drawable/custom_progressbar"
         android:scaleX="0.5"
         android:scaleY="0.5" />
-
-    <!--各个页面的视图，都是添加到这个控件-->
-    <FrameLayout
-        android:id="@+id/fl_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/top" />
 
 </RelativeLayout>

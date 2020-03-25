@@ -147,6 +147,8 @@ public class NewsCenterPager extends BasePager {
                         newsMenuDetailPager.initData();
                         fl_content.addView(rootView);
 
+                        pbLoading.setVisibility(View.INVISIBLE);
+
 
                     } catch (Exception e) {
 

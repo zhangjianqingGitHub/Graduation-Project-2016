@@ -10,60 +10,67 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
+
     <RadioGroup
-        android:paddingTop="5dp"
         android:id="@+id/rg_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#44000000"
-        android:orientation="horizontal">
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:paddingTop="5dp">
+
 
         <RadioButton
-            android:textStyle="bold"
-            android:id="@+id/rb_home"
-            style="@style/bottom_tag_style"
-            android:background="@null"
-            android:drawableTop="@drawable/rb_home_drawable_selector"
-            android:gravity="center"
-            android:text="首页" />
-
-        <RadioButton
-            android:textStyle="bold"
             android:id="@+id/rb_newscenter"
             style="@style/bottom_tag_style"
             android:background="@null"
             android:drawableTop="@drawable/rb_newscenter_drawable_selector"
             android:gravity="center"
-            android:text="新闻" />
-<!--
-        <RadioButton
-            android:id="@+id/rb_smartservice"
-            android:textStyle="bold"
+            android:text="新闻"
+            android:textStyle="bold" />
 
+
+        <RadioButton
+            android:id="@+id/rb_home"
             style="@style/bottom_tag_style"
             android:background="@null"
-            android:drawableTop="@drawable/rb_smartservice_drawable_selector"
+            android:drawableTop="@drawable/rb_home_drawable_selector"
             android:gravity="center"
-            android:text="智慧" />
+            android:text="娱乐"
+            android:textStyle="bold" />
+        <!--
+                <RadioButton
+                    android:id="@+id/rb_smartservice"
+                    android:textStyle="bold"
+
+                    style="@style/bottom_tag_style"
+                    android:background="@null"
+                    android:drawableTop="@drawable/rb_smartservice_drawable_selector"
+                    android:gravity="center"
+                    android:text="智慧" />
+
+                <RadioButton
+                    android:id="@+id/rb_govaffair"
+                    android:textStyle="bold"
+
+                    style="@style/bottom_tag_style"
+                    android:background="@null"
+                    android:drawableTop="@drawable/rb_govaffair_drawable_selector"
+                    android:gravity="center"
+                    android:text="政要" />-->
 
         <RadioButton
-            android:id="@+id/rb_govaffair"
-            android:textStyle="bold"
-
-            style="@style/bottom_tag_style"
-            android:background="@null"
-            android:drawableTop="@drawable/rb_govaffair_drawable_selector"
-            android:gravity="center"
-            android:text="政要" />-->
-
-        <RadioButton
-            android:textStyle="bold"
             android:id="@+id/rb_setting"
             style="@style/bottom_tag_style"
             android:background="@null"
             android:drawableTop="@drawable/rb_setting_drawable_selector"
             android:gravity="center"
-            android:text="我" />
+            android:text="我"
+            android:textStyle="bold" />
 
 
     </RadioGroup>

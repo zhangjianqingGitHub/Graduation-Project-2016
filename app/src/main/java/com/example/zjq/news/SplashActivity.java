@@ -4,15 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.zjq.news.activity.MainActivity;
-import com.example.zjq.news.bean.EveryDayWordBean;
-import com.example.zjq.news.utils.Constants;
 import com.example.zjq.news.utils.RoundProgressBar;
 import com.google.gson.Gson;
 
@@ -76,32 +73,42 @@ public class SplashActivity extends Activity {
 
     private void initData() {
 
-        String url = Constants.everyday_word;
+        String url = "https://api.77sec.cn/yiyan/api.php";
 
         RequestParams params = new RequestParams(url);
-        params.addBodyParameter("app_id", Constants.APPID);
-        params.addBodyParameter("app_secret", Constants.APPSECRET);
-        params.addBodyParameter("count", 20);
 
         x.http().get(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
 
-                EveryDayWordBean bean = new Gson().fromJson(result, EveryDayWordBean.class);
+                String guwen = result;
 
-                if (bean.getCode() == 1) {
+                int begin = result.indexOf("(");
+                int end = result.indexOf(")");
 
-                    List<EveryDayWordBean.DataBean> list = bean.getData();
+                //"君子坦荡荡，小人长戚戚。——孔子"
+                guwen = result.substring(begin+2, end-1);
 
-                    int n = new Random().nextInt(list.size());
+                String[] a = guwen.split("。");
 
-                    tv_content.setText(bean.getData().get(n).getContent());
+                tv_content.setText(a[0] + "。");
+                tv_author.setText(a[1]);
 
-                    if (!TextUtils.isEmpty(bean.getData().get(n).getAuthor())) {
-                        tv_author.setText("—— " + bean.getData().get(n).getAuthor());
-                    }
-
-                }
+//                EveryDayWordBean bean = new Gson().fromJson(result, EveryDayWordBean.class);
+//
+//                if (bean.getCode() == 1) {
+//
+//                    List<EveryDayWordBean.DataBean> list = bean.getData();
+//
+//                    int n = new Random().nextInt(list.size());
+//
+//                    tv_content.setText(bean.getData().get(n).getContent());
+//
+//                    if (!TextUtils.isEmpty(bean.getData().get(n).getAuthor())) {
+//                        tv_author.setText("—— " + bean.getData().get(n).getAuthor());
+//                    }
+//
+//                }
 
                 skip.setshowTime(true);
                 skip.start();

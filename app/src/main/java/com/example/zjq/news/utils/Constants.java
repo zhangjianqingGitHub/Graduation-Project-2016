@@ -19,8 +19,7 @@ public class Constants {
     public static final String NewsDetail = NewsMian + "/news/details";
 
     // https://www.mxnzp.com/api/daily_word/recommend?app_id=yhlrkxpsofduvtjb&app_secret=OXlid3FmY0IrTVRtR1NQYUYyRGs2Zz09&count=20
-    //精选语句
-    public static final String everyday_word = NewsMian + "/daily_word/recommend";
+
 
     // https://www.mxnzp.com/api/history/today?app_id=yhlrkxpsofduvtjb&app_secret=OXlid3FmY0IrTVRtR1NQYUYyRGs2Zz09&type=1
     //历史上的今天

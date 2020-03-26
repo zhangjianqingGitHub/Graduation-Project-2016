@@ -120,12 +120,15 @@ public class HappyPager extends BasePager {
         llYiqing = view.findViewById(R.id.ll_yiqing);
         llLishi = view.findViewById(R.id.ll_lishi);
         llXiaohua = view.findViewById(R.id.ll_xiaohua);
-        top.setVisibility(View.GONE);
+//        top.setVisibility(View.GONE);
 
         tv_title = view.findViewById(R.id.tv_title);
         tv_author = view.findViewById(R.id.tv_author);
         tv_content = view.findViewById(R.id.tv_content);
         ll_every_wen = view.findViewById(R.id.ll_every_wen);
+
+        tv_title.setText("娱乐");
+
 
     }
 

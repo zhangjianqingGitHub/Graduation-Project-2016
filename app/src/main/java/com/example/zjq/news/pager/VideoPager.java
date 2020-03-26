@@ -10,7 +10,14 @@ public class VideoPager extends BasePager {
     }
 
     @Override
-    public void initData() {super.initData();
+    public void initData() {
+        super.initData();
+
+        findview();
+
+    }
+
+    private void findview() {
 
     }
 }

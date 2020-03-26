@@ -69,27 +69,27 @@ public class ContentFragment extends BaseFragment {
         isEnableSlidingMenu(false);
 
 
-//        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//            @Override
-//            public void onPageScrolled(int i, float v, int i1) {
-//
-//            }
-//
-//            /**
-//             * 当某个页面被选中
-//             * @param
-//             */
-//            @Override
-//            public void onPageSelected(int position) {
-//
-//                pagers.get(position).initData();
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int i) {
-//
-//            }
-//        });
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+            }
+
+            /**
+             * 当某个页面被选中
+             * @param
+             */
+            @Override
+            public void onPageSelected(int position) {
+
+                pagers.get(position).initData();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
 
         //设置RadioGroup的选中状态改变的监听
         rg_main.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

@@ -99,7 +99,7 @@
             android:layout_below="@+id/ll_user"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
-            android:background="@drawable/background_bg_me"
+            android:background="@drawable/background_bg_banyuan"
             android:drawableLeft="@drawable/icon_edit"
             android:drawablePadding="5dp"
             android:gravity="center"

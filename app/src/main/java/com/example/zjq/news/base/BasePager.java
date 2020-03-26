@@ -18,7 +18,7 @@ import org.xutils.x;
 /**
  *
  */
-public class BasePager extends Fragment{
+public class BasePager  {
 
 
     public final Context context;

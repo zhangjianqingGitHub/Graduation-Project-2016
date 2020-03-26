@@ -32,13 +32,13 @@ public class MePager extends BasePager {
 
     private View view;
     private RelativeLayout re_me_update, re_me_fankui, re_me_call;
-    private TextView tv_user_name, tv_editdata, tv_me_version, tv_me_integral;
-    private ImageView iv_me_setting, iv_home_version_bar, iv_me_photo;
-    private LinearLayout ll_login, ll_user;
+    public TextView tv_user_name, tv_editdata, tv_me_version;
+    public ImageView iv_me_setting, iv_home_version_bar, iv_me_photo;
+    public LinearLayout ll_login, ll_user;
+    private MainActivity mainActivity;
 
     public MePager(Context context) {
         super(context);
-
 
         findView();
     }
@@ -81,6 +81,9 @@ public class MePager extends BasePager {
         pbLoading.setVisibility(View.GONE);
 
         listener();
+
+        mainActivity = (MainActivity) context;
+
     }
 
 
@@ -138,7 +141,7 @@ public class MePager extends BasePager {
                     if (SharepUtils.IsLogin(context)) {
                         Intent intent = new Intent(context, SettingActivity.class);
 
-                        startActivityForResult(intent, 2);
+                        mainActivity.getContentFragment().startActivityForResult(intent, 2);
 
 
                     } else {
@@ -154,7 +157,7 @@ public class MePager extends BasePager {
                     if (SharepUtils.IsLogin(context)) {
                         Intent intent = new Intent(context, EditDataActivity.class);
 
-                        startActivityForResult(intent, 3);
+                        mainActivity.getContentFragment().startActivityForResult(intent, 3);
                     } else {
 
                         login();
@@ -167,7 +170,7 @@ public class MePager extends BasePager {
                     if (SharepUtils.IsLogin(context)) {
 
                         Intent intent = new Intent(context, EditDataActivity.class);
-                        startActivityForResult(intent, 3);
+                        mainActivity.getContentFragment().startActivityForResult(intent, 3);
 
                     } else {
                         login();
@@ -189,35 +192,11 @@ public class MePager extends BasePager {
 
     private void login() {
         Intent intent = new Intent(context, LoginActivityNew.class);
-        startActivityForResult(intent, 1);
+        mainActivity.getContentFragment().startActivityForResult(intent, 1);
     }
 
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 1 && resultCode == 1) {
-            //登录完成后回来
-            showUserInfo();
-
-        } else if (requestCode == 2 && resultCode == 2) {
-            //设置中点击退出登录
-            ll_login.setVisibility(View.VISIBLE);
-            ll_user.setVisibility(View.GONE);
-            tv_editdata.setVisibility(View.INVISIBLE);
-
-            Glide.with(context).load(R.drawable.iv_me_header).into(iv_me_photo);
-
-            //设置退出登录状态
-
-            SharepUtils.deleLogin(context);
-
-        } else if (requestCode == 3 && resultCode == 3) {
-            //编辑完信息回来的
-            showUserInfo();
-        }
-    }
 
 //    private void showDialog() {
 //
@@ -247,7 +226,7 @@ public class MePager extends BasePager {
 //
 //    }
 
-    private void showUserInfo() {
+    public void showUserInfo() {
 
         ll_login.setVisibility(View.GONE);
         ll_user.setVisibility(View.VISIBLE);

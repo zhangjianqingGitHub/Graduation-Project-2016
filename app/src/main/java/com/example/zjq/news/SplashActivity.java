@@ -2,11 +2,14 @@ package com.example.zjq.news;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.zjq.news.activity.MainActivity;
 import com.example.zjq.news.bean.EveryDayWordBean;
 import com.example.zjq.news.utils.Constants;
@@ -17,6 +20,7 @@ import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -24,6 +28,7 @@ public class SplashActivity extends Activity {
 
     private TextView tv_content, tv_author;
     private RoundProgressBar skip;
+    private ImageView meitu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +70,7 @@ public class SplashActivity extends Activity {
         startActivity(intent);
 
         finish();
+
 
     }
 
@@ -125,7 +131,17 @@ public class SplashActivity extends Activity {
         tv_content = findViewById(R.id.tv_content);
         tv_author = findViewById(R.id.tv_author);
         skip = findViewById(R.id.skip);
+        meitu = findViewById(R.id.meitu);
 
+        List<Drawable> imgs = new ArrayList<>();
+        imgs.add(getResources().getDrawable(R.drawable.img_1));
+        imgs.add(getResources().getDrawable(R.drawable.img_2));
+        imgs.add(getResources().getDrawable(R.drawable.img_3));
+        imgs.add(getResources().getDrawable(R.drawable.img_4));
+
+        int n = new Random().nextInt(imgs.size());
+
+        Glide.with(SplashActivity.this).load(imgs.get(n)).into(meitu);
 
     }
 

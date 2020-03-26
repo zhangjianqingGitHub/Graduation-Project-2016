@@ -48,14 +48,7 @@ public class SharepUtils {
     private static final String TAG = "SharepUtils";
 
 
-    public static void setUSER_AVATAR(Context mContext, String value) {
 
-        SharedPreferences spf = mContext.getSharedPreferences("user_info", Context.MODE_PRIVATE);
-        Editor meEditor = spf.edit();
-        meEditor.putString(USER_AVATAR, value);
-        meEditor.apply();
-
-    }
 
 
     public static void saveUserInfonew(Context mContext, UserInfoBean.DataBean userInfo) {
@@ -192,10 +185,18 @@ public class SharepUtils {
         SharedPreferences spf = mContext.getSharedPreferences("user_info", Context.MODE_PRIVATE);
         Editor meEditor = spf.edit();
         meEditor.putString(USER_PSW, value);
-        meEditor.commit();
+        meEditor.apply();
     }
 
 
+    public static void setUSER_AVATAR(Context mContext, String value) {
+
+        SharedPreferences spf = mContext.getSharedPreferences("user_info", Context.MODE_PRIVATE);
+        Editor meEditor = spf.edit();
+        meEditor.putString(USER_AVATAR, value);
+        meEditor.apply();
+
+    }
     public static String getAvatar(Context mContext) {
 
         SharedPreferences spf = mContext.getSharedPreferences("user_info", Context.MODE_PRIVATE);

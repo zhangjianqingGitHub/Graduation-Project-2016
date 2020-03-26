@@ -35,6 +35,15 @@
 
 
         <RadioButton
+            android:id="@+id/rb_vedio"
+            style="@style/bottom_tag_style"
+            android:background="@null"
+            android:drawableTop="@drawable/rb_vedio_drawable_selector"
+            android:gravity="center"
+            android:text="视频"
+            android:textStyle="bold" />
+
+        <RadioButton
             android:id="@+id/rb_home"
             style="@style/bottom_tag_style"
             android:background="@null"
@@ -42,26 +51,7 @@
             android:gravity="center"
             android:text="娱乐"
             android:textStyle="bold" />
-        <!--
-                <RadioButton
-                    android:id="@+id/rb_smartservice"
-                    android:textStyle="bold"
 
-                    style="@style/bottom_tag_style"
-                    android:background="@null"
-                    android:drawableTop="@drawable/rb_smartservice_drawable_selector"
-                    android:gravity="center"
-                    android:text="智慧" />
-
-                <RadioButton
-                    android:id="@+id/rb_govaffair"
-                    android:textStyle="bold"
-
-                    style="@style/bottom_tag_style"
-                    android:background="@null"
-                    android:drawableTop="@drawable/rb_govaffair_drawable_selector"
-                    android:gravity="center"
-                    android:text="政要" />-->
 
         <RadioButton
             android:id="@+id/rb_setting"

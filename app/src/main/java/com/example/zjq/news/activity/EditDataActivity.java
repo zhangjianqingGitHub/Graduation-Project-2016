@@ -33,7 +33,7 @@ import java.util.Map;
 public class EditDataActivity extends AppCompatActivity {
     private ImageView iv_back, iv_home_photo;
     private TextView tv_home_title, tv_me_only_username, tv_me_only_name,
-            tv_me_only_sex, tv_me_only_age, tv_me_only_grade, tv_me_only_school, tv_huantou;
+            tv_me_only_sex, tv_me_only_age, tv_me_only_school, tv_huantou;
     private RelativeLayout re_me_only_name, re_me_only_sex, re_me_only_age, re_me_only_school;
 
 
@@ -69,18 +69,23 @@ public class EditDataActivity extends AppCompatActivity {
 
                     if (code == 2000) {
 
+                        RequestOptions myOptions = new RequestOptions()
+                                .placeholder(R.drawable.iv_me_header)
+                                .optionalTransform
+                                        (new GlideCircleBorderTransform(DensityUtil.dip2px(2), getResources().getColor(R.color.white)));
+
+
+                        Glide.with(EditDataActivity.this).load(infoBean.getData().getAvatar()).apply(myOptions).into(iv_home_photo);
+
                         tv_me_only_username.setText(infoBean.getData().getUsername());
                         tv_me_only_name.setText(infoBean.getData().getName());
                         tv_me_only_sex.setText(infoBean.getData().getSex());
                         tv_me_only_age.setText(infoBean.getData().getAge());
-                        tv_me_only_grade.setText(infoBean.getData().getGradename());
                         tv_me_only_school.setText(infoBean.getData().getSchool());
 
-                        setPic();
+
 
                     }
-
-//                    ToastUtil.show_center(EditDataActivity.this, infoBean.getMsg());
 
                 } catch (Exception e) {
                     Log.e("zjq=e", e.getMessage());
@@ -213,7 +218,7 @@ public class EditDataActivity extends AppCompatActivity {
                 SharepUtils.setUserUSER_NAME(EditDataActivity.this, newdata);
             } else if (type.equals("sex")) {
                 tv_me_only_sex.setText(newdata);
-            }  else if (type.equals("school")) {
+            } else if (type.equals("school")) {
                 tv_me_only_school.setText(newdata);
             } else if (type.equals("pic")) {
 

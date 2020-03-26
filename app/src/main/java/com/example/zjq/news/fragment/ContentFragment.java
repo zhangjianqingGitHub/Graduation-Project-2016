@@ -1,20 +1,23 @@
 package com.example.zjq.news.fragment;
 
 
-import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.RadioGroup;
 
 import androidx.viewpager.widget.ViewPager;
 
+import com.bumptech.glide.Glide;
 import com.example.zjq.news.R;
 import com.example.zjq.news.activity.MainActivity;
 import com.example.zjq.news.adapter.ContentFramentAdapter;
 import com.example.zjq.news.base.BaseFragment;
 import com.example.zjq.news.base.BasePager;
-import com.example.zjq.news.pager.HomePager;
+import com.example.zjq.news.pager.HappyPager;
 import com.example.zjq.news.pager.NewsCenterPager;
 import com.example.zjq.news.pager.MePager;
+import com.example.zjq.news.pager.VideoPager;
+import com.example.zjq.news.utils.SharepUtils;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 import org.xutils.view.annotation.ViewInject;
@@ -51,7 +54,8 @@ public class ContentFragment extends BaseFragment {
         //初始化页面，并且放入集合中
         pagers = new ArrayList<>();
         pagers.add(new NewsCenterPager(mContext));
-        pagers.add(new HomePager(mContext));
+        pagers.add(new VideoPager(mContext));
+        pagers.add(new HappyPager(mContext));
         pagers.add(new MePager(mContext));
         //默认选中首页
         rg_main.check(R.id.rb_newscenter);
@@ -65,50 +69,61 @@ public class ContentFragment extends BaseFragment {
         isEnableSlidingMenu(false);
 
 
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int i, float v, int i1) {
-
-            }
-
-            /**
-             * 当某个页面被选中
-             * @param
-             */
-            @Override
-            public void onPageSelected(int position) {
-
-                pagers.get(position).initData();
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int i) {
-
-            }
-        });
+//        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//            @Override
+//            public void onPageScrolled(int i, float v, int i1) {
+//
+//            }
+//
+//            /**
+//             * 当某个页面被选中
+//             * @param
+//             */
+//            @Override
+//            public void onPageSelected(int position) {
+//
+//                pagers.get(position).initData();
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int i) {
+//
+//            }
+//        });
 
         //设置RadioGroup的选中状态改变的监听
         rg_main.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int id) {
                 switch (id) {
-                    case R.id.rb_home:
-                        viewPager.setCurrentItem(1, false);
 
-                        isEnableSlidingMenu(true);
-
-                        break;
                     case R.id.rb_newscenter:
 
 
                         viewPager.setCurrentItem(0, false);//加上false 没有动画
+
+                        isEnableSlidingMenu(true);
+
+                        break;
+
+                    case R.id.rb_vedio:
+
+
+                        viewPager.setCurrentItem(1, false);//加上false 没有动画
+
+                        isEnableSlidingMenu(false);
+
+                        break;
+
+                    case R.id.rb_home:
+                        viewPager.setCurrentItem(2, false);
 
                         isEnableSlidingMenu(false);
 
                         break;
 
                     case R.id.rb_setting:
-                        viewPager.setCurrentItem(2, false);
+                        viewPager.setCurrentItem(3, false);
 
                         isEnableSlidingMenu(false);
 
@@ -139,6 +154,38 @@ public class ContentFragment extends BaseFragment {
     public NewsCenterPager getNewsCenterPager() {
 
         return (NewsCenterPager) pagers.get(0);
+    }
+
+    //得到新闻中心
+    public MePager getMePager() {
+
+        return (MePager) pagers.get(2);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1 && resultCode == 1) {
+            //登录完成后回来
+            getMePager().showUserInfo();
+
+        } else if (requestCode == 2 && resultCode == 2) {
+            //设置中点击退出登录
+            getMePager().ll_login.setVisibility(View.VISIBLE);
+            getMePager().ll_user.setVisibility(View.GONE);
+            getMePager().tv_editdata.setVisibility(View.INVISIBLE);
+
+            Glide.with(mContext).load(R.drawable.iv_me_header).into(getMePager().iv_me_photo);
+
+            //设置退出登录状态
+
+            SharepUtils.deleLogin(mContext);
+
+        } else if (requestCode == 3 && resultCode == 3) {
+            //编辑完信息回来的
+            getMePager().showUserInfo();
+        }
     }
 
 }

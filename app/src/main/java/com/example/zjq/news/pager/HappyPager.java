@@ -34,7 +34,7 @@ import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
-public class HomePager extends BasePager {
+public class HappyPager extends BasePager {
 
     private WebView webview;
     private WebSettings webSettings;
@@ -48,7 +48,7 @@ public class HomePager extends BasePager {
     private TextView tv_title, tv_author, tv_content;
 
 
-    public HomePager(Context context) {
+    public HappyPager(Context context) {
         super(context);
 
 

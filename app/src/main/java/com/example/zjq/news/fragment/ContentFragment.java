@@ -159,7 +159,7 @@ public class ContentFragment extends BaseFragment {
     //得到新闻中心
     public MePager getMePager() {
 
-        return (MePager) pagers.get(2);
+        return (MePager) pagers.get(3);
     }
 
     @Override

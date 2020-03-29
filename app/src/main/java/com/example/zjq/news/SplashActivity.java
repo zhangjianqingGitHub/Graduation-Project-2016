@@ -94,21 +94,7 @@ public class SplashActivity extends Activity {
                 tv_content.setText(a[0] + "。");
                 tv_author.setText(a[1]);
 
-//                EveryDayWordBean bean = new Gson().fromJson(result, EveryDayWordBean.class);
-//
-//                if (bean.getCode() == 1) {
-//
-//                    List<EveryDayWordBean.DataBean> list = bean.getData();
-//
-//                    int n = new Random().nextInt(list.size());
-//
-//                    tv_content.setText(bean.getData().get(n).getContent());
-//
-//                    if (!TextUtils.isEmpty(bean.getData().get(n).getAuthor())) {
-//                        tv_author.setText("—— " + bean.getData().get(n).getAuthor());
-//                    }
-//
-//                }
+
 
                 skip.setshowTime(true);
                 skip.start();

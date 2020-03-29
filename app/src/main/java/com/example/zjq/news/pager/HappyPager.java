@@ -45,7 +45,7 @@ public class HappyPager extends BasePager {
     private LinearLayout llLishi;
     private LinearLayout llXiaohua, ll_every_wen;
 
-    private TextView tv_title, tv_author, tv_content;
+    private TextView title, tv_author, tv_content;
 
 
     public HappyPager(Context context) {
@@ -122,7 +122,7 @@ public class HappyPager extends BasePager {
         llXiaohua = view.findViewById(R.id.ll_xiaohua);
 //        top.setVisibility(View.GONE);
 
-        tv_title = view.findViewById(R.id.tv_title);
+        title = view.findViewById(R.id.title);
         tv_author = view.findViewById(R.id.tv_author);
         tv_content = view.findViewById(R.id.tv_content);
         ll_every_wen = view.findViewById(R.id.ll_every_wen);
@@ -185,7 +185,7 @@ public class HappyPager extends BasePager {
 
                 EveryDayWenBean bean = new Gson().fromJson(result, EveryDayWenBean.class);
 
-                tv_title.setText(bean.getData().getTitle());
+                title.setText(bean.getData().getTitle());
                 tv_author.setText(bean.getData().getAuthor());
                 tv_content.setText(Html.fromHtml(bean.getData().getContent()));
 

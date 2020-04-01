@@ -4,7 +4,7 @@
 
 
 ![ logo ](https://github.com/zhangjianqingGitHub/News/blob/master/images/logo.png)
-logo
+
 ![启动页](https://github.com/zhangjianqingGitHub/News/blob/master/images/qidong.jpg)
 
 ![未登录](https://github.com/zhangjianqingGitHub/News/blob/master/images/weidenglu.jpg)

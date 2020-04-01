@@ -26,3 +26,18 @@
 ![侧滑菜单](https://github.com/zhangjianqingGitHub/News/blob/master/images/cehua.jpg)
 
 ![视频页](https://github.com/zhangjianqingGitHub/News/blob/master/images/video.png)
+
+![每日一文](https://github.com/zhangjianqingGitHub/News/blob/master/images/wen.png)
+
+![最新疫情](https://github.com/zhangjianqingGitHub/News/blob/master/images/yiqing.png)
+
+![设置页](https://github.com/zhangjianqingGitHub/News/blob/master/images/setting.png)
+
+![修改手机号](https://github.com/zhangjianqingGitHub/News/blob/master/images/updatephone.png)
+
+![修改密码](https://github.com/zhangjianqingGitHub/News/blob/master/images/updatepassword.png)
+
+![个人主页](https://github.com/zhangjianqingGitHub/News/blob/master/images/me.png)
+
+![反馈](https://github.com/zhangjianqingGitHub/News/blob/master/images/fankui.png)
+

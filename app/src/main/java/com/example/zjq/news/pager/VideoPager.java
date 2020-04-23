@@ -29,7 +29,7 @@ public class VideoPager extends BasePager {
 
     private View view;
     private RecyclerView rv_video;
-    private VideoAdapter adapter;
+    public VideoAdapter adapter;
 
     public VideoPager(Context context) {
         super(context);

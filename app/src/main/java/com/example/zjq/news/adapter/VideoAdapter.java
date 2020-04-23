@@ -47,8 +47,22 @@ public class VideoAdapter extends ListBaseAdapter<NewsCenterPagerBean.DataBean> 
         video_view.setVideoPath(url);
 
         video_view.setMediaController(new MediaController(context));
-        video_view.start();
 
+        start();
 
     }
+
+    public void pause() {
+        if (video_view!=null){
+            video_view.pause();
+        }
+    }
+
+    public void start() {
+
+        if (video_view!=null){
+            video_view.start();
+        }
+    }
+
 }

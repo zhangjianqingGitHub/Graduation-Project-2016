@@ -83,6 +83,21 @@ public class ContentFragment extends BaseFragment {
             public void onPageSelected(int position) {
 
                 pagers.get(position).initData();
+
+                VideoPager videoPager= (VideoPager) pagers.get(1);
+
+                if (videoPager.adapter!=null){
+                    if (position==1){
+                        //视频界面，播放视频
+
+                        videoPager.adapter.start();
+                    }else {
+                        //其它页面，暂定播放视频
+                        videoPager.adapter.pause();
+                    }
+                }
+
+
             }
 
             @Override

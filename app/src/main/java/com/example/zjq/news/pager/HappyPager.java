@@ -18,21 +18,27 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 
+import com.bumptech.glide.Glide;
 import com.example.zjq.news.R;
 import com.example.zjq.news.base.BasePager;
 import com.example.zjq.news.bean.EveryDayWenBean;
+import com.example.zjq.news.bean.HistoryBean;
 import com.example.zjq.news.utils.Constants;
 import com.google.gson.Gson;
 
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
+
+import java.util.Random;
 
 public class HappyPager extends BasePager {
 
@@ -47,6 +53,9 @@ public class HappyPager extends BasePager {
 
     private TextView title, tv_author, tv_content;
 
+    private ImageView iv_img;
+
+    private ScrollView sv_view;
 
     public HappyPager(Context context) {
         super(context);
@@ -90,7 +99,7 @@ public class HappyPager extends BasePager {
                     break;
                 case R.id.ll_yiqing:
 
-                    view_yiding();
+                    view_yiqing();
 
                     break;
                 case R.id.ll_lishi:
@@ -126,6 +135,10 @@ public class HappyPager extends BasePager {
         tv_author = view.findViewById(R.id.tv_author);
         tv_content = view.findViewById(R.id.tv_content);
         ll_every_wen = view.findViewById(R.id.ll_every_wen);
+        sv_view =view.findViewById(R.id.sv_view);
+
+
+        iv_img = view.findViewById(R.id.iv_img);
 
         tv_title.setText("娱乐");
 
@@ -134,9 +147,11 @@ public class HappyPager extends BasePager {
 
 
     @SuppressLint("SetJavaScriptEnabled")
-    private void view_yiding() {
+    private void view_yiqing() {
 
         ll_every_wen.setVisibility(View.GONE);
+        iv_img.setVisibility(View.GONE);
+
 
 //        tv_title.setText("新冠肺炎实时动态");
 //
@@ -173,6 +188,8 @@ public class HappyPager extends BasePager {
 
         webview.setVisibility(View.GONE);
         ll_every_wen.setVisibility(View.VISIBLE);
+        iv_img.setVisibility(View.GONE);
+        sv_view.scrollTo(0,0);
 
         String url = Constants.everyday_wen;
 
@@ -213,6 +230,13 @@ public class HappyPager extends BasePager {
 
     private void view_lishi() {
 
+        webview.setVisibility(View.GONE);
+        ll_every_wen.setVisibility(View.VISIBLE);
+        iv_img.setVisibility(View.VISIBLE);
+        sv_view.scrollTo(0,0);
+
+
+
         String url = Constants.lishi;
 
         RequestParams params = new RequestParams(url);
@@ -224,6 +248,18 @@ public class HappyPager extends BasePager {
             @Override
             public void onSuccess(String result) {
                 Log.e("zjq-lishi", result);
+
+                HistoryBean bean= new Gson().fromJson(result,HistoryBean.class);
+
+                int n = new Random().nextInt(bean.getData().size());
+
+                title.setText(bean.getData().get(n).getTitle());
+                tv_author.setText(bean.getData().get(n).getYear()+"-"+bean.getData().get(n).getMonth()+"-"+bean.getData().get(n).getDay());
+                tv_content.setText(Html.fromHtml(bean.getData().get(n).getDetails()));
+
+                Glide.with(context).load(bean.getData().get(n).getPicUrl()).into(iv_img);
+
+                pbLoading.setVisibility(View.INVISIBLE);
             }
 
             @Override

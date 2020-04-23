@@ -64,7 +64,10 @@ public class NewsCenterPager extends BasePager {
                 if (bean.getCode() == 1) {
 
                     list_left = new ArrayList<>();
-                    list_left = bean.getData();
+
+                    //去掉视频部分
+                    list_left = bean.getData().subList(0,bean.getData().size()-3);
+                    list_left.add(bean.getData().get(bean.getData().size()-2));
 
                     MainActivity mainActivity = (MainActivity) context;
                     LeftMenuFragment fragment = (LeftMenuFragment) mainActivity.getLeftMenuFragment();

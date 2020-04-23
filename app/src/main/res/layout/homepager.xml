@@ -142,6 +142,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:singleLine="true"
                     android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -162,18 +163,37 @@
             </LinearLayout>
 
             <ScrollView
+                android:id="@+id/sv_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:padding="5dp"
                 android:scrollbars="none">
 
-                <TextView
-                    android:id="@+id/tv_content"
+                <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:textColor="@android:color/black" />
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:scaleType="fitXY"
+                        android:id="@+id/iv_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"/>
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/tv_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:textColor="@android:color/black" />
+
+
+
+                </LinearLayout>
+
+
             </ScrollView>
 
         </LinearLayout>

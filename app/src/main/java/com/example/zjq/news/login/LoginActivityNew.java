@@ -209,7 +209,6 @@ public class LoginActivityNew extends Activity {
 
 
                         if (Utils.isFastClick()) {
-                            Log.e("zjq-ccc", "1111111111");
                             denglu(et_user_name.getText().toString(), et_user_password.getText().toString());
                         }
 

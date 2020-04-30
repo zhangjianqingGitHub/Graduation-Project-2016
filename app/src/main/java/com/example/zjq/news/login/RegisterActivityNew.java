@@ -1,9 +1,11 @@
 package com.example.zjq.news.login;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Message;
 import android.telecom.Call;
 import android.text.Editable;
@@ -12,12 +14,14 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 
@@ -839,11 +843,18 @@ public class RegisterActivityNew extends Activity {
         x.http().get(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
+
+
                 try {
                     JSONObject jsonObject = new JSONObject(result);
                     String code = jsonObject.getString("code");
 
                     if (code.equals("2000")) {
+
+                        //收起键盘
+                        View v = getCurrentFocus();
+                        hideKeyboard(v.getWindowToken());   //收起键盘
+
                         //发送成功
                         ToastUtil.show_center(RegisterActivityNew.this, jsonObject.getString("msg"));
 
@@ -856,6 +867,8 @@ public class RegisterActivityNew extends Activity {
                     } else {
 
 
+                        Toast.makeText(RegisterActivityNew.this,jsonObject.getString("msg"),Toast.LENGTH_SHORT).show();
+
                     }
 
 
@@ -867,6 +880,7 @@ public class RegisterActivityNew extends Activity {
 
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
+
 
             }
 
@@ -884,6 +898,18 @@ public class RegisterActivityNew extends Activity {
 
 
     }
+
+    /**
+     * 获取InputMethodManager，隐藏软键盘
+     * @param token
+     */
+    private void hideKeyboard(IBinder token) {
+        if (token != null) {
+            InputMethodManager im = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            im.hideSoftInputFromWindow(token, InputMethodManager.HIDE_NOT_ALWAYS);
+        }
+    }
+
 
 
 }

@@ -73,49 +73,54 @@ public class SplashActivity extends Activity {
 
     private void initData() {
 
-        String url = "https://api.77sec.cn/yiyan/api.php";
+//        String url = "https://api.77sec.cn/yiyan/api.php";
+//
+//        RequestParams params = new RequestParams(url);
+//
+//        x.http().get(params, new Callback.CommonCallback<String>() {
+//            @Override
+//            public void onSuccess(String result) {
+//
+//                String guwen = result;
+//
+//                int begin = result.indexOf("(");
+//                int end = result.indexOf(")");
+//
+//                //"君子坦荡荡，小人长戚戚。——孔子"
+//                guwen = result.substring(begin+2, end-1);
+//
+//                String[] a = guwen.split("。");
+//
+//                tv_content.setText(a[0] + "。");
+//                tv_author.setText(a[1]);
+//
+//
+//
+////                skip.setshowTime(true);
+////                skip.start();
+//
+//            }
+//
+//            @Override
+//            public void onError(Throwable ex, boolean isOnCallback) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(CancelledException cex) {
+//
+//            }
+//
+//            @Override
+//            public void onFinished() {
+//
+//            }
+//        });
 
-        RequestParams params = new RequestParams(url);
 
-        x.http().get(params, new Callback.CommonCallback<String>() {
-            @Override
-            public void onSuccess(String result) {
+        skip.setshowTime(true);
+        skip.start();
 
-                String guwen = result;
-
-                int begin = result.indexOf("(");
-                int end = result.indexOf(")");
-
-                //"君子坦荡荡，小人长戚戚。——孔子"
-                guwen = result.substring(begin+2, end-1);
-
-                String[] a = guwen.split("。");
-
-                tv_content.setText(a[0] + "。");
-                tv_author.setText(a[1]);
-
-
-
-                skip.setshowTime(true);
-                skip.start();
-
-            }
-
-            @Override
-            public void onError(Throwable ex, boolean isOnCallback) {
-
-            }
-
-            @Override
-            public void onCancelled(CancelledException cex) {
-
-            }
-
-            @Override
-            public void onFinished() {
-
-            }
-        });
     }
 
 

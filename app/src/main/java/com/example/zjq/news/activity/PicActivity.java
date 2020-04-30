@@ -31,16 +31,22 @@ import com.example.zjq.news.utils.SharepUtils;
 import com.example.zjq.news.utils.ToastUtil;
 import com.example.zjq.news.utils.UtilImags;
 import com.google.gson.Gson;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
 
 import org.xutils.common.Callback;
+import org.xutils.common.util.KeyValue;
 import org.xutils.http.RequestParams;
+import org.xutils.http.body.MultipartBody;
 import org.xutils.x;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -135,49 +141,53 @@ public class PicActivity extends Activity {
 
         String url = Constants.PIC_URL;
 
-        RequestParams params = new RequestParams(url);
 
-        params.addBodyParameter("uid", SharepUtils.getUserUSER_ID(PicActivity.this));
-        params.addBodyParameter("key", SharepUtils.getUserUSER_KEY(PicActivity.this));
+        Map<String, String> params = new HashMap<>();
+        params.put("uid", SharepUtils.getUserUSER_ID(PicActivity.this));
+        params.put("key", SharepUtils.getUserUSER_KEY(PicActivity.this));
 
-        x.http().get(params, new Callback.CommonCallback<String>() {
-            @Override
-            public void onSuccess(String result) {
+        Map<String, String> headers = new HashMap<>();
+        headers.put("APP-Key", "APP-Secret222");
+        headers.put("APP-Secret", "APP-Secret111");
 
-                try {
-                    Gson gson = new Gson();
-                    Avatar packlist = gson.fromJson(result, Avatar.class);
 
-                    if (packlist.getCode() == 2000) {
-                        SharepUtils.setUSER_AVATAR(PicActivity.this, packlist.getData().getAvatar());
+
+        OkHttpUtils.post()
+                .addFile("avatar", "messenger_01.png", file)//
+                .url(url)
+                .params(params)
+                .headers(headers)
+                .build()
+                .execute(new StringCallback() {
+
+                    @Override
+                    public void onError(okhttp3.Call call, Exception e, int id) {
 
                     }
-                    Intent intent = new Intent();
-                    intent.putExtra("type", "pic");
-                    setResult(1, intent);
 
-                    finish();
-                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                    @Override
+                    public void onResponse(String response, int id) {
 
-                } catch (Exception e) {
-                }
-            }
+                        try {
+                            Gson gson = new Gson();
+                            Avatar packlist = gson.fromJson(response, Avatar.class);
+                            ToastUtil.showShort(PicActivity.this, packlist.getMsg());
+                            if (packlist.getCode() == 2000) {
+                                SharepUtils.setUSER_AVATAR(PicActivity.this, packlist.getData().getAvatar());
 
-            @Override
-            public void onError(Throwable ex, boolean isOnCallback) {
+                            }
+                            Intent intent = new Intent();
+                            intent.putExtra("type", "pic");
+                            setResult(1, intent);
 
-            }
+                            finish();
+                            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                        } catch (Exception e) {
+                        }
 
-            @Override
-            public void onCancelled(CancelledException cex) {
+                    }
+                });
 
-            }
-
-            @Override
-            public void onFinished() {
-
-            }
-        });
 
 
 
@@ -248,7 +258,7 @@ public class PicActivity extends Activity {
                 imageUri = Uri.fromFile(fileUri);
                 //通过FileProvider创建一个content类型的Uri
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    imageUri = FileProvider.getUriForFile(PicActivity.this, "com.youjing.yingyudiandu.FileProvider", fileUri);
+                    imageUri = FileProvider.getUriForFile(PicActivity.this, "com.example.zjq.news.FileProvider", fileUri);
                 }
                 PhotoUtils.takePicture(this, imageUri, CODE_CAMERA_REQUEST);
             } else {
@@ -269,7 +279,7 @@ public class PicActivity extends Activity {
                         imageUri = Uri.fromFile(fileUri);
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                             //通过FileProvider创建一个content类型的Uri
-                            imageUri = FileProvider.getUriForFile(PicActivity.this, "com.youjing.yingyudiandu.FileProvider", fileUri);
+                            imageUri = FileProvider.getUriForFile(PicActivity.this, "com.example.zjq.news.FileProvider", fileUri);
                         }
 
                         PhotoUtils.takePicture(this, imageUri, CODE_CAMERA_REQUEST);
@@ -329,7 +339,7 @@ public class PicActivity extends Activity {
                         cropImageUri = Uri.fromFile(fileCropUri);
                         Uri newUri = Uri.parse(PhotoUtils.getPath(this, data.getData()));
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                            newUri = FileProvider.getUriForFile(this, "com.youjing.yingyudiandu.FileProvider", new File(newUri.getPath()));
+                            newUri = FileProvider.getUriForFile(this, "com.example.zjq.news.FileProvider", new File(newUri.getPath()));
                         }
                         PhotoUtils.cropImageUri(this, newUri, cropImageUri, 1, 1, OUTPUT_X, OUTPUT_Y, CODE_RESULT_REQUEST);
                     } else {

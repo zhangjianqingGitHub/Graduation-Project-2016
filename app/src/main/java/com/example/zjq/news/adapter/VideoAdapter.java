@@ -48,13 +48,13 @@ public class VideoAdapter extends ListBaseAdapter<NewsCenterPagerBean.DataBean> 
 
         video_view.setMediaController(new MediaController(context));
 
-        start();
+
 
     }
 
     public void pause() {
         if (video_view!=null){
-            video_view.pause();
+            video_view.stopPlayback();
         }
     }
 

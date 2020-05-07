@@ -121,10 +121,10 @@
         android:layout_weight="1">
 
         <WebView
-            android:background="@drawable/bg_yuan_jiao"
             android:id="@+id/webview_yiqing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_yuan_jiao"
             android:visibility="gone" />
 
         <LinearLayout
@@ -142,21 +142,21 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:singleLine="true"
                     android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:singleLine="true"
                     android:text="我是题目"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:layout_marginRight="5dp"
                     android:id="@+id/tv_author"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
+                    android:layout_marginRight="5dp"
                     android:text="我是作者"
                     android:textColor="@android:color/darker_gray"
                     android:textStyle="italic" />
@@ -171,30 +171,30 @@
                 android:scrollbars="none">
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                     <ImageView
-                        android:scaleType="fitXY"
                         android:id="@+id/iv_img"
                         android:layout_width="match_parent"
-                        android:layout_height="300dp"/>
+                        android:layout_height="300dp"
+                        android:scaleType="fitXY" />
 
                     <TextView
-                        android:layout_marginTop="10dp"
                         android:id="@+id/tv_content"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:gravity="left"
                         android:textColor="@android:color/black" />
-
 
 
                 </LinearLayout>
 
 
             </ScrollView>
+
 
         </LinearLayout>
 

@@ -31,6 +31,7 @@ import com.example.zjq.news.R;
 import com.example.zjq.news.base.BasePager;
 import com.example.zjq.news.bean.EveryDayWenBean;
 import com.example.zjq.news.bean.HistoryBean;
+import com.example.zjq.news.bean.JokesBean;
 import com.example.zjq.news.utils.Constants;
 import com.google.gson.Gson;
 
@@ -38,6 +39,8 @@ import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class HappyPager extends BasePager {
@@ -135,7 +138,7 @@ public class HappyPager extends BasePager {
         tv_author = view.findViewById(R.id.tv_author);
         tv_content = view.findViewById(R.id.tv_content);
         ll_every_wen = view.findViewById(R.id.ll_every_wen);
-        sv_view =view.findViewById(R.id.sv_view);
+        sv_view = view.findViewById(R.id.sv_view);
 
 
         iv_img = view.findViewById(R.id.iv_img);
@@ -189,7 +192,7 @@ public class HappyPager extends BasePager {
         webview.setVisibility(View.GONE);
         ll_every_wen.setVisibility(View.VISIBLE);
         iv_img.setVisibility(View.GONE);
-        sv_view.scrollTo(0,0);
+        sv_view.scrollTo(0, 0);
 
         String url = Constants.everyday_wen;
 
@@ -233,8 +236,7 @@ public class HappyPager extends BasePager {
         webview.setVisibility(View.GONE);
         ll_every_wen.setVisibility(View.VISIBLE);
         iv_img.setVisibility(View.VISIBLE);
-        sv_view.scrollTo(0,0);
-
+        sv_view.scrollTo(0, 0);
 
 
         String url = Constants.lishi;
@@ -247,14 +249,13 @@ public class HappyPager extends BasePager {
         x.http().get(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
-                Log.e("zjq-lishi", result);
 
-                HistoryBean bean= new Gson().fromJson(result,HistoryBean.class);
+                HistoryBean bean = new Gson().fromJson(result, HistoryBean.class);
 
                 int n = new Random().nextInt(bean.getData().size());
 
                 title.setText(bean.getData().get(n).getTitle());
-                tv_author.setText(bean.getData().get(n).getYear()+"-"+bean.getData().get(n).getMonth()+"-"+bean.getData().get(n).getDay());
+                tv_author.setText(bean.getData().get(n).getYear() + "-" + bean.getData().get(n).getMonth() + "-" + bean.getData().get(n).getDay());
                 tv_content.setText(Html.fromHtml(bean.getData().get(n).getDetails()));
 
                 Glide.with(context).load(bean.getData().get(n).getPicUrl()).into(iv_img);
@@ -283,38 +284,73 @@ public class HappyPager extends BasePager {
 
 
     private void view_xiaohua() {
-        String url = Constants.xiaohua;
 
-        RequestParams params = new RequestParams(url);
-        params.addBodyParameter("app_id", Constants.APPID);
-        params.addBodyParameter("app_secret", Constants.APPSECRET);
+        webview.setVisibility(View.GONE);
+        ll_every_wen.setVisibility(View.VISIBLE);
+        iv_img.setVisibility(View.GONE);
+        sv_view.scrollTo(0, 0);
 
-        x.http().get(params, new Callback.CommonCallback<String>() {
-            @Override
-            public void onSuccess(String result) {
-                Log.e("zjq-xiaohau", result);
-            }
+        title.setText("");
+        tv_author.setText("");
+        List<String> list = new ArrayList<String>();
+        list.add(Constants.xiaohua1);
+        list.add(Constants.xiaohua2);
+        list.add(Constants.xiaohua3);
+        list.add(Constants.xiaohua4);
+        list.add(Constants.xiaohua5);
 
-            @Override
-            public void onError(Throwable ex, boolean isOnCallback) {
+        int x = new Random().nextInt(list.size());
+        tv_content.setText(list.get(x));
 
-            }
 
-            @Override
-            public void onCancelled(CancelledException cex) {
-
-            }
-
-            @Override
-            public void onFinished() {
-
-            }
-        });
+//        String url = Constants.xiaohua;
+//        RequestParams params = new RequestParams(url);
+//        params.addBodyParameter("app_id", Constants.APPID);
+//        params.addBodyParameter("app_secret", Constants.APPSECRET);
+//        params.addBodyParameter("page","1");
+//
+//        x.http().get(params, new Callback.CommonCallback<String>() {
+//            @Override
+//            public void onSuccess(String result) {
+//
+//                Log.e("zjq",result);
+//
+//                JokesBean bean=new Gson().fromJson(result,JokesBean.class);
+//
+//                int n = new Random().nextInt(bean.getData().getList().size());
+//
+//                title.setText("");
+//                tv_author.setText("");
+////                tv_content.setText(bean.getData().getList().get(n).getContent());
+//                List list=new ArrayList();
+//                list.add(Constants.xiaohua1);
+//                list.add(Constants.xiaohua2);
+//                list.add(Constants.xiaohua3);
+//                list.add(Constants.xiaohua4);
+//                list.add(Constants.xiaohua5);
+//
+//                int x = new Random().nextInt(list.size());
+//                tv_content.setText(list.get(x).toString());
+//            }
+//
+//            @Override
+//            public void onError(Throwable ex, boolean isOnCallback) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(CancelledException cex) {
+//
+//            }
+//
+//            @Override
+//            public void onFinished() {
+//
+//            }
+//        });
 
 
     }
-
-
 
 
 }

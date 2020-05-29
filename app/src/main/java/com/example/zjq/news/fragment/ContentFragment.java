@@ -29,6 +29,7 @@ public class ContentFragment extends BaseFragment {
 
     @ViewInject(R.id.viewpager)
     private ViewPager viewPager;
+
     @ViewInject(R.id.rg_main)
     private RadioGroup rg_main;
 

@@ -112,7 +112,7 @@ public class SettingActivity extends AppCompatActivity {
                     DataCleanManager.clearAllCache(SettingActivity.this);
                     String ss;
                     try {
-                        clearWebViewCache();
+                        //clearWebViewCache();
                         ss = DataCleanManager.getTotalCacheSize(SettingActivity.this);
                         tv_huancun.setText(ss);
                     } catch (Exception e) {

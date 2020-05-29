@@ -141,7 +141,6 @@ public class RefreshListView extends ListView {
                     //回调接口
                     if (onRefreshListener != null) {
 
-
                         onRefreshListener.onLoadMore();
                     }
                 }

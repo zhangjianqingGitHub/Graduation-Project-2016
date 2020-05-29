@@ -73,53 +73,53 @@ public class SplashActivity extends Activity {
 
     private void initData() {
 
-//        String url = "https://api.77sec.cn/yiyan/api.php";
-//
-//        RequestParams params = new RequestParams(url);
-//
-//        x.http().get(params, new Callback.CommonCallback<String>() {
-//            @Override
-//            public void onSuccess(String result) {
-//
-//                String guwen = result;
-//
-//                int begin = result.indexOf("(");
-//                int end = result.indexOf(")");
-//
-//                //"君子坦荡荡，小人长戚戚。——孔子"
-//                guwen = result.substring(begin+2, end-1);
-//
-//                String[] a = guwen.split("。");
-//
-//                tv_content.setText(a[0] + "。");
-//                tv_author.setText(a[1]);
-//
-//
-//
-////                skip.setshowTime(true);
-////                skip.start();
-//
-//            }
-//
-//            @Override
-//            public void onError(Throwable ex, boolean isOnCallback) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(CancelledException cex) {
-//
-//            }
-//
-//            @Override
-//            public void onFinished() {
-//
-//            }
-//        });
+        String url = "https://api.77sec.cn/yiyan/api.php";
+
+        RequestParams params = new RequestParams(url);
+
+        x.http().get(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+
+                String guwen = result;
+
+                int begin = result.indexOf("(");
+                int end = result.indexOf(")");
+
+                //"君子坦荡荡，小人长戚戚。——孔子"
+                guwen = result.substring(begin+2, end-1);
+
+                String[] a = guwen.split("。");
+
+                tv_content.setText(a[0] + "。");
+                tv_author.setText(a[1]);
 
 
-        skip.setshowTime(true);
-        skip.start();
+                skip.setshowTime(true);
+                skip.start();
+
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
+
+//        tv_content.setText("志，当存高远。");
+//
+//        skip.setshowTime(true);
+//        skip.start();
 
     }
 
@@ -133,7 +133,6 @@ public class SplashActivity extends Activity {
 
         List<Drawable> imgs = new ArrayList<>();
         imgs.add(getResources().getDrawable(R.drawable.img_1));
-        imgs.add(getResources().getDrawable(R.drawable.img_2));
         imgs.add(getResources().getDrawable(R.drawable.img_3));
         imgs.add(getResources().getDrawable(R.drawable.img_4));
 

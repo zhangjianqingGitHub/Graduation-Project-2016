@@ -35,6 +35,7 @@ public class NewsMenuDetailPager extends MenuDetailBasePager {
     @ViewInject(R.id.vp_viewpager)
     private ViewPager viewPager;
 
+    //todo:重要
     @ViewInject(R.id.tablayout)
     private TabLayout tablayout;
 

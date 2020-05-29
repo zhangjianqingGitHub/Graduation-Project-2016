@@ -20,6 +20,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.zjq.news.R;
+import com.example.zjq.news.utils.DensityUtil;
 
 public class NewsDetailActivity extends Activity implements View.OnClickListener {
 
@@ -33,6 +34,7 @@ public class NewsDetailActivity extends Activity implements View.OnClickListener
     private ProgressBar pbLoading;
     private WebSettings webSettings;
     private RelativeLayout ll_webview;
+    private String from;
 
 
     @Override
@@ -52,13 +54,15 @@ public class NewsDetailActivity extends Activity implements View.OnClickListener
         String url = intent.getStringExtra("url");
         tvTitle.setText(intent.getStringExtra("source"));
 
-        String from = intent.getStringExtra("from");
+         from = intent.getStringExtra("from");
 
         if (from != null && from.equals("top")) {
             tv_html.setVisibility(View.VISIBLE);
             ll_webview.setVisibility(View.GONE);
 
             tv_html.setText(Html.fromHtml(url));
+
+
 
         } else {
 
@@ -167,7 +171,40 @@ public class NewsDetailActivity extends Activity implements View.OnClickListener
 
                 realSize = tempSize;
 
-                changeTextSize(realSize);
+                if (from != null && from.equals("top")) {
+
+                    switch (realSize) {
+                        case 0:
+                            //超大
+                            tv_html.setTextSize(DensityUtil.px2dip(NewsDetailActivity.this,200));
+                            break;
+                        case 1:
+                            //大
+                            tv_html.setTextSize(DensityUtil.px2dip(NewsDetailActivity.this,150));
+
+                            break;
+                        case 2:
+                            tv_html.setTextSize(DensityUtil.px2dip(NewsDetailActivity.this,100));
+
+                            //正常
+                            break;
+                        case 3:
+                            //小
+                            tv_html.setTextSize(DensityUtil.px2dip(NewsDetailActivity.this,75));
+
+                            break;
+
+                        case 4:
+                            tv_html.setTextSize(DensityUtil.px2dip(NewsDetailActivity.this,50));
+
+                            //超小
+                            break;
+                    }
+
+                }else {
+                    changeTextSize(realSize);
+                }
+
             }
         });
 

@@ -83,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
-                android:text="账户"
+                android:text="15503632627"
                 android:textColor="@color/white"
                 android:textSize="14sp">
 

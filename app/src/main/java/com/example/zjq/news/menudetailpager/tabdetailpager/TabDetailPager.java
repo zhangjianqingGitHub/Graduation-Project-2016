@@ -214,7 +214,6 @@ public class TabDetailPager extends MenuDetailBasePager {
                 RedPoint();
 
                 //轮播图（Handler实现）
-
                 if (myhandler == null) {
                     myhandler = new MyHandler();
                 }

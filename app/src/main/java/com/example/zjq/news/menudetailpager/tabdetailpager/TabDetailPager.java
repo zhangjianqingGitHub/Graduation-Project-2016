@@ -135,13 +135,13 @@ public class TabDetailPager extends MenuDetailBasePager {
         public void onPullDownRefresh() {
 
             getDataForImgs();
-            getDataForRecyclerview();
+            getDataForRecyclerview(1);
         }
 
         @Override
         public void onLoadMore() {
 
-            getDataForRecyclerview();
+            getDataForRecyclerview(1);
         }
     }
 
@@ -160,7 +160,10 @@ public class TabDetailPager extends MenuDetailBasePager {
         adapter = new MyListviewAdapter(context);
         listView.setAdapter(adapter);
         //下方数据
-        getDataForRecyclerview();
+
+
+            getDataForRecyclerview(2);
+
 
 
     }
@@ -274,88 +277,46 @@ public class TabDetailPager extends MenuDetailBasePager {
     }
 
 
-    private void getDataForRecyclerview() {
-//
-//        if (from == 2) {
-//            //加载更多
-//
-//            if (start < list.size() - 1) {
-//
-//                start = end;
-//                end += 5;
-//
-//                if (end >= list.size() - 1) {
-//                    end = list.size() - 1;
-//                }
-//
-//                list_more = list.subList(start, end);
-//
-//                adapter.addAll(list_more);
-//
-//                listView.onRefreshFinish(false);
-//
-//
-//            } else {
-//                //没有更多数据
-//                listView.NoMore();
-//
-//
-//            }
-//        } else {
-        String url = "https://api.xiaohuwei.cn/news.php";
+    private void getDataForRecyclerview(int from) {
+
+        final String url = "https://api.xiaohuwei.cn/news.php";
 
         RequestParams params = new RequestParams(url);
         //PS：type 参数可为 hot（精选）yule (娱乐) toutiao (头条)motion (运动) 不传默认为 hot
         params.addBodyParameter("type", "toutiao");
 
 
+        if (from==2){
+
+            getdata(params);
+
+        }else {
+
+           if (TextUtils.isEmpty(CacheUtils.getString(context,"listView_news"))){
+               getdata(params);
+           }else {
+               setListViewData(CacheUtils.getString(context,"listView_news"));
+
+           }
+
+
+        }
+
+
+
+
+
+    }
+
+    private void getdata(RequestParams params) {
         x.http().get(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
 
-                try {
+                setListViewData(result);
 
-                    JSONArray jsonArray = new JSONArray(result);
-                    list = new ArrayList<>();
-
-                    for (int i = 1; i < jsonArray.length(); i++) {
-
-                        JSONObject jsonObject = (JSONObject) jsonArray.get(i);
-
-                        if (jsonObject != null) {
-                            TabDetailBean bean = new TabDetailBean(
-                                    jsonObject.optString("mtime"),
-                                    jsonObject.optString("digest"),
-                                    jsonObject.optString("imgsrc"),
-                                    jsonObject.optString("url"),
-                                    jsonObject.optString("docid"),
-                                    jsonObject.optString("source"));
-
-                            list.add(bean);
-                        }
-
-
-                    }
-
-                    //下拉刷新
-//                    list_more = list.subList(start, end);
-
-                    adapter.setData(list);
-
-                    //隐藏下拉刷新控件-更新时间(true)
-                    listView.onRefreshFinish(true);
-
-
-
-                } catch (Exception e) {
-
-                    //隐藏下拉刷新控件-更新时间(true)
-                    listView.onRefreshFinish(true);
-
-                    //没有更多数据
-                    listView.NoMore();
-                }
-
+                //保存数据
+                CacheUtils.setString(context,"listView_news",result);
 
             }
 
@@ -382,9 +343,57 @@ public class TabDetailPager extends MenuDetailBasePager {
 
             }
         });
-//        }
+    }
+
+    private void setListViewData(String result) {
+        Log.e("zjq-rrr",result);
+
+        try {
+
+            JSONArray jsonArray = new JSONArray(result);
+            list = new ArrayList<>();
+
+            for (int i = 1; i < jsonArray.length(); i++) {
+
+                JSONObject jsonObject = (JSONObject) jsonArray.get(i);
+
+                if (jsonObject != null) {
+                    TabDetailBean bean = new TabDetailBean(
+                            jsonObject.optString("mtime"),
+                            jsonObject.optString("digest"),
+                            jsonObject.optString("imgsrc"),
+                            jsonObject.optString("url"),
+                            jsonObject.optString("docid"),
+                            jsonObject.optString("source"));
+
+                    list.add(bean);
+                }
 
 
+            }
+
+            //下拉刷新
+//                    list_more = list.subList(start, end);
+
+            adapter.setData(list);
+
+            //隐藏下拉刷新控件-更新时间(true)
+            listView.onRefreshFinish(true);
+
+
+
+
+
+        } catch (Exception e) {
+
+            Log.e("zjq.999",e.getMessage());
+
+            //隐藏下拉刷新控件-更新时间(true)
+            listView.onRefreshFinish(true);
+
+            //没有更多数据
+            listView.NoMore();
+        }
     }
 
 
